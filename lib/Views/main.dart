@@ -55,7 +55,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyApp extends State<MyApp> {
-  final Future<FirebaseApp> _fbApp = Firebase.initializeApp();
+ // final Future<FirebaseApp> _fbApp = Firebase.initializeApp();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -64,7 +64,7 @@ class _MyApp extends State<MyApp> {
         primaryColor: Colors.green,
       ),
       home: FutureBuilder(
-        future: _fbApp,
+        future: null,
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             print('Error: ${snapshot.error.toString()}');
