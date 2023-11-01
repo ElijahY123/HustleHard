@@ -1,31 +1,8 @@
-import 'package:firstapp/Controller/controller.dart';
 import 'package:flutter/material.dart';
-//import 'CalorieCounter.dart';
+import 'CalorieCounter.dart';
 
-void main() {
-  runApp(MyApp());
-}
+class FitnessView extends StatelessWidget {
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Fitness App',
-      theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlueAccent),
-      ),
-      home: FitnessController(),
-    );
-  }
-}
-/**
-class MyHomePage extends StatefulWidget {
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
   var selectedIndex = 0;
 
   @override
@@ -69,9 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ],
                   selectedIndex: selectedIndex,
                   onDestinationSelected: (value) {
-                    setState(() {
-                      selectedIndex = value;
-                    });
+                    selectedIndex = value;
                   },
                 ),
               ),
@@ -88,6 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
 
 class MainPage extends StatelessWidget {
   @override
@@ -106,4 +82,3 @@ class PlaceHolderPage extends StatelessWidget {
     );
   }
 }
-*/
