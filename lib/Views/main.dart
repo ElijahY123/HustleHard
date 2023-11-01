@@ -1,6 +1,8 @@
+import 'package:firstapp/Views/MuscleGroupsPage.dart';
 import 'package:flutter/material.dart';
 import 'CalorieCounter.dart';
 import 'Calendar.dart';
+import 'MuscleGroupsPage.dart';
 
 void main() {
   runApp(MyApp());
@@ -44,6 +46,9 @@ class _MyHomePageState extends State<MyHomePage> {
       case 3:
         page = Calendar();
         break;
+      case 4:
+        page = MuscleGroupsPage();
+        break;
       default:
         throw UnimplementedError('No page for $selectedIndex');
     }
@@ -72,7 +77,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     NavigationRailDestination(
                       icon: Icon(Icons.schedule),
                       label: Text('Calendar'),
-                    )
+                    ),
+                    NavigationRailDestination(
+                      icon: Icon(Icons.run_circle_rounded),
+                      label: Text('Workouts'),
+                    ),
                   ],
                   selectedIndex: selectedIndex,
                   onDestinationSelected: (value) {
