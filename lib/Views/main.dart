@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'CalorieCounter.dart';
-import 'Schedule.dart';
+import 'Calendar.dart';
 
 void main() {
   runApp(MyApp());
@@ -42,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
         page = CalorieCounter();
         break;
       case 3:
-        page = Schedule();
+        page = Calendar();
         break;
       default:
         throw UnimplementedError('No page for $selectedIndex');
@@ -71,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     NavigationRailDestination(
                       icon: Icon(Icons.schedule),
-                      label: Text('Schedule'),
+                      label: Text('Calendar'),
                     )
                   ],
                   selectedIndex: selectedIndex,

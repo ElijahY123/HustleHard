@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class Schedule extends StatelessWidget {
+class Calendar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Schedule'),
+        title: Text('Calendar'),
       ),
       body: Center(
-        child: Text('This is the schedule page'),
+        child: Text('This is the Calendar page'),
       ),
       backgroundColor: Colors.lightGreen[100],
     );
