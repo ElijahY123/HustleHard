@@ -1,5 +1,3 @@
-// CalorieCounter.dart
-
 import 'package:flutter/material.dart';
 
 class CalorieCounter extends StatelessWidget {
@@ -12,6 +10,7 @@ class CalorieCounter extends StatelessWidget {
       body: Center(
         child: Text('This is the Calorie Counter page'),
       ),
+      backgroundColor: Colors.lightGreen[100],
     );
   }
 }
