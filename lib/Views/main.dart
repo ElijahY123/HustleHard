@@ -1,38 +1,23 @@
-import 'dart:core';
+// main.dart
 
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'CalorieCounter.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => MyAppState(),
-      child:MaterialApp(
-        title: 'Fitness App',
-        theme: ThemeData(
-          useMaterial3: true,
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlueAccent),
-        ),
-        home: MyHomePage(),
+    return MaterialApp(
+      title: 'Fitness App',
+      theme: ThemeData(
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlueAccent),
       ),
+      home: MyHomePage(),
     );
-  }
-}
-
-class MyAppState extends ChangeNotifier{
-
-  @override
-  void notifyListeners() {
-    // TODO: implement notifyListeners
-    super.notifyListeners();
   }
 }
 
@@ -46,7 +31,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-
     Widget page;
     switch (selectedIndex) {
       case 0:
@@ -54,6 +38,9 @@ class _MyHomePageState extends State<MyHomePage> {
         break;
       case 1:
         page = PlaceHolderPage();
+        break;
+      case 2: // Add a case for the new "Calorie Counter" button
+        page = CalorieCounter();
         break;
       default:
         throw UnimplementedError('No page for $selectedIndex');
@@ -64,17 +51,21 @@ class _MyHomePageState extends State<MyHomePage> {
         return Scaffold(
           body: Row(
             children: [
-              SafeArea (
+              SafeArea(
                 child: NavigationRail(
                   extended: constraints.maxWidth >= 600,
                   destinations: [
                     NavigationRailDestination(
-                        icon: Icon(Icons.home),
-                        label: Text('Home Page')
+                      icon: Icon(Icons.home),
+                      label: Text('Home Page'),
                     ),
                     NavigationRailDestination(
-                        icon: Icon(Icons.hourglass_empty),
-                        label: Text('placeholder page'),
+                      icon: Icon(Icons.hourglass_empty),
+                      label: Text('Placeholder page'),
+                    ),
+                    NavigationRailDestination( // Add a new destination for "Calorie Counter"
+                      icon: Icon(Icons.fastfood),
+                      label: Text('Calorie Counter'),
                     ),
                   ],
                   selectedIndex: selectedIndex,
@@ -96,20 +87,19 @@ class _MyHomePageState extends State<MyHomePage> {
         );
       },
     );
-
   }
 }
 
-class MainPage extends StatelessWidget{
+class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-   return Center(
-     child: Text('Workout Application FrameWork Main Page', textAlign: TextAlign.center),
-   );
+    return Center(
+      child: Text('Workout Application Framework Main Page', textAlign: TextAlign.center),
+    );
   }
 }
 
-class PlaceHolderPage extends StatelessWidget{
+class PlaceHolderPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
