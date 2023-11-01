@@ -1,4 +1,3 @@
-import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'CalorieCounter.dart';
 
@@ -38,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
       case 1:
         page = PlaceHolderPage();
         break;
-      case 2: // Add a case for the new "Calorie Counter" button
+      case 2:
         page = CalorieCounter();
         break;
       default:
@@ -62,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       icon: Icon(Icons.hourglass_empty),
                       label: Text('Placeholder page'),
                     ),
-                    NavigationRailDestination( // Add a new destination for "Calorie Counter"
+                    NavigationRailDestination(
                       icon: Icon(Icons.fastfood),
                       label: Text('Calorie Counter'),
                     ),
