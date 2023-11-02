@@ -1,4 +1,5 @@
 import 'package:firstapp/Controller/controller.dart';
+import 'package:firstapp/Views/MainPage.dart';
 import 'package:flutter/material.dart';
 //import 'CalorieCounter.dart';
 
@@ -15,10 +16,12 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlueAccent),
       ),
-      home: FitnessController(),
+      home: FitnessView(),
     );
+
   }
 }
+
 /**
 class MyHomePage extends StatefulWidget {
   @override
