@@ -15,7 +15,7 @@ class MuscleGroupsPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget> [
             SizedBox(
-              height: 10,
+              height: 50,
               width: 10,
             ),
             ElevatedButton(
@@ -28,12 +28,12 @@ class MuscleGroupsPage extends StatelessWidget {
                 );
               },
               child: Padding(
-                padding: const EdgeInsets.all(20),
+                padding: const EdgeInsets.all(100),
                 child: const Text('Upper Body'),
               ),
             ),
             SizedBox(
-              height: 10,
+              height: 50,
               width: 10,
             ),
             ElevatedButton(
@@ -46,7 +46,7 @@ class MuscleGroupsPage extends StatelessWidget {
                 );
               },
               child: Padding(
-                padding: const EdgeInsets.all(20),
+                padding: const EdgeInsets.all(100),
                 child: const Text('Lower Body'),
               ),
             ),

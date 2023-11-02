@@ -2,7 +2,6 @@ import 'package:firstapp/Views/MuscleGroupsPage.dart';
 import 'package:flutter/material.dart';
 import 'CalorieCounter.dart';
 import 'Calendar.dart';
-import 'MuscleGroupsPage.dart';
 
 void main() {
   runApp(MyApp());
