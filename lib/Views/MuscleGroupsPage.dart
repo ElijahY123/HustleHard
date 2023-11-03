@@ -68,13 +68,25 @@ class UpperBodyPage extends StatelessWidget {
         ),
       ),
       body: Center(
-          child: ElevatedButton(
-            onPressed: () {
-              Navigator.of(context)
-                  .pop();
-            },
-            child: const Text('Go Back'),
-          )
+        child: Column(
+          children: [
+            Image(
+              image: AssetImage("images/Pullups.jpg"),
+              height: 100,
+              width: 100,
+            ),
+            Image(
+              image: AssetImage("images/BenchPress.jpg"),
+              height: 100,
+              width: 100,
+            ),
+            Image(
+              image: AssetImage("images/BicepCurl.jpg"),
+              height: 100,
+              width: 100,
+            ),
+          ],
+        ),
       ),
     );
   }
