@@ -6,48 +6,38 @@ class MuscleGroupsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Select Your Specific Muscle Group',
+          'Choose Body Part',
           textAlign: TextAlign.center,
         ),
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget> [
-            SizedBox(
-              height: 50,
-              width: 10,
-            ),
-            ElevatedButton(
+            ElevatedButton.icon(
               onPressed: () {
-                Navigator.of(context)
-                    .push(
-                    MaterialPageRoute(
-                        builder: (context) => UpperBodyPage()
-                    )
-                );
-              },
-              child: Padding(
-                padding: const EdgeInsets.all(100),
-                child: const Text('Upper Body'),
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => UpperBodyPage()));
+                },
+              label: const Text("Upper Body"),
+              icon: ImageIcon(
+                AssetImage("images/BenchPressIcon.png"),
+              ),
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.all(20),
               ),
             ),
-            SizedBox(
-              height: 50,
-              width: 10,
-            ),
-            ElevatedButton(
+            ElevatedButton.icon(
               onPressed: () {
-                Navigator.of(context)
-                    .push(
-                    MaterialPageRoute(
-                        builder: (context) => LowerBodyPage()
-                    )
-                );
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => LowerBodyPage()));
               },
-              child: Padding(
-                padding: const EdgeInsets.all(100),
-                child: const Text('Lower Body'),
+              label: const Text("Lower Body"),
+              icon: ImageIcon(
+                AssetImage("images/SquatIcon.png"),
+              ),
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.all(20),
               ),
             ),
           ],
@@ -67,24 +57,41 @@ class UpperBodyPage extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
       ),
-      body: Center(
-        child: Column(
+      body: Scrollbar(
+        controller: ScrollController(),
+        thickness: 10,
+        child: ListView(
           children: [
+            Text(
+              '1. Pullups',
+              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+            ),
             Image(
               image: AssetImage("images/Pullups.jpg"),
-              height: 100,
-              width: 100,
+              height: 300,
+              width: 300,
+            ),
+            Padding(padding: EdgeInsets.all(50),),
+            Text(
+              '2. BenchPress',
+              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
             ),
             Image(
               image: AssetImage("images/BenchPress.jpg"),
-              height: 100,
+              height: 200,
               width: 100,
+            ),
+            Padding(padding: EdgeInsets.all(50),),
+            Text(
+              '3. Bicep Curl',
+              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
             ),
             Image(
               image: AssetImage("images/BicepCurl.jpg"),
-              height: 100,
+              height: 200,
               width: 100,
             ),
+            Padding(padding: EdgeInsets.all(50),),
           ],
         ),
       ),
@@ -102,14 +109,43 @@ class LowerBodyPage extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
       ),
-      body: Center(
-          child: ElevatedButton(
-            onPressed: () {
-              Navigator.of(context)
-                  .pop();
-            },
-            child: const Text('Go Back'),
-          )
+      body: Scrollbar(
+        controller: ScrollController(),
+        thickness: 10,
+        child: ListView(
+          children: [
+            Text(
+              '1. Squats',
+              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+            ),
+            Image(
+              image: AssetImage("images/Squats.jpg"),
+              height: 300,
+              width: 300,
+            ),
+            Padding(padding: EdgeInsets.all(50),),
+            Text(
+              '2. Lunges',
+              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+            ),
+            Image(
+              image: AssetImage("images/Lunges.jpg"),
+              height: 200,
+              width: 100,
+            ),
+            Padding(padding: EdgeInsets.all(50),),
+            Text(
+              '3. Deadlift',
+              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+            ),
+            Image(
+              image: AssetImage("images/Deadlift.jpg"),
+              height: 200,
+              width: 100,
+            ),
+            Padding(padding: EdgeInsets.all(50),),
+          ],
+        ),
       ),
     );
   }
