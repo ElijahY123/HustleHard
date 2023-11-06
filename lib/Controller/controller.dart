@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import '../Views/CalorieCounter.dart';
 
 class FitnessController extends StatefulWidget {
-
   @override
   State<FitnessController> createState() => _FitnessControllerState();
 }
