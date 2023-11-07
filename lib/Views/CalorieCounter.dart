@@ -1,23 +1,5 @@
 import 'package:flutter/material.dart';
 
-class MainPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Main Page'),
-    );
-  }
-}
-
-class PlaceHolderPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Placeholder Page'),
-    );
-  }
-}
-
 class CalorieCounterView extends StatelessWidget {
   final int totalCalories;
   final TextEditingController caloriesInputController;

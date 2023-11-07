@@ -2,6 +2,7 @@ import 'package:firstapp/Views/MuscleGroupsPage.dart';
 import 'package:flutter/material.dart';
 import '../Model/model.dart';
 import '../Views/CalorieCounter.dart';
+import 'package:firstapp/Views/MainPage.dart';
 
 class FitnessController extends StatefulWidget {
   @override
