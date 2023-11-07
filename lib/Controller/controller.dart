@@ -1,3 +1,4 @@
+import 'package:firstapp/Views/MuscleGroupsPage.dart';
 import 'package:flutter/material.dart';
 import '../Model/model.dart';
 import '../Views/CalorieCounter.dart';
@@ -40,6 +41,9 @@ class _FitnessControllerState extends State<FitnessController> {
           onAddCalories: addCalories,
         );
         break;
+      case 3:
+        page = MuscleGroupsPage();
+        break;
       default:
         throw UnimplementedError('No page for selected page');
     }
@@ -64,6 +68,10 @@ class _FitnessControllerState extends State<FitnessController> {
                     NavigationRailDestination(
                       icon: Icon(Icons.fastfood),
                       label: Text('Calorie Counter'),
+                    ),
+                    NavigationRailDestination(
+                        icon: Icon(Icons.run_circle_outlined),
+                        label: Text('Workouts'),
                     ),
                   ],
                   selectedIndex: pageSelected.getSelectedIndex(),
