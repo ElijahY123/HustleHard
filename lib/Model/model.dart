@@ -12,3 +12,12 @@ class SelectedPage {
 
 }
 
+class FitnessModel {
+  int totalCalories = 0;
+
+  void addCalories(int amount) {
+    totalCalories += amount;
+  }
+}
+
+

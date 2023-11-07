@@ -1,28 +1,35 @@
 import 'package:flutter/material.dart';
 
-class CalorieCounter extends StatefulWidget {
+class MainPage extends StatelessWidget {
   @override
-  _CalorieCounterState createState() => _CalorieCounterState();
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text('Main Page'),
+    );
+  }
 }
 
-class _CalorieCounterState extends State<CalorieCounter> {
-  int totalCalories = 0;
-  TextEditingController caloriesInputController = TextEditingController();
-  String errorMessage = '';
-
-  void addCalories(int amount) {
-    setState(() {
-      totalCalories += amount;
-      caloriesInputController.clear();
-      errorMessage = '';
-    });
-  }
-
+class PlaceHolderPage extends StatelessWidget {
   @override
-  void dispose() {
-    caloriesInputController.dispose();
-    super.dispose();
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text('Placeholder Page'),
+    );
   }
+}
+
+class CalorieCounterView extends StatelessWidget {
+  final int totalCalories;
+  final TextEditingController caloriesInputController;
+  final String errorMessage;
+  final Function(int) onAddCalories;
+
+  CalorieCounterView({
+    required this.totalCalories,
+    required this.caloriesInputController,
+    required this.errorMessage,
+    required this.onAddCalories,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -61,11 +68,9 @@ class _CalorieCounterState extends State<CalorieCounter> {
                     onPressed: () {
                       int? amount = int.tryParse(caloriesInputController.text);
                       if (amount != null && amount > 0) {
-                        addCalories(amount);
+                        onAddCalories(amount);
                       } else {
-                        setState(() {
-                          errorMessage = 'Invalid input';
-                        });
+                        // Handle error
                       }
                     },
                     style: ButtonStyle(
@@ -81,11 +86,9 @@ class _CalorieCounterState extends State<CalorieCounter> {
                     onPressed: () {
                       int? amount = int.tryParse(caloriesInputController.text);
                       if (amount != null && amount > 0) {
-                        addCalories(-amount);
+                        onAddCalories(-amount);
                       } else {
-                        setState(() {
-                          errorMessage = 'Invalid input';
-                        });
+                        // Handle error
                       }
                     },
                     style: ButtonStyle(

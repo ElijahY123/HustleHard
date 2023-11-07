@@ -1,6 +1,5 @@
-import 'package:firstapp/Views/MainPage.dart';
-import 'package:firstapp/Model/model.dart';
 import 'package:flutter/material.dart';
+import '../Model/model.dart';
 import '../Views/CalorieCounter.dart';
 
 class FitnessController extends StatefulWidget {
@@ -9,12 +8,22 @@ class FitnessController extends StatefulWidget {
 }
 
 class _FitnessControllerState extends State<FitnessController> {
+  final FitnessModel model = FitnessModel();
+  final TextEditingController caloriesInputController = TextEditingController();
+  String errorMessage = '';
 
-  SelectedPage pageSelected = new SelectedPage();
+  void addCalories(int amount) {
+    setState(() {
+      model.addCalories(amount);
+      caloriesInputController.clear();
+      errorMessage = '';
+    });
+  }
+
+  SelectedPage pageSelected = SelectedPage();
 
   @override
-  Widget build(BuildContext context){
-
+  Widget build(BuildContext context) {
     Widget page;
     switch (pageSelected.getSelectedIndex()) {
       case 0:
@@ -24,7 +33,12 @@ class _FitnessControllerState extends State<FitnessController> {
         page = PlaceHolderPage();
         break;
       case 2:
-        page = CalorieCounter();
+        page = CalorieCounterView(
+          totalCalories: model.totalCalories,
+          caloriesInputController: caloriesInputController,
+          errorMessage: errorMessage,
+          onAddCalories: addCalories,
+        );
         break;
       default:
         throw UnimplementedError('No page for selected page');
@@ -55,7 +69,7 @@ class _FitnessControllerState extends State<FitnessController> {
                   selectedIndex: pageSelected.getSelectedIndex(),
                   onDestinationSelected: (value) {
                     setState(() {
-                     pageSelected.updateSelectedIndex(value);
+                      pageSelected.updateSelectedIndex(value);
                     });
                   },
                 ),
@@ -74,4 +88,14 @@ class _FitnessControllerState extends State<FitnessController> {
   }
 }
 
+class SelectedPage {
+  var selectedIndex = 0;
 
+  void updateSelectedIndex(var newIndex) {
+    selectedIndex = newIndex;
+  }
+
+  getSelectedIndex() {
+    return selectedIndex;
+  }
+}
