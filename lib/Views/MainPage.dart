@@ -8,13 +8,3 @@ class MainPage extends StatelessWidget {
     );
   }
 }
-
-class PlaceHolderPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Placeholder second page', textAlign: TextAlign.center),
-    );
-  }
-}
-
