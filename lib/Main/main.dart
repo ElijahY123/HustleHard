@@ -1,7 +1,3 @@
-import 'package:firstapp/Views/MuscleGroupsPage.dart';
-import 'CalorieCounter.dart';
-import 'Calendar.dart';
-import 'MuscleGroupsPage.dart';
 import 'package:firstapp/Controller/controller.dart';
 import 'package:flutter/material.dart';
 
