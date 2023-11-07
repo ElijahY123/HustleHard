@@ -96,15 +96,3 @@ class _FitnessControllerState extends State<FitnessController> {
     );
   }
 }
-
-class SelectedPage {
-  var selectedIndex = 0;
-
-  void updateSelectedIndex(var newIndex) {
-    selectedIndex = newIndex;
-  }
-
-  getSelectedIndex() {
-    return selectedIndex;
-  }
-}
