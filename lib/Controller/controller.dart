@@ -15,11 +15,21 @@ class _FitnessControllerState extends State<FitnessController> {
   final TextEditingController caloriesInputController = TextEditingController();
   String errorMessage = '';
 
+  // Calorie Page
+
   void addCalories(int amount) {
     setState(() {
       model.addCalories(amount);
       caloriesInputController.clear();
       errorMessage = '';
+    });
+  }
+
+  // Calendar Page
+
+  void onDaySelected(DateTime day, DateTime focusedDay) {
+    setState(() {
+      model.onDaySelected(day, focusedDay);
     });
   }
 
@@ -33,7 +43,16 @@ class _FitnessControllerState extends State<FitnessController> {
         page = MainPage();
         break;
       case 1:
-        page = Calendar();
+        page = Calendar(
+          today: model.today,
+          firstDay: model.firstDay,
+          lastDay: model.lastDay,
+          onDaySelected: onDaySelected,
+          events: model.events,
+          eventController: model.eventController,
+          selectedEvents: model.selectedEvents,
+          getEventsForDay: model.getEventsForDay,
+        );
         break;
       case 2:
         page = CalorieCounterView(
