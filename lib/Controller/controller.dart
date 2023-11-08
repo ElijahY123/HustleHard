@@ -2,6 +2,8 @@ import 'package:firstapp/Views/MuscleGroupsPage.dart';
 import 'package:flutter/material.dart';
 import '../Model/model.dart';
 import '../Views/CalorieCounter.dart';
+import 'package:firstapp/Views/MainPage.dart';
+import 'package:firstapp/Views/Calendar.dart';
 
 class FitnessController extends StatefulWidget {
   @override
@@ -31,7 +33,7 @@ class _FitnessControllerState extends State<FitnessController> {
         page = MainPage();
         break;
       case 1:
-        page = PlaceHolderPage();
+        page = Calendar();
         break;
       case 2:
         page = CalorieCounterView(
@@ -62,8 +64,8 @@ class _FitnessControllerState extends State<FitnessController> {
                       label: Text('Home Page'),
                     ),
                     NavigationRailDestination(
-                      icon: Icon(Icons.hourglass_empty),
-                      label: Text('Placeholder page'),
+                      icon: Icon(Icons.calendar_month),
+                      label: Text('Calendar Page'),
                     ),
                     NavigationRailDestination(
                       icon: Icon(Icons.fastfood),
@@ -93,17 +95,5 @@ class _FitnessControllerState extends State<FitnessController> {
         );
       },
     );
-  }
-}
-
-class SelectedPage {
-  var selectedIndex = 0;
-
-  void updateSelectedIndex(var newIndex) {
-    selectedIndex = newIndex;
-  }
-
-  getSelectedIndex() {
-    return selectedIndex;
   }
 }
