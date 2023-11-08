@@ -13,6 +13,11 @@ class CalorieCounterView extends StatelessWidget {
     required this.onAddCalories,
   });
 
+  bool isInputValid() {
+    final int? amount = int.tryParse(caloriesInputController.text);
+    return amount != null && amount > 0;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,11 +53,16 @@ class CalorieCounterView extends StatelessWidget {
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                      int? amount = int.tryParse(caloriesInputController.text);
-                      if (amount != null && amount > 0) {
-                        onAddCalories(amount);
+                      if (isInputValid()) {
+                        onAddCalories(int.parse(caloriesInputController.text));
+                        caloriesInputController.clear();
                       } else {
-                        // Handle error
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text('Invalid input'),
+                            backgroundColor: Colors.red,
+                          ),
+                        );
                       }
                     },
                     style: ButtonStyle(
@@ -66,11 +76,16 @@ class CalorieCounterView extends StatelessWidget {
                   SizedBox(width: 10),
                   ElevatedButton(
                     onPressed: () {
-                      int? amount = int.tryParse(caloriesInputController.text);
-                      if (amount != null && amount > 0) {
-                        onAddCalories(-amount);
+                      if (isInputValid()) {
+                        onAddCalories(-int.parse(caloriesInputController.text));
+                        caloriesInputController.clear();
                       } else {
-                        // Handle error
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text('Invalid input'),
+                            backgroundColor: Colors.red,
+                          ),
+                        );
                       }
                     },
                     style: ButtonStyle(
