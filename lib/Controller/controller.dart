@@ -19,6 +19,8 @@ class _FitnessControllerState extends State<FitnessController> {
   String errorMessage = '';
   Timer? timer;
 
+  // Calorie Page
+
   void addCalories(int amount) {
     setState(() {
       model.addCalories(amount);
@@ -92,7 +94,15 @@ class _FitnessControllerState extends State<FitnessController> {
   }
 
 
-    SelectedPage pageSelected = SelectedPage();
+  // Calendar Page
+
+  void onDaySelected(DateTime day, DateTime focusedDay) {
+    setState(() {
+      model.onDaySelected(day, focusedDay);
+    });
+  }
+
+  SelectedPage pageSelected = SelectedPage();
 
     @override
     Widget build(BuildContext context) {
@@ -102,7 +112,16 @@ class _FitnessControllerState extends State<FitnessController> {
           page = MainPage();
           break;
         case 1:
-          page = Calendar();
+          page = Calendar(
+            today: model.today,
+            firstDay: model.firstDay,
+            lastDay: model.lastDay,
+            onDaySelected: onDaySelected,
+            events: model.events,
+            eventController: model.eventController,
+            selectedEvents: model.selectedEvents,
+            getEventsForDay: model.getEventsForDay,
+          );
           break;
         case 2:
           page = CalorieCounterView(
@@ -131,7 +150,7 @@ class _FitnessControllerState extends State<FitnessController> {
           break;
         default:
           throw UnimplementedError('No page for selected page');
-      }
+    }
 
       return LayoutBuilder(
         builder: (context, constraints) {
