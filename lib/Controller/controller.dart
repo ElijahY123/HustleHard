@@ -24,6 +24,7 @@ class _FitnessControllerState extends State<FitnessController> {
   }
 
   SelectedPage pageSelected = SelectedPage();
+  NavigationRailLabelType labelType = NavigationRailLabelType.all;
 
   @override
   Widget build(BuildContext context) {
@@ -76,6 +77,7 @@ class _FitnessControllerState extends State<FitnessController> {
                         label: Text('Workouts'),
                     ),
                   ],
+                  labelType: labelType,
                   selectedIndex: pageSelected.getSelectedIndex(),
                   onDestinationSelected: (value) {
                     setState(() {
