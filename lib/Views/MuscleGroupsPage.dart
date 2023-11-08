@@ -9,6 +9,14 @@ class MuscleGroupsPage extends StatelessWidget {
           'Choose Body Part',
           textAlign: TextAlign.center,
         ),
+        elevation: 22,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(30),
+                bottomRight: Radius.circular(30),
+            ),
+        ),
+        backgroundColor: Colors.lightBlueAccent,
       ),
       body: Center(
         child: Column(
