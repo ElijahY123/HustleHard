@@ -2,8 +2,10 @@ import 'package:firstapp/Views/MuscleGroupsPage.dart';
 import 'package:flutter/material.dart';
 import '../Model/model.dart';
 import '../Views/CalorieCounter.dart';
+import '../Views/Workout.dart';
 import 'package:firstapp/Views/MainPage.dart';
 import 'package:firstapp/Views/Calendar.dart';
+import 'dart:async';
 
 class FitnessController extends StatefulWidget {
   @override
@@ -12,8 +14,10 @@ class FitnessController extends StatefulWidget {
 
 class _FitnessControllerState extends State<FitnessController> {
   final FitnessModel model = FitnessModel();
+  final WorkoutModel workoutModel = WorkoutModel();
   final TextEditingController caloriesInputController = TextEditingController();
   String errorMessage = '';
+  Timer? timer;
 
   void addCalories(int amount) {
     setState(() {
@@ -23,8 +27,72 @@ class _FitnessControllerState extends State<FitnessController> {
     });
   }
 
+  // WorkoutModel
+
+  List getLaps() {
+    return workoutModel.getLaps();
+  }
+
+  bool isTimerStarted() {
+    return workoutModel.isTimerStarted();
+  }
+
+  void stopStopwatch() {
+    setState(() {
+      workoutModel.stopTimer(timer);
+    });
+  }
+
+  void resetStopwatch() {
+    setState(() {
+      workoutModel.resetTimer(timer);
+    });
+  }
+
+  void addLaps() {
+    setState(() {
+      workoutModel.addLaps();
+    });
+  }
+
+  void startStopwatch() {
+    setState(() {
+      workoutModel.startTimer();
+      timer = Timer.periodic(const Duration(seconds: 20), (timer) {
+        setState(() {
+          setTime();
+        });
+        getCurrentPosition();
+      });
+    });
+  }
+
+  String getTime() {
+    return workoutModel.getTime();
+  }
+
+
+  String getDistanceRan() {
+    return workoutModel.getDistanceRan();
+  }
+
+
+  bool getIsWorkoutStarted() {
+    return workoutModel.getIsWorkoutStarted();
+  }
+
+  void setTime() {
+//       setState(() {
+    workoutModel.setTime();
+//    });
+  }
+
+  void getCurrentPosition() {
+    workoutModel.getCurrentPosition();
+  }
+
+
   SelectedPage pageSelected = SelectedPage();
-  NavigationRailLabelType labelType = NavigationRailLabelType.all;
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +114,20 @@ class _FitnessControllerState extends State<FitnessController> {
         break;
       case 3:
         page = MuscleGroupsPage();
+        break;
+      case 4:
+        page = WorkoutView(
+          getTime: getTime,
+          getLaps: getLaps,
+          stopStopwatch: stopStopwatch,
+          resetStopwatch: resetStopwatch,
+          startStopwatch: startStopwatch,
+          getDistanceRan: getDistanceRan,
+          addLaps: addLaps,
+          isTimerStarted: isTimerStarted,
+          getIsWorkoutStarted: getIsWorkoutStarted,
+          setTime: setTime,
+        );
         break;
       default:
         throw UnimplementedError('No page for selected page');
@@ -73,11 +155,14 @@ class _FitnessControllerState extends State<FitnessController> {
                       label: Text('Calorie Counter'),
                     ),
                     NavigationRailDestination(
-                        icon: Icon(Icons.run_circle_outlined),
-                        label: Text('Workouts'),
+                      icon: Icon(Icons.run_circle_outlined),
+                      label: Text('Workouts'),
+                    ),
+                    NavigationRailDestination(
+                        icon: Icon(Icons.fitness_center),
+                        label: Text("Start Workout")
                     ),
                   ],
-                  labelType: labelType,
                   selectedIndex: pageSelected.getSelectedIndex(),
                   onDestinationSelected: (value) {
                     setState(() {
@@ -88,7 +173,10 @@ class _FitnessControllerState extends State<FitnessController> {
               ),
               Expanded(
                 child: Container(
-                  color: Theme.of(context).colorScheme.primaryContainer,
+                  color: Theme
+                      .of(context)
+                      .colorScheme
+                      .primaryContainer,
                   child: page,
                 ),
               ),
