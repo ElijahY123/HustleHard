@@ -1,6 +1,10 @@
 import 'dart:async';
 import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
+import "package:table_calendar/table_calendar.dart";
+import "package:flutter/cupertino.dart";
+import "package:table_calendar/table_calendar.dart";
+import "Event.dart";
 
 class SelectedPage {
 
@@ -17,13 +21,33 @@ class SelectedPage {
 }
 
 class FitnessModel {
+  // CalorieCounter Page
   int totalCalories = 0;
 
   void addCalories(int amount) {
     totalCalories += amount;
   }
-}
 
+  // Calendar Page
+
+  DateTime today = DateTime.now();
+  DateTime firstDay = DateTime.now().subtract(Duration(days: 365));
+  DateTime lastDay = DateTime.now().add(Duration(days: 1826));
+  Map<DateTime, List<Event>> events = {};
+  TextEditingController eventController = TextEditingController();
+  late ValueNotifier<List<Event>> selectedEvents = ValueNotifier(getEventsForDay(today!));
+
+  List<Event> getEventsForDay(DateTime day) {
+    return events[day] ?? [];
+  }
+
+  void onDaySelected(DateTime day, DateTime focusedDay) {
+    if (!isSameDay(today, day)) {
+      today = day;
+      selectedEvents.value = getEventsForDay(day);
+    }
+  }
+}
 class WorkoutModel {
 
   final Distance distance = const Distance();
