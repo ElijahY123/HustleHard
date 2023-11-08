@@ -85,7 +85,7 @@ class WorkoutView extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  height: 300.0,
+                  height: 250.0,
                   decoration: BoxDecoration(
                     color: const Color(0x62FFFFFF),
                     borderRadius: BorderRadius.circular(8.0),
