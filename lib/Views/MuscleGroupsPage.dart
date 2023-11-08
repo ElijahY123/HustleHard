@@ -9,6 +9,7 @@ class MuscleGroupsPage extends StatelessWidget {
           'Choose Body Part',
           textAlign: TextAlign.center,
         ),
+        /**
         elevation: 22,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
@@ -17,6 +18,7 @@ class MuscleGroupsPage extends StatelessWidget {
             ),
         ),
         backgroundColor: Colors.lightBlueAccent,
+            **/
       ),
       body: Center(
         child: Column(
@@ -79,6 +81,10 @@ class UpperBodyPage extends StatelessWidget {
               height: 300,
               width: 300,
             ),
+            Text(
+              'General Info',
+              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+            ),
             Padding(padding: EdgeInsets.all(50),),
             Text(
               '2. BenchPress',
@@ -89,6 +95,10 @@ class UpperBodyPage extends StatelessWidget {
               height: 200,
               width: 100,
             ),
+            Text(
+              'General Info',
+              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+            ),
             Padding(padding: EdgeInsets.all(50),),
             Text(
               '3. Bicep Curl',
@@ -98,6 +108,10 @@ class UpperBodyPage extends StatelessWidget {
               image: AssetImage("images/BicepCurl.jpg"),
               height: 200,
               width: 100,
+            ),
+            Text(
+              'General Info',
+              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
             ),
             Padding(padding: EdgeInsets.all(50),),
           ],
@@ -131,6 +145,10 @@ class LowerBodyPage extends StatelessWidget {
               height: 300,
               width: 300,
             ),
+            Text(
+              'General Info',
+              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+            ),
             Padding(padding: EdgeInsets.all(50),),
             Text(
               '2. Lunges',
@@ -141,6 +159,10 @@ class LowerBodyPage extends StatelessWidget {
               height: 200,
               width: 100,
             ),
+            Text(
+              'General Info',
+              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+            ),
             Padding(padding: EdgeInsets.all(50),),
             Text(
               '3. Deadlift',
@@ -150,6 +172,10 @@ class LowerBodyPage extends StatelessWidget {
               image: AssetImage("images/Deadlift.jpg"),
               height: 200,
               width: 100,
+            ),
+            Text(
+              'General Info',
+              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
             ),
             Padding(padding: EdgeInsets.all(50),),
           ],
