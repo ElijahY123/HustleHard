@@ -1,4 +1,5 @@
 import "package:flutter/cupertino.dart";
+import "package:table_calendar/table_calendar.dart";
 
 import "Event.dart";
 
@@ -31,15 +32,16 @@ class FitnessModel {
   DateTime lastDay = DateTime.now().add(Duration(days: 1826));
   Map<DateTime, List<Event>> events = {};
   TextEditingController eventController = TextEditingController();
-  late ValueNotifier<List<Event>> selectedEvents;// = ValueNotifier(getEventsForDay(today!));
+  late ValueNotifier<List<Event>> selectedEvents = ValueNotifier(getEventsForDay(today!));
 
   List<Event> getEventsForDay(DateTime day) {
     return events[day] ?? [];
   }
 
-
-
   void onDaySelected(DateTime day, DateTime focusedDay) {
-    today = day;
+    if (!isSameDay(today, day)) {
+      today = day;
+      selectedEvents.value = getEventsForDay(day);
+    }
   }
 }

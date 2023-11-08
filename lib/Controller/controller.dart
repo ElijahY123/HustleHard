@@ -4,6 +4,7 @@ import '../Model/model.dart';
 import '../Views/CalorieCounter.dart';
 import 'package:firstapp/Views/MainPage.dart';
 import 'package:firstapp/Views/Calendar.dart';
+import '../Model/Event.dart';
 
 class FitnessController extends StatefulWidget {
   @override

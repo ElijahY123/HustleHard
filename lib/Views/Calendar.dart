@@ -8,7 +8,7 @@ class Calendar extends StatelessWidget {
   final DateTime lastDay;
   final Function(DateTime, DateTime) onDaySelected;
   final Map<DateTime, List<Event>> events;
-  TextEditingController eventController;
+  final TextEditingController eventController;
   late final ValueNotifier<List<Event>> selectedEvents;
   final List<Event> Function(DateTime day) getEventsForDay;
 
@@ -58,7 +58,7 @@ class Calendar extends StatelessWidget {
                               today: [Event(eventController.text)]
                             });
                             Navigator.of(context).pop();
-                            selectedEvents.value = getEventsForDay(today!);
+                            selectedEvents.value = getEventsForDay(today);
                           },
                           child: Text("Submit")
                       )
