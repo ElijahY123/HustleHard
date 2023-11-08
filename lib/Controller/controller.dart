@@ -58,7 +58,7 @@ class _FitnessControllerState extends State<FitnessController> {
   void startStopwatch() {
     setState(() {
       workoutModel.startTimer();
-      timer = Timer.periodic(const Duration(seconds: 20), (timer) {
+      timer = Timer.periodic(const Duration(seconds: 1), (timer) {
           setState(() {
             setTime();
           });
