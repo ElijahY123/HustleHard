@@ -164,30 +164,6 @@ class WorkoutModel {
     timerStarted = true;
     if (timerStarted) {
       setTime();
-      /*timer = Timer.periodic(const Duration(seconds:1), (timer) {
-        newSeconds = seconds + 1;
-        newMinutes = minutes;
-        newHours = hours;
-//        getCurrentPosition();
-
-        if (newSeconds > 59) {
-          if(newMinutes > 59) {
-            newHours++;
-            newMinutes = 0;
-          }
-          else {
-            newMinutes++;
-            newSeconds = 0;
-          }
-        }
-        setTime();
-        seconds = newSeconds;
-        minutes = newMinutes;
-        hours = newHours;
-        digitSeconds = (seconds >= 10) ? "$seconds":"0$seconds";
-        digitMinutes = (minutes >= 10) ? "$minutes":"0$minutes";
-        digitHours = (hours >= 10) ? "$hours":"0$hours";
-      });*/
     }
   }
 }
