@@ -15,8 +15,9 @@ class RoutineView extends StatelessWidget {
     child: Table(
        border: TableBorder.all(),
        columnWidths: const <int, TableColumnWidth>{
-         0: IntrinsicColumnWidth(),
+         0: FlexColumnWidth(),
          1: FlexColumnWidth(),
+         2: FlexColumnWidth(),
        },
        defaultVerticalAlignment: TableCellVerticalAlignment.middle,
        children: <TableRow>[
@@ -30,7 +31,12 @@ class RoutineView extends StatelessWidget {
              TableCell(
                verticalAlignment: TableCellVerticalAlignment.top,
                child: Container(
-                 child: Text('Workout schedule for Core'),
+                 child: Text('Workout schedule for Legs'),
+               ),
+             ),
+             Container(
+               child: Center(
+                 child: Text('Workout schedule for Core')
                ),
              ),
            ],
@@ -45,7 +51,14 @@ class RoutineView extends StatelessWidget {
                )
              ),
              Container(
-               height: 32,
+               child: Center(
+                 child: Text('Monday')
+               ),
+             ),
+             Container(
+               child: Center(
+                   child: Text('Monday')
+               ),
              ),
            ],
          ),
