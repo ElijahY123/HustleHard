@@ -6,6 +6,7 @@ import '../Views/Workout.dart';
 import 'package:firstapp/Views/MainPage.dart';
 import 'package:firstapp/Views/Calendar.dart';
 import 'dart:async';
+import 'package:firstapp/Views/Routine.dart';
 
 class FitnessController extends StatefulWidget {
   @override
@@ -148,6 +149,9 @@ class _FitnessControllerState extends State<FitnessController> {
             setTime: setTime,
           );
           break;
+        case 5:
+          page = RoutineView();
+          break;
         default:
           throw UnimplementedError('No page for selected page');
     }
@@ -179,7 +183,11 @@ class _FitnessControllerState extends State<FitnessController> {
                       ),
                       NavigationRailDestination(
                           icon: Icon(Icons.fitness_center),
-                          label: Text("Start Workout")
+                          label: Text("Start Workout"),
+                      ),
+                      NavigationRailDestination(
+                          icon: Icon(Icons.add_chart),
+                          label: Text("Routine Table"),
                       ),
                     ],
                     selectedIndex: pageSelected.getSelectedIndex(),
