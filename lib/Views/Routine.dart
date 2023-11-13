@@ -48,7 +48,7 @@ class RoutineView extends StatelessWidget {
              Container(
                child: Center(
                  child: Text('Monday'),
-               )
+               ),
              ),
              Container(
                child: Center(
@@ -58,6 +58,132 @@ class RoutineView extends StatelessWidget {
              Container(
                child: Center(
                    child: Text('Monday')
+               ),
+             ),
+           ],
+         ),
+         TableRow(
+           decoration: const BoxDecoration(
+           ),
+           children: <Widget>[
+             Container(
+               child: Center(
+                 child: Text('Tuesday')
+               ),
+             ),
+             Container(
+               child: Center(
+                 child: Text('Tuesday')
+               ),
+             ),
+             Container(
+               child: Center(
+                 child: Text('Tuesday')
+               ),
+             ),
+           ],
+         ),
+         TableRow(
+           decoration: const BoxDecoration(
+           ),
+           children: <Widget>[
+             Container(
+               child: Center(
+                   child: Text('Wednesday')
+               ),
+             ),
+             Container(
+               child: Center(
+                   child: Text('Wednesday')
+               ),
+             ),
+             Container(
+               child: Center(
+                   child: Text('Wednesday')
+               ),
+             ),
+           ],
+         ),
+         TableRow(
+           decoration: const BoxDecoration(
+           ),
+           children: <Widget>[
+             Container(
+               child: Center(
+                   child: Text('Thursday')
+               ),
+             ),
+             Container(
+               child: Center(
+                   child: Text('Thursday')
+               ),
+             ),
+             Container(
+               child: Center(
+                   child: Text('Thursday')
+               ),
+             ),
+           ],
+         ),
+         TableRow(
+           decoration: const BoxDecoration(
+           ),
+           children: <Widget>[
+             Container(
+               child: Center(
+                   child: Text('Friday')
+               ),
+             ),
+             Container(
+               child: Center(
+                   child: Text('Friday')
+               ),
+             ),
+             Container(
+               child: Center(
+                   child: Text('Friday')
+               ),
+             ),
+           ],
+         ),
+         TableRow(
+           decoration: const BoxDecoration(
+           ),
+           children: <Widget>[
+             Container(
+               child: Center(
+                   child: Text('Saturday')
+               ),
+             ),
+             Container(
+               child: Center(
+                   child: Text('Saturday')
+               ),
+             ),
+             Container(
+               child: Center(
+                   child: Text('Saturday')
+               ),
+             ),
+           ],
+         ),
+         TableRow(
+           decoration: const BoxDecoration(
+           ),
+           children: <Widget>[
+             Container(
+               child: Center(
+                   child: Text('Sunday')
+               ),
+             ),
+             Container(
+               child: Center(
+                   child: Text('Sunday')
+               ),
+             ),
+             Container(
+               child: Center(
+                   child: Text('Sunday')
                ),
              ),
            ],
