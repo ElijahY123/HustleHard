@@ -25,13 +25,15 @@ class RoutineView extends StatelessWidget {
            children: <Widget>[
              Container(
                child: Center(
-                child: Text('Workout schedule for Arms'),
+                child: Text('Workout schedule for Arms', textScaleFactor: 1.5,),
                ),
              ),
              TableCell(
                verticalAlignment: TableCellVerticalAlignment.top,
                child: Container(
-                 child: Text('Workout schedule for Legs'),
+                 child: Center(
+                  child: Text('Workout schedule for Legs'),
+                 ),
                ),
              ),
              Container(
@@ -47,38 +49,17 @@ class RoutineView extends StatelessWidget {
            children: <Widget>[
              Container(
                child: Center(
-                 child: Text('Monday'),
+                 child: Text('Monday\n' 'Dumbell Curls\n' 'Scarecrow Extensions\n' 'SpeedBag\n'),
                ),
              ),
              Container(
                child: Center(
-                 child: Text('Monday')
+                 child: Text('Monday\n' 'Squats\n' 'Lateral Lung\n' 'Leg Press\n')
                ),
              ),
              Container(
                child: Center(
-                   child: Text('Monday')
-               ),
-             ),
-           ],
-         ),
-         TableRow(
-           decoration: const BoxDecoration(
-           ),
-           children: <Widget>[
-             Container(
-               child: Center(
-                 child: Text('Tuesday')
-               ),
-             ),
-             Container(
-               child: Center(
-                 child: Text('Tuesday')
-               ),
-             ),
-             Container(
-               child: Center(
-                 child: Text('Tuesday')
+                   child: Text('Monday\n' 'Side Bridges\n' 'Raised Leg Hold\n' 'Plank Arm Raises\n')
                ),
              ),
            ],
@@ -89,38 +70,17 @@ class RoutineView extends StatelessWidget {
            children: <Widget>[
              Container(
                child: Center(
-                   child: Text('Wednesday')
+                 child: Text('Tuesday\n' 'Cross Over Extensions\n' 'Hammer Curls\n')
                ),
              ),
              Container(
                child: Center(
-                   child: Text('Wednesday')
+                 child: Text('Tuesday\n' 'Knee Highs\n' 'Single Leg Deadlift\n' 'Split Squat\n')
                ),
              ),
              Container(
                child: Center(
-                   child: Text('Wednesday')
-               ),
-             ),
-           ],
-         ),
-         TableRow(
-           decoration: const BoxDecoration(
-           ),
-           children: <Widget>[
-             Container(
-               child: Center(
-                   child: Text('Thursday')
-               ),
-             ),
-             Container(
-               child: Center(
-                   child: Text('Thursday')
-               ),
-             ),
-             Container(
-               child: Center(
-                   child: Text('Thursday')
+                 child: Text('Tuesday\n' 'Push Up Into Lunges\n' 'Knee to Elbows\n' 'Side to Side Chops\n')
                ),
              ),
            ],
@@ -131,38 +91,17 @@ class RoutineView extends StatelessWidget {
            children: <Widget>[
              Container(
                child: Center(
-                   child: Text('Friday')
+                   child: Text('Wednesday\n' 'Overhead Tricep Extension\n' 'Side Curls\n')
                ),
              ),
              Container(
                child: Center(
-                   child: Text('Friday')
+                   child: Text('Wednesday\n' 'Skater Squat\n' 'Tuck Jump\n' 'Reverse Lung\n')
                ),
              ),
              Container(
                child: Center(
-                   child: Text('Friday')
-               ),
-             ),
-           ],
-         ),
-         TableRow(
-           decoration: const BoxDecoration(
-           ),
-           children: <Widget>[
-             Container(
-               child: Center(
-                   child: Text('Saturday')
-               ),
-             ),
-             Container(
-               child: Center(
-                   child: Text('Saturday')
-               ),
-             ),
-             Container(
-               child: Center(
-                   child: Text('Saturday')
+                   child: Text('Wednesday\n' 'Cross Chops\n' 'High Knees\n' 'Twist Jacks\n')
                ),
              ),
            ],
@@ -173,17 +112,38 @@ class RoutineView extends StatelessWidget {
            children: <Widget>[
              Container(
                child: Center(
-                   child: Text('Sunday')
+                   child: Text('Thursday\n' 'Around the Worlds\n' 'Seated Curls\n')
                ),
              ),
              Container(
                child: Center(
-                   child: Text('Sunday')
+                   child: Text('Thursday\n' 'Adductor Leg Raises\n' 'Hamstring Curls\n' 'Romanian Deadlifts\n')
                ),
              ),
              Container(
                child: Center(
-                   child: Text('Sunday')
+                   child: Text('Thursday\n' 'Side Leg Raises\n' 'Crunch Kicks\n' 'Raised Leg Circles\n')
+               ),
+             ),
+           ],
+         ),
+         TableRow(
+           decoration: const BoxDecoration(
+           ),
+           children: <Widget>[
+             Container(
+               child: Center(
+                   child: Text('Friday\n' 'Upright Row\n' 'Hammer Curls\n' 'Push Ups\n')
+               ),
+             ),
+             Container(
+               child: Center(
+                   child: Text('Friday\n' 'Leg Extensions\n' 'Steps\n' 'Squat Jumps\n')
+               ),
+             ),
+             Container(
+               child: Center(
+                   child: Text('Friday\n' 'Scissors\n' '20-Count Hold\n' 'Side Elbow Plank\n')
                ),
              ),
            ],
