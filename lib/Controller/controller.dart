@@ -17,6 +17,7 @@ class _FitnessControllerState extends State<FitnessController> {
   final FitnessModel model = FitnessModel();
   final WorkoutModel workoutModel = WorkoutModel();
   final TextEditingController caloriesInputController = TextEditingController();
+  final RoutinePageModel routineModel = RoutinePageModel();
   String errorMessage = '';
   Timer? timer;
 
@@ -94,7 +95,6 @@ class _FitnessControllerState extends State<FitnessController> {
     workoutModel.getCurrentPosition();
   }
 
-
   // Calendar Page
 
   void onDaySelected(DateTime day, DateTime focusedDay) {
@@ -104,6 +104,12 @@ class _FitnessControllerState extends State<FitnessController> {
   }
 
   SelectedPage pageSelected = SelectedPage();
+
+  void updatePage(){
+    setState(() {
+      pageSelected.updateSelectedIndex(routineModel.updatePage());
+    });
+  }
 
     @override
     Widget build(BuildContext context) {
@@ -150,7 +156,9 @@ class _FitnessControllerState extends State<FitnessController> {
           );
           break;
         case 5:
-          page = RoutineView();
+          page = RoutineView(
+            updatePage: updatePage,
+          );
           break;
         default:
           throw UnimplementedError('No page for selected page');

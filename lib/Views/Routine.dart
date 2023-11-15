@@ -1,6 +1,14 @@
+import 'package:firstapp/Controller/controller.dart';
 import 'package:flutter/material.dart';
+import 'package:firstapp/Model/model.dart';
 
 class RoutineView extends StatelessWidget {
+
+  final Function() updatePage;
+
+  RoutineView({
+   required this.updatePage,
+});
 
   @override
   Widget build(BuildContext context) {
@@ -152,9 +160,20 @@ class RoutineView extends StatelessWidget {
              ),
            ],
          ),
+        Align(
+          alignment: Alignment.bottomCenter
+          ,child: ElevatedButton(
+            onPressed: onPressed(),
+            child: const Text('Information Page'),
+            )
+        )
        ],
     ),
      ),
    );
   }
+}
+
+onPressed() {
+  RoutinePageModel().setNewPage(3);
 }

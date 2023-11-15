@@ -1,4 +1,5 @@
 import 'dart:async';
+import "package:firstapp/Controller/controller.dart";
 import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
 import "package:table_calendar/table_calendar.dart";
@@ -168,3 +169,15 @@ class WorkoutModel {
   }
 }
 
+class RoutinePageModel{
+  int newPage = 0;
+
+  int updatePage(){
+    return newPage;
+  }
+
+  void setNewPage(int value){
+    newPage = value;
+  }
+
+}
