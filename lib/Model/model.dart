@@ -3,7 +3,6 @@ import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
 import "package:table_calendar/table_calendar.dart";
 import "package:flutter/cupertino.dart";
-import "package:table_calendar/table_calendar.dart";
 import "Event.dart";
 
 class SelectedPage {
@@ -35,7 +34,7 @@ class FitnessModel {
   DateTime lastDay = DateTime.now().add(Duration(days: 1826));
   Map<DateTime, List<Event>> events = {};
   TextEditingController eventController = TextEditingController();
-  late ValueNotifier<List<Event>> selectedEvents = ValueNotifier(getEventsForDay(today!));
+  late ValueNotifier<List<Event>> selectedEvents = ValueNotifier(getEventsForDay(today));
 
   List<Event> getEventsForDay(DateTime day) {
     return events[day] ?? [];
@@ -48,6 +47,7 @@ class FitnessModel {
     }
   }
 }
+
 class WorkoutModel {
 
   final Distance distance = const Distance();
@@ -191,4 +191,3 @@ class WorkoutModel {
     }
   }
 }
-

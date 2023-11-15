@@ -60,7 +60,7 @@ class _FitnessControllerState extends State<FitnessController> {
   void startStopwatch() {
     setState(() {
       workoutModel.startTimer();
-      timer = Timer.periodic(const Duration(seconds: 20), (timer) {
+      timer = Timer.periodic(const Duration(seconds: 1), (timer) {
         setState(() {
           setTime();
         });
@@ -94,7 +94,14 @@ class _FitnessControllerState extends State<FitnessController> {
   }
 
 
-<<<<<<< HEAD
+  // Calendar Page
+
+  void onDaySelected(DateTime day, DateTime focusedDay) {
+    setState(() {
+      model.onDaySelected(day, focusedDay);
+    });
+  }
+
   SelectedPage pageSelected = SelectedPage();
 
   @override
@@ -105,7 +112,16 @@ class _FitnessControllerState extends State<FitnessController> {
         page = MainPage();
         break;
       case 1:
-        page = Calendar();
+        page = Calendar(
+          today: model.today,
+          firstDay: model.firstDay,
+          lastDay: model.lastDay,
+          onDaySelected: onDaySelected,
+          events: model.events,
+          eventController: model.eventController,
+          selectedEvents: model.selectedEvents,
+          getEventsForDay: model.getEventsForDay,
+        );
         break;
       case 2:
         page = CalorieCounterView(
@@ -134,118 +150,6 @@ class _FitnessControllerState extends State<FitnessController> {
         break;
       default:
         throw UnimplementedError('No page for selected page');
-=======
-  // Calendar Page
-
-  void onDaySelected(DateTime day, DateTime focusedDay) {
-    setState(() {
-      model.onDaySelected(day, focusedDay);
-    });
-  }
-
-  SelectedPage pageSelected = SelectedPage();
-
-    @override
-    Widget build(BuildContext context) {
-      Widget page;
-      switch (pageSelected.getSelectedIndex()) {
-        case 0:
-          page = MainPage();
-          break;
-        case 1:
-          page = Calendar(
-            today: model.today,
-            firstDay: model.firstDay,
-            lastDay: model.lastDay,
-            onDaySelected: onDaySelected,
-            events: model.events,
-            eventController: model.eventController,
-            selectedEvents: model.selectedEvents,
-            getEventsForDay: model.getEventsForDay,
-          );
-          break;
-        case 2:
-          page = CalorieCounterView(
-            totalCalories: model.totalCalories,
-            caloriesInputController: caloriesInputController,
-            errorMessage: errorMessage,
-            onAddCalories: addCalories,
-          );
-          break;
-        case 3:
-          page = MuscleGroupsPage();
-          break;
-        case 4:
-          page = WorkoutView(
-            getTime: getTime,
-            getLaps: getLaps,
-            stopStopwatch: stopStopwatch,
-            resetStopwatch: resetStopwatch,
-            startStopwatch: startStopwatch,
-            getDistanceRan: getDistanceRan,
-            addLaps: addLaps,
-            isTimerStarted: isTimerStarted,
-            getIsWorkoutStarted: getIsWorkoutStarted,
-            setTime: setTime,
-          );
-          break;
-        default:
-          throw UnimplementedError('No page for selected page');
-    }
-
-      return LayoutBuilder(
-        builder: (context, constraints) {
-          return Scaffold(
-            body: Row(
-              children: [
-                SafeArea(
-                  child: NavigationRail(
-                    extended: constraints.maxWidth >= 600,
-                    destinations: [
-                      NavigationRailDestination(
-                        icon: Icon(Icons.home),
-                        label: Text('Home Page'),
-                      ),
-                      NavigationRailDestination(
-                        icon: Icon(Icons.calendar_month),
-                        label: Text('Calendar Page'),
-                      ),
-                      NavigationRailDestination(
-                        icon: Icon(Icons.fastfood),
-                        label: Text('Calorie Counter'),
-                      ),
-                      NavigationRailDestination(
-                        icon: Icon(Icons.run_circle_outlined),
-                        label: Text('Workouts'),
-                      ),
-                      NavigationRailDestination(
-                          icon: Icon(Icons.fitness_center),
-                          label: Text("Start Workout")
-                      ),
-                    ],
-                    selectedIndex: pageSelected.getSelectedIndex(),
-                    onDestinationSelected: (value) {
-                      setState(() {
-                        pageSelected.updateSelectedIndex(value);
-                      });
-                    },
-                  ),
-                ),
-                Expanded(
-                  child: Container(
-                    color: Theme
-                        .of(context)
-                        .colorScheme
-                        .primaryContainer,
-                    child: page,
-                  ),
-                ),
-              ],
-            ),
-          );
-        },
-      );
->>>>>>> main
     }
 
     return LayoutBuilder(
