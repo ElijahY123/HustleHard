@@ -1,10 +1,11 @@
 import 'package:firstapp/Views/MuscleGroupsPage.dart';
 import 'package:flutter/material.dart';
-import '../Model/model.dart';
-import '../Views/CalorieCounter.dart';
-import '../Views/Workout.dart';
+import 'package:firstapp/Model/model.dart';
+import 'package:firstapp/Views/CalorieCounter.dart';
+import 'package:firstapp/Views/Workout.dart';
 import 'package:firstapp/Views/MainPage.dart';
 import 'package:firstapp/Views/Calendar.dart';
+import 'package:firstapp/Views/YoutubeView.dart';
 import 'dart:async';
 
 class FitnessController extends StatefulWidget {
@@ -27,6 +28,17 @@ class _FitnessControllerState extends State<FitnessController> {
       caloriesInputController.clear();
       errorMessage = '';
     });
+  }
+
+  // Youtube videos page
+
+  void navigateToYoutubeView(List<String> videoUrls) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => YoutubeView(videoUrls: videoUrls, onWatchYoutube: navigateToYoutubeView),
+      ),
+    );
   }
 
   // WorkoutModel
@@ -61,10 +73,10 @@ class _FitnessControllerState extends State<FitnessController> {
     setState(() {
       workoutModel.startTimer();
       timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-          setState(() {
-            setTime();
-          });
-          getCurrentPosition();
+        setState(() {
+          setTime();
+        });
+        getCurrentPosition();
       });
     });
   }
@@ -73,26 +85,21 @@ class _FitnessControllerState extends State<FitnessController> {
     return workoutModel.getTime();
   }
 
-
   String getDistanceRan() {
     return workoutModel.getDistanceRan();
   }
-
 
   bool getIsWorkoutStarted() {
     return workoutModel.getIsWorkoutStarted();
   }
 
   void setTime() {
-//       setState(() {
-         workoutModel.setTime();
-//    });
+    workoutModel.setTime();
   }
 
   void getCurrentPosition() {
     workoutModel.getCurrentPosition();
   }
-
 
   // Calendar Page
 
@@ -104,106 +111,112 @@ class _FitnessControllerState extends State<FitnessController> {
 
   SelectedPage pageSelected = SelectedPage();
 
-    @override
-    Widget build(BuildContext context) {
-      Widget page;
-      switch (pageSelected.getSelectedIndex()) {
-        case 0:
-          page = MainPage();
-          break;
-        case 1:
-          page = Calendar(
-            today: model.today,
-            firstDay: model.firstDay,
-            lastDay: model.lastDay,
-            onDaySelected: onDaySelected,
-            events: model.events,
-            eventController: model.eventController,
-            selectedEvents: model.selectedEvents,
-            getEventsForDay: model.getEventsForDay,
-          );
-          break;
-        case 2:
-          page = CalorieCounterView(
-            totalCalories: model.totalCalories,
-            caloriesInputController: caloriesInputController,
-            errorMessage: errorMessage,
-            onAddCalories: addCalories,
-          );
-          break;
-        case 3:
-          page = MuscleGroupsPage();
-          break;
-        case 4:
-          page = WorkoutView(
-            getTime: getTime,
-            getLaps: getLaps,
-            stopStopwatch: stopStopwatch,
-            resetStopwatch: resetStopwatch,
-            startStopwatch: startStopwatch,
-            getDistanceRan: getDistanceRan,
-            addLaps: addLaps,
-            isTimerStarted: isTimerStarted,
-            getIsWorkoutStarted: getIsWorkoutStarted,
-            setTime: setTime,
-          );
-          break;
-        default:
-          throw UnimplementedError('No page for selected page');
+  @override
+  Widget build(BuildContext context) {
+    Widget page;
+    switch (pageSelected.getSelectedIndex()) {
+      case 0:
+        page = MainPage();
+        break;
+      case 1:
+        page = Calendar(
+          today: model.today,
+          firstDay: model.firstDay,
+          lastDay: model.lastDay,
+          onDaySelected: onDaySelected,
+          events: model.events,
+          eventController: model.eventController,
+          selectedEvents: model.selectedEvents,
+          getEventsForDay: model.getEventsForDay,
+        );
+        break;
+      case 2:
+        page = CalorieCounterView(
+          totalCalories: model.totalCalories,
+          caloriesInputController: caloriesInputController,
+          errorMessage: errorMessage,
+          onAddCalories: addCalories,
+        );
+        break;
+      case 3:
+        page = MuscleGroupsPage();
+        break;
+      case 4:
+        page = WorkoutView(
+          getTime: getTime,
+          getLaps: getLaps,
+          stopStopwatch: stopStopwatch,
+          resetStopwatch: resetStopwatch,
+          startStopwatch: startStopwatch,
+          getDistanceRan: getDistanceRan,
+          addLaps: addLaps,
+          isTimerStarted: isTimerStarted,
+          getIsWorkoutStarted: getIsWorkoutStarted,
+          setTime: setTime,
+        );
+        break;
+      case 5:
+        page = YoutubeView(
+          videoUrls: ['https://www.youtube.com/watch?v=cR3mkBP13EA&ab_channel=SamSulek'],
+          onWatchYoutube: navigateToYoutubeView,
+        );
+        break;
+      default:
+        throw UnimplementedError('No page for selected page');
     }
 
-      return LayoutBuilder(
-        builder: (context, constraints) {
-          return Scaffold(
-            body: Row(
-              children: [
-                SafeArea(
-                  child: NavigationRail(
-                    extended: constraints.maxWidth >= 600,
-                    destinations: [
-                      NavigationRailDestination(
-                        icon: Icon(Icons.home),
-                        label: Text('Home Page'),
-                      ),
-                      NavigationRailDestination(
-                        icon: Icon(Icons.calendar_month),
-                        label: Text('Calendar Page'),
-                      ),
-                      NavigationRailDestination(
-                        icon: Icon(Icons.fastfood),
-                        label: Text('Calorie Counter'),
-                      ),
-                      NavigationRailDestination(
-                        icon: Icon(Icons.run_circle_outlined),
-                        label: Text('Workouts'),
-                      ),
-                      NavigationRailDestination(
-                          icon: Icon(Icons.fitness_center),
-                          label: Text("Start Workout")
-                      ),
-                    ],
-                    selectedIndex: pageSelected.getSelectedIndex(),
-                    onDestinationSelected: (value) {
-                      setState(() {
-                        pageSelected.updateSelectedIndex(value);
-                      });
-                    },
-                  ),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return Scaffold(
+          body: Row(
+            children: [
+              SafeArea(
+                child: NavigationRail(
+                  extended: constraints.maxWidth >= 600,
+                  destinations: [
+                    NavigationRailDestination(
+                      icon: Icon(Icons.home),
+                      label: Text('Home Page'),
+                    ),
+                    NavigationRailDestination(
+                      icon: Icon(Icons.calendar_month),
+                      label: Text('Calendar Page'),
+                    ),
+                    NavigationRailDestination(
+                      icon: Icon(Icons.fastfood),
+                      label: Text('Calorie Counter'),
+                    ),
+                    NavigationRailDestination(
+                      icon: Icon(Icons.run_circle_outlined),
+                      label: Text('Workouts'),
+                    ),
+                    NavigationRailDestination(
+                      icon: Icon(Icons.fitness_center),
+                      label: Text("Start Workout"),
+                    ),
+                    NavigationRailDestination(
+                      icon: Icon(Icons.play_arrow),
+                      label: Text("YouTube Videos"),
+                    ),
+                  ],
+                  selectedIndex: pageSelected.getSelectedIndex(),
+                  onDestinationSelected: (value) {
+                    setState(() {
+                      pageSelected.updateSelectedIndex(value);
+                    });
+                  },
                 ),
-                Expanded(
-                  child: Container(
-                    color: Theme
-                        .of(context)
-                        .colorScheme
-                        .primaryContainer,
-                    child: page,
-                  ),
+              ),
+              Expanded(
+                child: Container(
+                  color: Theme.of(context).colorScheme.primaryContainer,
+                  child: page,
                 ),
-              ],
-            ),
-          );
-        },
-      );
-    }
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
-
+}
