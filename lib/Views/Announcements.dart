@@ -2,22 +2,19 @@ import 'package:flutter/material.dart';
 import '../Model/AnnouncementModel.dart';
 
 class SelectUser extends StatelessWidget {
-  late AnnouncementModel announcementModel;
+  AnnouncementModel announcementModel = AnnouncementModel();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Login Page'),
+        title: const Text('Select User'),
       ),
       body: SafeArea(
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              ImageIcon(
-                AssetImage("images/AnnouncementsIcon.png"),
-                size: 80,
-              ),
+              Image.asset("images/AnnouncementsIcon.png"),
               SizedBox(height: 50,),
               const Text(
                 "Welcome to GetFit Announcements",
@@ -61,7 +58,7 @@ class SelectUser extends StatelessWidget {
 }
 
 class AdminPage extends StatelessWidget {
-  late AnnouncementModel a_Model;
+  AnnouncementModel a_Model = AnnouncementModel();
   final TextEditingController usernameController;
   final TextEditingController passwordController;
   final String userName;
@@ -87,13 +84,13 @@ class AdminPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ImageIcon(
-                  AssetImage("images/AdminIcon.png"),
-                  size: 80,
+                Image.asset(
+                  "images/AdminIcon.png",
+                  height: 100,
+                  width: 100,
                 ),
-                SizedBox(height: 50,),
                 const Text(
-                  "Welcome to GetFit Announcements",
+                  "Enter Username and Password to Login",
                   style: TextStyle(
                     fontSize: 20,
                   ),
@@ -147,6 +144,9 @@ class AdminPage extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     a_Model.getUsername(context);
+                    Navigator.pushReplacement(context, MaterialPageRoute(
+                        builder: (context) => Announcements())
+                    );
                   },
                   child: Container(
                     padding: const EdgeInsets.all(25),

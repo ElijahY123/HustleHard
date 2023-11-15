@@ -1,3 +1,4 @@
+import 'package:firstapp/Views/Announcements.dart';
 import 'package:firstapp/Views/MuscleGroupsPage.dart';
 import 'package:flutter/material.dart';
 import '../Model/model.dart';
@@ -148,6 +149,9 @@ class _FitnessControllerState extends State<FitnessController> {
           setTime: setTime,
         );
         break;
+      case 5:
+        page = SelectUser();
+        break;
       default:
         throw UnimplementedError('No page for selected page');
     }
@@ -180,6 +184,10 @@ class _FitnessControllerState extends State<FitnessController> {
                     NavigationRailDestination(
                         icon: Icon(Icons.fitness_center),
                         label: Text("Start Workout")
+                    ),
+                    NavigationRailDestination(
+                        icon: Icon(Icons.message_outlined),
+                        label: Text("Announcements")
                     ),
                   ],
                   selectedIndex: pageSelected.getSelectedIndex(),
