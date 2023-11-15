@@ -63,7 +63,7 @@ class _YoutubePlayerScreenState extends State<YoutubePlayerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('YouTube Video'),
+        title: Text('Video Player'),
       ),
       body: Center(
         child: YoutubePlayer(

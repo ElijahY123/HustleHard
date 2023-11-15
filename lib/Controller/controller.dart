@@ -157,7 +157,25 @@ class _FitnessControllerState extends State<FitnessController> {
         break;
       case 5:
         page = YoutubeView(
-          videoUrls: ['https://www.youtube.com/watch?v=cR3mkBP13EA&ab_channel=SamSulek'],
+          videoUrls: [
+            'https://www.youtube.com/watch?v=fIWP-FRFNU0&ab_channel=KAGED',
+            'https://www.youtube.com/watch?v=ykJmrZ5v0Oo&ab_channel=Howcast',
+            'https://www.youtube.com/watch?v=SALxEARiMkw&ab_channel=ATHLEAN-X%E2%84%A2',
+            'https://www.youtube.com/watch?v=GZbfZ033f74&ab_channel=ScottHermanFitness',
+            'https://www.youtube.com/watch?v=FWJR5Ve8bnQ&ab_channel=MaxEuceda',
+            'https://www.youtube.com/watch?v=0BT533ueEdI&ab_channel=ChrisandEricMartinez',
+            'https://www.youtube.com/watch?v=V8dZ3pyiCBo&ab_channel=KAGED'
+            'https://www.youtube.com/watch?v=ir5PsbniVSc&ab_channel=ScottHermanFitness',
+            'https://www.youtube.com/watch?v=VmB1G1K7v94&ab_channel=ScottHermanFitness',
+            'https://www.youtube.com/watch?v=rT7DgCr-3pg&ab_channel=ScottHermanFitness',
+            'https://www.youtube.com/watch?v=8iPEnn-ltC8&ab_channel=ScottHermanFitness',
+            'https://www.youtube.com/watch?v=2yjwXTZQDDI&ab_channel=ScottHermanFitness',
+            'https://www.youtube.com/watch?v=eozdVDA78K0&ab_channel=ScottHermanFitness',
+            'https://www.youtube.com/watch?v=1oed-UmAxFs&ab_channel=ScottHermanFitness',
+            'https://www.youtube.com/watch?v=ljO4jkwv8wQ&ab_channel=JeffNippard',
+            'https://www.youtube.com/watch?v=mZxxJEncsyw&ab_channel=TheProactiveAthlete',
+            'https://www.youtube.com/watch?v=wxwY7GXxL4k&ab_channel=Bodybuilding.com',
+          ],
           onWatchYoutube: navigateToYoutubeView,
         );
         break;
