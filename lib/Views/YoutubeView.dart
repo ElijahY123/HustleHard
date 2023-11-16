@@ -1,26 +1,57 @@
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-class YoutubeView extends StatelessWidget {
-  final List<String> videoUrls;
+class VideoInfo {
+  final String topic;
+  final String videoName;
+  final String videoUrl;
 
-  YoutubeView({required this.videoUrls, required void Function(List<String> videoUrls) onWatchYoutube});
+  VideoInfo({
+    required this.topic,
+    required this.videoName,
+    required this.videoUrl,
+  });
+}
+
+class YoutubeView extends StatelessWidget {
+  final List<VideoInfo> videoInfos;
+  final void Function(List<VideoInfo> videoInfos) onWatchYoutube;
+
+  YoutubeView({
+    required this.videoInfos,
+    required this.onWatchYoutube,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('YouTube Videos'),
+        title: Text('Video Guides'),
+        backgroundColor: Colors.blue, // Customize the app bar color
       ),
-      body: ListView.builder(
-        itemCount: videoUrls.length,
-        itemBuilder: (context, index) {
-          String videoUrl = videoUrls[index];
-          return ListTile(
-            title: Text('Video ${index + 1}'),
-            onTap: () => _playYoutubeVideo(context, videoUrl),
-          );
-        },
+      body: Container(
+        color: Colors.grey[200], // Customize the background color
+        child: ListView.builder(
+          itemCount: videoInfos.length,
+          itemBuilder: (context, index) {
+            VideoInfo videoInfo = videoInfos[index];
+            return Card(
+              elevation: 5, // Add elevation to the card
+              margin: EdgeInsets.all(10), // Add margin to the card
+              child: ListTile(
+                title: Text(
+                  '${videoInfo.topic} - ${videoInfo.videoName}',
+                  style: TextStyle(
+                    color: Colors.black, // Customize text color
+                    fontWeight: FontWeight.bold, // Add bold font weight
+                    fontSize: 16, // Customize font size
+                  ),
+                ),
+                onTap: () => _playYoutubeVideo(context, videoInfo.videoUrl),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
@@ -34,6 +65,7 @@ class YoutubeView extends StatelessWidget {
     );
   }
 }
+
 
 class YoutubePlayerScreen extends StatefulWidget {
   final String videoUrl;
@@ -69,9 +101,6 @@ class _YoutubePlayerScreenState extends State<YoutubePlayerScreen> {
         child: YoutubePlayer(
           controller: _controller,
           showVideoProgressIndicator: true,
-          onReady: () {
-            // Do something when player is ready.
-          },
         ),
       ),
     );
