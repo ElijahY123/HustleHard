@@ -167,8 +167,9 @@ class AdminPage extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                             builder: (context) => AdminPage2(
-                              textController: announcementModel.textController,
-                            )));
+                                  textController:
+                                      announcementModel.textController,
+                                )));
                   },
                   child: Container(
                     padding: const EdgeInsets.all(25),
@@ -200,6 +201,7 @@ class AdminPage extends StatelessWidget {
 class AdminPage2 extends StatelessWidget {
   AnnouncementModel announcementModel = AnnouncementModel();
   final TextEditingController textController;
+
 
   AdminPage2({
     required this.textController,
@@ -282,7 +284,9 @@ class AdminPage2 extends StatelessWidget {
                     ),
                     IconButton(
                       onPressed: () {
-                        announcementModel.addMessage();
+                        String message = textController.text;
+                        String time = "Print date";
+                        announcementModel.addMessage(message, time);
                       },
                       icon: Icon(Icons.send),
                     ),
@@ -300,7 +304,47 @@ class AdminPage2 extends StatelessWidget {
 class Announcements extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Announcements'),
+      ),
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            children: [
+              Expanded(
+                child: StreamBuilder(
+                  stream: FirebaseFirestore.instance
+                      .collection('Announcements')
+                      .orderBy(
+                        'Date',
+                        descending: false,
+                      )
+                      .snapshots(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      return ListView.builder(
+                        itemCount: snapshot.data!.docs.length,
+                        itemBuilder: (context, index) {
+                          final post = snapshot.data!.docs[index];
+                          return DisplayAnnouncements(
+                            message: post['Message'],
+                            time: post['Date'],
+                          );
+                        },
+                      );
+                    }
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 
@@ -328,8 +372,8 @@ class DisplayAnnouncements extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(announcementModel.message),
-              Text(announcementModel.time),
+              Text(message),
+              Text(time),
             ],
           ),
         ],

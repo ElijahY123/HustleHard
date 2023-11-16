@@ -103,6 +103,10 @@ class _FitnessControllerState extends State<FitnessController> {
     });
   }
 
+  // Announcements Page
+
+
+
   SelectedPage pageSelected = SelectedPage();
 
   @override
