@@ -182,6 +182,9 @@ class _FitnessControllerState extends State<FitnessController> {
           onWatchYoutube: navigateToYoutubeView,
         );
         break;
+      case 6:
+        page = RoutineView();
+        break;
       default:
         throw UnimplementedError('No page for selected page');
     }
@@ -219,6 +222,9 @@ class _FitnessControllerState extends State<FitnessController> {
                       icon: Icon(Icons.play_arrow),
                       label: Text("YouTube Videos"),
                     ),
+                    NavigationRailDestination(
+                        icon: Icon(Icons.table_chart),
+                        label: Text('Workout Schedule'))
                   ],
                   selectedIndex: pageSelected.getSelectedIndex(),
                   onDestinationSelected: (value) {
