@@ -92,6 +92,16 @@ class UpperBodyPage extends StatelessWidget {
               width: 100,
             ),
             Padding(padding: EdgeInsets.all(50),),
+            Text(
+              '4. ScareCrow Extensions',
+              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+            ),
+            Padding(padding: EdgeInsets.all(50),),
+            Text(
+              '5. SpeedBag',
+              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+            ),
+            Padding(padding: EdgeInsets.all(50),),
           ],
         ),
       ),
