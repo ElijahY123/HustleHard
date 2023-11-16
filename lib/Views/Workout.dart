@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../Controller/controller.dart';
 
 class WorkoutView extends StatelessWidget {
   final Function() getTime;

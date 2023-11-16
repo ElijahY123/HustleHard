@@ -17,7 +17,6 @@ class _FitnessControllerState extends State<FitnessController> {
   final FitnessModel model = FitnessModel();
   final WorkoutModel workoutModel = WorkoutModel();
   final TextEditingController caloriesInputController = TextEditingController();
-  final RoutinePageModel routineModel = RoutinePageModel();
   String errorMessage = '';
   Timer? timer;
 
@@ -86,9 +85,7 @@ class _FitnessControllerState extends State<FitnessController> {
   }
 
   void setTime() {
-//       setState(() {
          workoutModel.setTime();
-//    });
   }
 
   void getCurrentPosition() {
@@ -103,13 +100,9 @@ class _FitnessControllerState extends State<FitnessController> {
     });
   }
 
-  SelectedPage pageSelected = SelectedPage();
+  // Navigation Rail
 
-  void updatePage(){
-    setState(() {
-      pageSelected.updateSelectedIndex(routineModel.updatePage());
-    });
-  }
+  SelectedPage pageSelected = SelectedPage();
 
     @override
     Widget build(BuildContext context) {
@@ -156,9 +149,7 @@ class _FitnessControllerState extends State<FitnessController> {
           );
           break;
         case 5:
-          page = RoutineView(
-            updatePage: updatePage,
-          );
+          page = RoutineView();
           break;
         default:
           throw UnimplementedError('No page for selected page');
