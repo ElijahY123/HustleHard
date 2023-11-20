@@ -19,7 +19,7 @@ class MuscleGroupsPage extends StatelessWidget {
                 Navigator.of(context).push(
                     MaterialPageRoute(builder: (context) => UpperBodyPage()));
                 },
-              label: const Text("Upper Body"),
+              label: const Text("Arm Exercises"),
               icon: ImageIcon(
                 AssetImage("images/BenchPressIcon.png"),
               ),
@@ -32,7 +32,7 @@ class MuscleGroupsPage extends StatelessWidget {
                 Navigator.of(context).push(
                     MaterialPageRoute(builder: (context) => LowerBodyPage()));
               },
-              label: const Text("Lower Body"),
+              label: const Text("Leg Exercises"),
               icon: ImageIcon(
                 AssetImage("images/SquatIcon.png"),
               ),
