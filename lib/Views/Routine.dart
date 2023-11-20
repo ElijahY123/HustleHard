@@ -55,13 +55,13 @@ class RoutineView extends StatelessWidget {
                     Container(
                       child: Center(
                         child: Text(
-                            'Monday\n' 'Dumbbell Curls\n' 'Scarecrow Extensions\n' 'SpeedBag\n'),
+                            'Monday\n' 'Bicep Curls\n' 'Scarecrow Extensions\n' 'SpeedBag\n'),
                       ),
                     ),
                     Container(
                       child: Center(
                           child: Text(
-                              'Monday\n' 'Squats\n' 'Lateral Lung\n' 'Leg Press\n')
+                              'Monday\n' 'Squats\n' 'Lateral Lunge\n' 'Leg Press\n')
                       ),
                     ),
                     Container(
@@ -103,13 +103,13 @@ class RoutineView extends StatelessWidget {
                     Container(
                       child: Center(
                           child: Text(
-                              'Wednesday\n' 'Overhead Triceps Extension\n' 'Side Curls\n')
+                              'Wednesday\n' 'Overhead Triceps Extension\n' 'Side Curls\n' 'Bench Press\n')
                       ),
                     ),
                     Container(
                       child: Center(
                           child: Text(
-                              'Wednesday\n' 'Skater Squat\n' 'Tuck Jump\n' 'Reverse Lung\n')
+                              'Wednesday\n' 'Skater Squat\n' 'Tuck Jump\n' 'Reverse Lunge\n' 'DeadLift\n')
                       ),
                     ),
                     Container(
@@ -127,7 +127,7 @@ class RoutineView extends StatelessWidget {
                     Container(
                       child: Center(
                           child: Text(
-                              'Thursday\n' 'Around the Worlds\n' 'Seated Curls\n')
+                              'Thursday\n' 'Around the Worlds\n' 'Seated Curls\n' 'Pull ups\n')
                       ),
                     ),
                     Container(
@@ -151,7 +151,7 @@ class RoutineView extends StatelessWidget {
                     Container(
                       child: Center(
                           child: Text(
-                              'Friday\n' 'Upright Row\n' 'Hammer Curls\n' 'Push Ups\n')
+                              'Friday\n' 'Upright Row\n' 'Push Ups\n')
                       ),
                     ),
                     Container(

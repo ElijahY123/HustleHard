@@ -53,7 +53,7 @@ class UpperBodyPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Upper Body Exercises',
+          'Arm Exercises',
           textAlign: TextAlign.center,
         ),
       ),
@@ -102,6 +102,46 @@ class UpperBodyPage extends StatelessWidget {
               style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
             ),
             Padding(padding: EdgeInsets.all(50),),
+            Text(
+              '6. Cross Over Extensions',
+              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+            ),
+            Padding(padding: EdgeInsets.all(50),),
+            Text(
+              '7. Hammer Curls',
+              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+            ),
+            Padding(padding: EdgeInsets.all(50),),
+            Text(
+              '8. Overhead Triceps Extension',
+              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+            ),
+            Padding(padding: EdgeInsets.all(50),),
+            Text(
+              '9. Side Curls',
+              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+            ),
+            Padding(padding: EdgeInsets.all(50),),
+            Text(
+              '10. Around The Worlds',
+              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+            ),
+            Padding(padding: EdgeInsets.all(50),),
+            Text(
+              '11. Seated Curls',
+              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+            ),
+            Padding(padding: EdgeInsets.all(50),),
+            Text(
+              '12. Upright Row',
+              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+            ),
+            Padding(padding: EdgeInsets.all(50),),
+            Text(
+              '13. Push Ups',
+              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+            ),
+            Padding(padding: EdgeInsets.all(50),),
           ],
         ),
       ),
@@ -115,7 +155,7 @@ class LowerBodyPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Lower Body Exercises',
+          'Leg Exercises',
           textAlign: TextAlign.center,
         ),
       ),
@@ -152,6 +192,76 @@ class LowerBodyPage extends StatelessWidget {
               image: AssetImage("images/Deadlift.jpg"),
               height: 200,
               width: 100,
+            ),
+            Padding(padding: EdgeInsets.all(50),),
+            Text(
+              '4. Lateral Lunge',
+              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+            ),
+            Padding(padding: EdgeInsets.all(50),),
+            Text(
+              '5. Leg Press',
+              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+            ),
+            Padding(padding: EdgeInsets.all(50),),
+            Text(
+              '6. Knee Highs',
+              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+            ),
+            Padding(padding: EdgeInsets.all(50),),
+            Text(
+              '7. Single Leg Dead lift',
+              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+            ),
+            Padding(padding: EdgeInsets.all(50),),
+            Text(
+              '8. Split Squat',
+              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+            ),
+            Padding(padding: EdgeInsets.all(50),),
+            Text(
+              '9. Skater Squat',
+              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+            ),
+            Padding(padding: EdgeInsets.all(50),),
+            Text(
+              '10. Tuck Jump',
+              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+            ),
+            Padding(padding: EdgeInsets.all(50),),
+            Text(
+              '11. Reverse Lunge',
+              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+            ),
+            Padding(padding: EdgeInsets.all(50),),
+            Text(
+              '12. Abductor leg Raises',
+              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+            ),
+            Padding(padding: EdgeInsets.all(50),),
+            Text(
+              '13. Hamstring Curls',
+              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+            ),
+            Padding(padding: EdgeInsets.all(50),),
+            Text(
+              '14. Romanian Dead Lifts',
+              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+            ),
+            Padding(padding: EdgeInsets.all(50),),
+            Text(
+              '15. Leg Extensions',
+              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+            ),
+            Padding(padding: EdgeInsets.all(50),),
+            Text(
+              '16. Steps',
+              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+            ),
+            Padding(padding: EdgeInsets.all(50),),
+            Text(
+              '17. Squat Jumps',
+              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
             ),
             Padding(padding: EdgeInsets.all(50),),
           ],
