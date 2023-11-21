@@ -57,6 +57,9 @@ static Map<String, int> _data = {
   'Chips': 152,
   'Ice Cream': 137,
   'Fruit Bar/Rollup': 50,
+  'Cookie': 78,
+  'Brownie': 132,
+  'Cake': 140,
 
   // Beverages
   'Orange Juice': 117,
