@@ -21,7 +21,7 @@ class MuscleGroupsPage extends StatelessWidget {
                 },
               label: const Text("Arm Exercises"),
               icon: ImageIcon(
-                AssetImage("images/BenchPressIcon.png"),
+                AssetImage("assets/images/BenchPressIcon.png"),
               ),
               style: ElevatedButton.styleFrom(
                 padding: EdgeInsets.all(20),
@@ -34,7 +34,7 @@ class MuscleGroupsPage extends StatelessWidget {
               },
               label: const Text("Leg Exercises"),
               icon: ImageIcon(
-                AssetImage("images/SquatIcon.png"),
+                AssetImage("assets/images/SquatIcon.png"),
               ),
               style: ElevatedButton.styleFrom(
                 padding: EdgeInsets.all(20),
@@ -67,7 +67,7 @@ class UpperBodyPage extends StatelessWidget {
               style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
             ),
             Image(
-              image: AssetImage("images/Pullups.jpg"),
+              image: AssetImage("assets/images/Pullups.jpg"),
               height: 300,
               width: 300,
             ),
@@ -77,7 +77,7 @@ class UpperBodyPage extends StatelessWidget {
               style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
             ),
             Image(
-              image: AssetImage("images/BenchPress.jpg"),
+              image: AssetImage("assets/images/BenchPress.jpg"),
               height: 200,
               width: 100,
             ),
@@ -87,7 +87,7 @@ class UpperBodyPage extends StatelessWidget {
               style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
             ),
             Image(
-              image: AssetImage("images/BicepCurl.jpg"),
+              image: AssetImage("assets/images/BicepCurl.jpg"),
               height: 200,
               width: 100,
             ),
@@ -169,7 +169,7 @@ class LowerBodyPage extends StatelessWidget {
               style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
             ),
             Image(
-              image: AssetImage("images/Squats.jpg"),
+              image: AssetImage("assets/images/Squats.jpg"),
               height: 300,
               width: 300,
             ),
@@ -179,7 +179,7 @@ class LowerBodyPage extends StatelessWidget {
               style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
             ),
             Image(
-              image: AssetImage("images/Lunges.jpg"),
+              image: AssetImage("assets/images/Lunges.jpg"),
               height: 200,
               width: 100,
             ),
@@ -189,7 +189,7 @@ class LowerBodyPage extends StatelessWidget {
               style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
             ),
             Image(
-              image: AssetImage("images/Deadlift.jpg"),
+              image: AssetImage('assets/images/Deadlift.jpg'),
               height: 200,
               width: 100,
             ),
