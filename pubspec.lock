@@ -190,7 +190,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.8.0"
-
   flutter_keyboard_visibility:
     dependency: transitive
     description:
@@ -417,7 +416,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.6"
-
   pointer_interceptor:
     dependency: transitive
     description:
@@ -426,7 +424,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.9.3+7"
-
   pointycastle:
     dependency: transitive
     description:
@@ -435,7 +432,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.7.3"
-
   provider:
     dependency: "direct main"
     description:
