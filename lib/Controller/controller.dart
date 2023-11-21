@@ -18,10 +18,9 @@ class _FitnessControllerState extends State<FitnessController> {
   final FitnessModel model = FitnessModel();
   final WorkoutModel workoutModel = WorkoutModel();
   final TextEditingController caloriesInputController = TextEditingController();
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   String errorMessage = '';
   Timer? timer;
-  bool isExpanded = false;
-
 
   // Calorie Page
 
@@ -117,6 +116,14 @@ class _FitnessControllerState extends State<FitnessController> {
   }
 
   // Navigation Rail
+
+  void openRail(){
+    scaffoldKey.currentState!.openDrawer();
+  }
+
+  void closeRail(){
+    Navigator.of(context).pop();
+  }
 
   SelectedPage pageSelected = SelectedPage();
 
@@ -221,48 +228,47 @@ class _FitnessControllerState extends State<FitnessController> {
     return LayoutBuilder(
       builder: (context, constraints) {
         return Scaffold(
+          key: scaffoldKey,
           appBar: AppBar(
             leading: IconButton(
-              icon: Icon(Icons.menu),
-              onPressed: (){
-                setState(() {
-                  isExpanded = !isExpanded;
-                });
-              },
-            ),
+                onPressed: openRail,
+                icon: Icon(Icons.menu)),
+            title: Text("title"),
           ),
-          body: Row(
+          drawer: Drawer(
+          child: Row(
             children: [
               SafeArea(
-                child: NavigationRail(
-                  extended: false,
-                  labelType: NavigationRailLabelType.none,
-                  destinations: [
-                    NavigationRailDestination(
+                child: NavigationDrawer(
+                  children: [
+                    IconButton(
+                        onPressed: closeRail,
+                        icon: Icon(Icons.close)),
+                    NavigationDrawerDestination(
                       icon: Icon(Icons.home),
                       label: Text('Home Page'),
                     ),
-                    NavigationRailDestination(
+                    NavigationDrawerDestination(
                       icon: Icon(Icons.calendar_month),
                       label: Text('Calendar Page'),
                     ),
-                    NavigationRailDestination(
+                    NavigationDrawerDestination(
                       icon: Icon(Icons.fastfood),
                       label: Text('Calorie Counter'),
                     ),
-                    NavigationRailDestination(
+                    NavigationDrawerDestination(
                       icon: Icon(Icons.run_circle_outlined),
                       label: Text('Workouts'),
                     ),
-                    NavigationRailDestination(
+                    NavigationDrawerDestination(
                       icon: Icon(Icons.fitness_center),
                       label: Text("Start Workout"),
                     ),
-                    NavigationRailDestination(
+                    NavigationDrawerDestination(
                       icon: Icon(Icons.play_arrow),
                       label: Text("Video Guides"),
                     ),
-                    NavigationRailDestination(
+                    NavigationDrawerDestination(
                         icon: Icon(Icons.table_chart),
                         label: Text('Workout Schedule'))
                   ],
@@ -274,13 +280,21 @@ class _FitnessControllerState extends State<FitnessController> {
                   },
                 ),
               ),
+              /*
               Expanded(
                 child: Container(
                   color: Theme.of(context).colorScheme.primaryContainer,
                   child: page,
                 ),
               ),
+
+               */
             ],
+          ),
+          ),
+          body: Container(
+            color: Theme.of(context).colorScheme.primaryContainer,
+            child: page,
           ),
         );
       },
