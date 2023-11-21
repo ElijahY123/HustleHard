@@ -20,37 +20,39 @@ class MuscleGroupsPage extends StatelessWidget {
         backgroundColor: Colors.lightBlueAccent,
             **/
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget> [
-            ElevatedButton.icon(
-              onPressed: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => UpperBodyPage()));
+      body: Container(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              ElevatedButton.icon(
+                onPressed: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => UpperBodyPage()));
                 },
-              label: const Text("Upper Body"),
-              icon: ImageIcon(
-                AssetImage("images/BenchPressIcon.png"),
+                label: const Text("Upper Body"),
+                icon: ImageIcon(
+                  AssetImage("images/BenchPressIcon.png"),
+                ),
+                style: ElevatedButton.styleFrom(
+                  padding: EdgeInsets.all(20),
+                ),
               ),
-              style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.all(20),
+              ElevatedButton.icon(
+                onPressed: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => LowerBodyPage()));
+                },
+                label: const Text("Lower Body"),
+                icon: ImageIcon(
+                  AssetImage("images/SquatIcon.png"),
+                ),
+                style: ElevatedButton.styleFrom(
+                  padding: EdgeInsets.all(20),
+                ),
               ),
-            ),
-            ElevatedButton.icon(
-              onPressed: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => LowerBodyPage()));
-              },
-              label: const Text("Lower Body"),
-              icon: ImageIcon(
-                AssetImage("images/SquatIcon.png"),
-              ),
-              style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.all(20),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -70,51 +72,98 @@ class UpperBodyPage extends StatelessWidget {
       body: Scrollbar(
         controller: ScrollController(),
         thickness: 10,
-        child: ListView(
-          children: [
-            Text(
-              '1. Pullups',
-              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
-            ),
-            Image(
-              image: AssetImage("images/Pullups.jpg"),
-              height: 300,
-              width: 300,
-            ),
-            Text(
-              'General Info',
-              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
-            ),
-            Padding(padding: EdgeInsets.all(50),),
-            Text(
-              '2. BenchPress',
-              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
-            ),
-            Image(
-              image: AssetImage("images/BenchPress.jpg"),
-              height: 200,
-              width: 100,
-            ),
-            Text(
-              'General Info',
-              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
-            ),
-            Padding(padding: EdgeInsets.all(50),),
-            Text(
-              '3. Bicep Curl',
-              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
-            ),
-            Image(
-              image: AssetImage("images/BicepCurl.jpg"),
-              height: 200,
-              width: 100,
-            ),
-            Text(
-              'General Info',
-              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
-            ),
-            Padding(padding: EdgeInsets.all(50),),
-          ],
+        child: Container(
+          child: ListView(
+            children: [
+              Text(
+                '1. Pullups',
+              ),
+              Image(
+                height: 200,
+                width: 200,
+                image: AssetImage("images/Pullups.jpg"),
+              ),
+              TextButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: const Text("More Info"),
+                      content: const Text("Pull-ups work out multiple muscle groups at once, including your biceps, triceps, forearms, wrists, grip strength, lats, shoulders, and core."),
+                      actions: [
+                        TextButton(
+                          onPressed: () => Navigator.pop(context),
+                          child: Text("OK"),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+                child: Text('View More'),
+              ),
+              Padding(
+                padding: EdgeInsets.all(50),
+              ),
+              Text(
+                '2. BenchPress',
+              ),
+              Image(
+                image: AssetImage("images/BenchPress.jpg"),
+                height: 200,
+                width: 200,
+              ),
+              TextButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: const Text("More Info"),
+                      content: const Text("Bench pressing is a compound exercise that works your chest and shoulders, as well as the triceps. It's considered one of the best exercises for building muscle and increasing strength, making it an important part of most workouts."),
+                      actions: [
+                        TextButton(
+                          onPressed: () => Navigator.pop(context),
+                          child: Text("OK"),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+                child: Text('View More'),
+              ),
+              Padding(
+                padding: EdgeInsets.all(50),
+              ),
+              Text(
+                '3. Bicep Curl',
+              ),
+              Image(
+                image: AssetImage("images/BicepCurl.jpg"),
+                height: 200,
+                width: 200,
+              ),
+              TextButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: const Text("More Info"),
+                      content: const Text("Bicep curls work the biceps muscles at the front of the upper arm and the brachialis and brachioradialis muscles in the lower arm."),
+                      actions: [
+                        TextButton(
+                          onPressed: () => Navigator.pop(context),
+                          child: Text("OK"),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+                child: Text('View More'),
+              ),
+              Padding(
+                padding: EdgeInsets.all(50),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -138,46 +187,91 @@ class LowerBodyPage extends StatelessWidget {
           children: [
             Text(
               '1. Squats',
-              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
             ),
             Image(
               image: AssetImage("images/Squats.jpg"),
-              height: 300,
-              width: 300,
+              height: 200,
+              width: 200,
             ),
-            Text(
-              'General Info',
-              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+            TextButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: const Text("More Info"),
+                    content: const Text("Squats are a compound movement that uses large muscle groups in your legs and core. Helping build core and leg muscle while improving bone health, flexibility, and athletic performance."),
+                    actions: [
+                      TextButton(
+                        onPressed: () => Navigator.pop(context),
+                        child: Text("OK"),
+                      ),
+                    ],
+                  ),
+                );
+              },
+              child: Text('View More'),
             ),
-            Padding(padding: EdgeInsets.all(50),),
+            Padding(
+              padding: EdgeInsets.all(50),
+            ),
             Text(
               '2. Lunges',
-              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
             ),
             Image(
               image: AssetImage("images/Lunges.jpg"),
               height: 200,
-              width: 100,
+              width: 200,
             ),
-            Text(
-              'General Info',
-              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+            TextButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: const Text("More Info"),
+                    content: const Text("Lunges can help you build muscle in your lower body, core, and glutes."),
+                    actions: [
+                      TextButton(
+                        onPressed: () => Navigator.pop(context),
+                        child: Text("OK"),
+                      ),
+                    ],
+                  ),
+                );
+              },
+              child: Text('View More'),
             ),
-            Padding(padding: EdgeInsets.all(50),),
+            Padding(
+              padding: EdgeInsets.all(50),
+            ),
             Text(
               '3. Deadlift',
-              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
             ),
             Image(
               image: AssetImage("images/Deadlift.jpg"),
               height: 200,
-              width: 100,
+              width: 200,
             ),
-            Text(
-              'General Info',
-              style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+            TextButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: const Text("More Info"),
+                    content: const Text("Deadlifts can help you build strength in your glutes, quads, abs, and core. They can also improve hip stability and mobility."),
+                    actions: [
+                      TextButton(
+                        onPressed: () => Navigator.pop(context),
+                        child: Text("OK"),
+                      ),
+                    ],
+                  ),
+                );
+              },
+              child: Text('View More'),
             ),
-            Padding(padding: EdgeInsets.all(50),),
+            Padding(
+              padding: EdgeInsets.all(50),
+            ),
           ],
         ),
       ),
