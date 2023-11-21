@@ -4,6 +4,8 @@ import 'package:latlong2/latlong.dart';
 import "package:table_calendar/table_calendar.dart";
 import "package:flutter/cupertino.dart";
 import "Event.dart";
+import 'dart:math';
+import 'CalorieData.dart';
 
 class SelectedPage {
 
@@ -20,11 +22,18 @@ class SelectedPage {
 }
 
 class FitnessModel {
-  // CalorieCounter Page
   int totalCalories = 0;
 
   void addCalories(int amount) {
     totalCalories += amount;
+  }
+
+  void subtractCalories(int amount) {
+    totalCalories = max(0, totalCalories - amount);
+  }
+
+  int getCalories(String identifier) {
+    return CalorieData.getCalories(identifier);
   }
 
   // Calendar Page
