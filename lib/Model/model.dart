@@ -3,9 +3,10 @@ import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
 import "package:table_calendar/table_calendar.dart";
 import "package:flutter/cupertino.dart";
-import "package:table_calendar/table_calendar.dart";
 import "Event.dart";
 import 'package:pedometer/pedometer.dart';
+import 'dart:math';
+import 'CalorieData.dart';
 
 class SelectedPage {
 
@@ -22,11 +23,18 @@ class SelectedPage {
 }
 
 class FitnessModel {
-  // CalorieCounter Page
   int totalCalories = 0;
 
   void addCalories(int amount) {
     totalCalories += amount;
+  }
+
+  void subtractCalories(int amount) {
+    totalCalories = max(0, totalCalories - amount);
+  }
+
+  int getCalories(String identifier) {
+    return CalorieData.getCalories(identifier);
   }
 
   // Calendar Page
@@ -36,7 +44,7 @@ class FitnessModel {
   DateTime lastDay = DateTime.now().add(Duration(days: 1826));
   Map<DateTime, List<Event>> events = {};
   TextEditingController eventController = TextEditingController();
-  late ValueNotifier<List<Event>> selectedEvents = ValueNotifier(getEventsForDay(today!));
+  late ValueNotifier<List<Event>> selectedEvents = ValueNotifier(getEventsForDay(today));
 
   List<Event> getEventsForDay(DateTime day) {
     return events[day] ?? [];
@@ -57,8 +65,15 @@ class WorkoutModel {
   double distanceRan = 0.0;
 
 
-  int seconds=0, minutes=0, hours = 0, newSeconds = 0, newMinutes = 0, newHours = 0;
-  String digitSeconds = "00", digitMinutes = "00", digitHours = "00";
+  int seconds = 0,
+      minutes = 0,
+      hours = 0,
+      newSeconds = 0,
+      newMinutes = 0,
+      newHours = 0;
+  String digitSeconds = "00",
+      digitMinutes = "00",
+      digitHours = "00";
   Timer? timer;
   bool timerStarted = false;
   List laps = [];
@@ -80,11 +95,13 @@ class WorkoutModel {
   }
 
   void totalDistanceCalculator() {
-    if(totalDistance.length > 1) {
-      for (int i = totalDistance.length-1; i<totalDistance.length; i++) {
-        Position p1 = totalDistance[i-1];
+    if (totalDistance.length > 1) {
+      for (int i = totalDistance.length - 1; i < totalDistance.length; i++) {
+        Position p1 = totalDistance[i - 1];
         Position p2 = totalDistance[i];
-        distanceRan = distance.as(LengthUnit.Mile, LatLng(p1.latitude, p1.longitude), LatLng(p2.latitude, p2.longitude));
+        distanceRan = distance.as(
+            LengthUnit.Mile, LatLng(p1.latitude, p1.longitude),
+            LatLng(p2.latitude, p2.longitude));
       }
     }
   }
@@ -94,7 +111,7 @@ class WorkoutModel {
     newMinutes = minutes;
     newHours = hours;
     if (newSeconds > 59) {
-      if(newMinutes > 59) {
+      if (newMinutes > 59) {
         newHours++;
         newMinutes = 0;
       }
@@ -106,9 +123,9 @@ class WorkoutModel {
     seconds = newSeconds;
     minutes = newMinutes;
     hours = newHours;
-    digitSeconds = (seconds >= 10) ? "$seconds":"0$seconds";
-    digitMinutes = (minutes >= 10) ? "$minutes":"0$minutes";
-    digitHours = (hours >= 10) ? "$hours":"0$hours";
+    digitSeconds = (seconds >= 10) ? "$seconds" : "0$seconds";
+    digitMinutes = (minutes >= 10) ? "$minutes" : "0$minutes";
+    digitHours = (hours >= 10) ? "$hours" : "0$hours";
   }
 
   String getDistanceRan() {
@@ -119,7 +136,7 @@ class WorkoutModel {
     return isWorkoutStarted;
   }
 
-  List getLaps(){
+  List getLaps() {
     return laps;
   }
 
