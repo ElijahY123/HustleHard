@@ -115,7 +115,7 @@ class _FitnessControllerState extends State<FitnessController> {
     });
   }
 
-  // Navigation Rail
+  // Navigation Drawer
 
   void openRail(){
     scaffoldKey.currentState!.openDrawer();
@@ -233,7 +233,7 @@ class _FitnessControllerState extends State<FitnessController> {
             leading: IconButton(
                 onPressed: openRail,
                 icon: Icon(Icons.menu)),
-            title: Text("title"),
+            title: Text("Hustle Hard"),
           ),
           drawer: Drawer(
           child: Row(
@@ -270,26 +270,17 @@ class _FitnessControllerState extends State<FitnessController> {
                     ),
                     NavigationDrawerDestination(
                         icon: Icon(Icons.table_chart),
-                        label: Text('Workout Schedule'))
+                        label: Text('Workout Schedule')),
                   ],
                   selectedIndex: pageSelected.getSelectedIndex(),
                   onDestinationSelected: (value) {
                     setState(() {
                       pageSelected.updateSelectedIndex(value);
-                    });
-                  },
+                    }); //SetState
+                  }, // onDestinationSelected
                 ),
               ),
-              /*
-              Expanded(
-                child: Container(
-                  color: Theme.of(context).colorScheme.primaryContainer,
-                  child: page,
-                ),
-              ),
-
-               */
-            ],
+            ], // children
           ),
           ),
           body: Container(
@@ -297,7 +288,7 @@ class _FitnessControllerState extends State<FitnessController> {
             child: page,
           ),
         );
-      },
+      }, // Builder
     );
-  }
-}
+  } // Widget Build
+} // Class _FitnessController
