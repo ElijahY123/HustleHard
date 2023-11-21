@@ -23,11 +23,15 @@ class _FitnessControllerState extends State<FitnessController> {
 
   // Calorie Page
 
-  void addCalories(int amount) {
+  void addCalories(int calories) {
     setState(() {
-      model.addCalories(amount);
-      caloriesInputController.clear();
-      errorMessage = '';
+      model.addCalories(calories);
+    });
+  }
+
+  void subtractCalories(int calories) {
+    setState(() {
+      model.subtractCalories(calories);
     });
   }
 
@@ -136,11 +140,27 @@ class _FitnessControllerState extends State<FitnessController> {
       case 2:
         page = CalorieCounterView(
           totalCalories: model.totalCalories,
-          caloriesInputController: caloriesInputController,
           errorMessage: errorMessage,
-          onAddCalories: addCalories,
+          onSubmit: (String item, int calories) {
+            if (item == 'Manual Entry') {
+              // Directly use the provided calorie count for manual entries
+              if (calories < 0) {
+                subtractCalories(-calories);
+              } else {
+                addCalories(calories);
+              }
+            } else {
+              // For items from the database, determine if it's food or exercise
+              if (calories < 0) {
+                subtractCalories(-calories); // If exercise, subtract its calorie value
+              } else {
+                addCalories(calories); // If food, add its calorie value
+              }
+            }
+          },
         );
         break;
+
       case 3:
         page = MuscleGroupsPage();
         break;
