@@ -40,6 +40,19 @@ class MuscleGroupsPage extends StatelessWidget {
                 padding: EdgeInsets.all(20),
               ),
             ),
+            ElevatedButton.icon(
+              onPressed: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => CoreBodyPage()));
+              },
+              label: const Text("Core Exercises"),
+              icon: ImageIcon(
+                AssetImage("assets/images/SitUpIcon.png"),
+              ),
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.all(20),
+              ),
+            ),
           ],
         ),
       ),
@@ -267,6 +280,103 @@ class LowerBodyPage extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class CoreBodyPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            'Core Exercises',
+            textAlign: TextAlign.center,
+          ),
+        ),
+        body: Scrollbar(
+            controller: ScrollController(),
+            thickness: 10,
+            child: ListView(
+                children: [
+                  Text(
+                    '1. Cross Chops',
+                    style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+                  ),
+                  Padding(padding: EdgeInsets.all(50),),
+                  Text(
+                    '2. High Knees',
+                    style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+                  ),
+                  Padding(padding: EdgeInsets.all(50),),
+                  Text(
+                    '3. Twist Jacks',
+                    style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+                  ),
+                  Padding(padding: EdgeInsets.all(50),),
+                  Text(
+                    '4. Side Bridges',
+                    style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+                  ),
+                  Padding(padding: EdgeInsets.all(50),),
+                  Text(
+                    '5. Raised Leg Hold',
+                    style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+                  ),
+                  Padding(padding: EdgeInsets.all(50),),
+                  Text(
+                    '6. Plank Arm Raises',
+                    style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+                  ),
+                  Padding(padding: EdgeInsets.all(50),),
+                  Text(
+                    '7. Push Up Into Lunges',
+                    style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+                  ),
+                  Padding(padding: EdgeInsets.all(50),),
+                  Text(
+                    '8. Knee to Elbows',
+                    style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+                  ),
+                  Padding(padding: EdgeInsets.all(50),),
+                  Text(
+                    '9. Side to Side Chops',
+                    style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+                  ),
+                  Padding(padding: EdgeInsets.all(50),),
+                  Text(
+                    '10. Side Leg Raises',
+                    style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+                  ),
+                  Padding(padding: EdgeInsets.all(50),),
+                  Text(
+                    '11. Crunch Kicks',
+                    style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+                  ),
+                  Padding(padding: EdgeInsets.all(50),),
+                  Text(
+                    '12. Raised Leg Circles',
+                    style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+                  ),
+                  Padding(padding: EdgeInsets.all(50),),
+                  Text(
+                    '13. Scissors',
+                    style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+                  ),
+                  Padding(padding: EdgeInsets.all(50),),
+                  Text(
+                    '14. 20 Count Hold',
+                    style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+                  ),
+                  Padding(padding: EdgeInsets.all(50),),
+                  Text(
+                    '15. Side Elbow Plank',
+                    style: TextStyle(fontSize: 32, color: Colors.cyanAccent),
+                  ),
+                  Padding(padding: EdgeInsets.all(50),),
+                ],
+            ),
+        ),
     );
   }
 }
