@@ -43,7 +43,7 @@ class _CalorieCounterViewState extends State<CalorieCounterView> {
                 ),
                 SizedBox(height: 10),
                 Text(
-                  'Estimated per serving size',
+                  'Estimated /serving size & /hr of exercise',
                   style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic, color: Colors.grey),
                 ),
                 SizedBox(height: 20),

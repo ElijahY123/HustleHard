@@ -89,12 +89,19 @@ class _YoutubePlayerScreenState extends State<YoutubePlayerScreen> {
         mute: false,
       ),
     );
+
+    // Add listener for fullscreen changes
+    _controller.addListener(() {
+      if (mounted) {
+        setState(() {});
+      }
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: _controller.value.isFullScreen ? null : AppBar(
         title: Text('Video Player'),
       ),
       body: Center(

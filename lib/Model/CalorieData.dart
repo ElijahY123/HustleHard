@@ -30,9 +30,11 @@ static Map<String, int> _data = {
   'Beef Steak': 679,
   'Pork Chop': 231,
   'Tofu': 144,
+  'Chicken Nuggets': 285,
+  'Bacon (per slice)': 43,
 
   // Dairy
-  'Milk': 122,
+  'Milk': 103,
   'Yogurt': 59,
   'Cheese': 113,
   'Butter': 102,
@@ -40,19 +42,21 @@ static Map<String, int> _data = {
   // Grains
   'Brown Rice': 216,
   'White Rice': 205,
-  'Pasta': 131,
+  'Pasta': 75,
   'Bread': 79,
-  'Oats': 389,
+  'Oatmeal': 158,
 
   // Nuts & Seeds
   'Almonds': 164,
   'Walnuts': 185,
-  'Chia Seeds': 486,
+  'Peanuts': 161,
+  'Pistachios': 159,
 
   // Snacks & Sweets
-  'Chocolate': 535,
-  'Chips': 536,
+  'Chocolate': 235,
+  'Chips': 152,
   'Ice Cream': 137,
+  'Fruit Bar/Rollup': 50,
 
   // Beverages
   'Orange Juice': 117,
@@ -60,13 +64,42 @@ static Map<String, int> _data = {
   'Cranberry Juice': 117,
   'Beer': 154,
   'Soda': 150,
-  'Milk': 103,
   'Chocolate Milk': 209,
 
-  // Fast Food Items
+  // Meal items
   'Pizza Slice': 285,
-  'Hamburger': 400,
+  'Hamburger': 354,
   'French Fries': 365,
+  'Spaghetti': 221,
+  'Hot Dog': 151,
+  'Chicken Noodle Soup (can)': 246,
+
+  // Exercises/Sports
+  'Golf': -350,
+  'Basketball': -450,
+  'Aerobics': -530,
+  'Light Lifting (light workout)': -490,
+  'Heavy Lifting (heavy workout)': -245,
+  'Badminton': -348,
+  'Tennis': -500,
+  'Ping Pong': -327,
+  'Running': -330,
+  'Walking': -270,
+  'Stair Machine': -735,
+  'Cycling/Biking': -654,
+  'Cross Country Skiing': -654,
+  'Rock Climbing': -654,
+  'Playing an instrument': -250,
+  'Dancing': -350,
+  'Archery': -286,
+  'Bowling': -245,
+  'Carrying Heavy Loads': -600,
+  'Playing Catch': -200,
+  'Jumping Rope': -800,
+  'Kayaking': -400,
+  'Lacrosse': -654,
+  'Stretching': -200,
+  'Yoga': -327,
 
 };
 
