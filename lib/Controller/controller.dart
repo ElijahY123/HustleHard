@@ -20,6 +20,8 @@ class _FitnessControllerState extends State<FitnessController> {
   final TextEditingController caloriesInputController = TextEditingController();
   String errorMessage = '';
   Timer? timer;
+  bool isExpanded = false;
+
 
   // Calorie Page
 
@@ -219,11 +221,22 @@ class _FitnessControllerState extends State<FitnessController> {
     return LayoutBuilder(
       builder: (context, constraints) {
         return Scaffold(
+          appBar: AppBar(
+            leading: IconButton(
+              icon: Icon(Icons.menu),
+              onPressed: (){
+                setState(() {
+                  isExpanded = !isExpanded;
+                });
+              },
+            ),
+          ),
           body: Row(
             children: [
               SafeArea(
                 child: NavigationRail(
-                  extended: constraints.maxWidth >= 600,
+                  extended: false,
+                  labelType: NavigationRailLabelType.none,
                   destinations: [
                     NavigationRailDestination(
                       icon: Icon(Icons.home),
