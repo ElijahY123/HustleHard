@@ -9,7 +9,7 @@ class Calendar extends StatelessWidget {
   final Function(DateTime, DateTime) onDaySelected;
   final Map<DateTime, List<Event>> events;
   final TextEditingController eventController;
-  late final ValueNotifier<List<Event>> selectedEvents;
+  final ValueNotifier<List<Event>> selectedEvents;
   final List<Event> Function(DateTime day) getEventsForDay;
 
   Calendar ({
@@ -92,16 +92,15 @@ class Calendar extends StatelessWidget {
                   itemCount: value.length,
                   itemBuilder: (context, index) {
                   return Container(
-                    margin: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                    margin: EdgeInsets.symmetric(horizontal: 12, vertical: 2),
                     decoration: BoxDecoration(
                       border: Border.all(),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: ListTile(
                       onTap: () => print(""),
-                      title: Text('${value[index]}'),
+                      title: Text('${value[index].title}'),
                     )
-
                   );
                 });
               }

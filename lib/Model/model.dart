@@ -1,3 +1,4 @@
+
 import "package:flutter/cupertino.dart";
 import "package:table_calendar/table_calendar.dart";
 
@@ -25,6 +26,10 @@ class FitnessModel {
     totalCalories += amount;
   }
 
+  FitnessModel() {
+    selectedEvents = ValueNotifier(getEventsForDay(today!));
+  }
+
   // Calendar Page
 
   DateTime today = DateTime.now();
@@ -32,7 +37,7 @@ class FitnessModel {
   DateTime lastDay = DateTime.now().add(Duration(days: 1826));
   Map<DateTime, List<Event>> events = {};
   TextEditingController eventController = TextEditingController();
-  late ValueNotifier<List<Event>> selectedEvents = ValueNotifier(getEventsForDay(today!));
+  ValueNotifier<List<Event>> selectedEvents = ValueNotifier([]);
 
   List<Event> getEventsForDay(DateTime day) {
     return events[day] ?? [];
