@@ -5,6 +5,7 @@ import "package:table_calendar/table_calendar.dart";
 import "package:flutter/cupertino.dart";
 import "package:table_calendar/table_calendar.dart";
 import "Event.dart";
+import 'package:pedometer/pedometer.dart';
 
 class SelectedPage {
 
@@ -165,6 +166,121 @@ class WorkoutModel {
     if (timerStarted) {
       setTime();
     }
+  }
+}
+
+class IndividualBar {
+  final int x;
+  final double y;
+
+  IndividualBar({
+    required this.x,
+    required this.y
+  });
+}
+
+class BarData {
+  final double sunSteps;
+  final double monSteps;
+  final double tueSteps;
+  final double wedSteps;
+  final double thurSteps;
+  final double friSteps;
+  final double satSteps;
+
+  BarData({
+    required this.sunSteps,
+    required this.monSteps,
+    required this.tueSteps,
+    required this.wedSteps,
+    required this.thurSteps,
+    required this.friSteps,
+    required this.satSteps
+  });
+  List<IndividualBar> barData = [];
+
+  void initializeBarData() {
+    barData = [
+      IndividualBar(x: 0, y: sunSteps),
+      IndividualBar(x: 0, y: monSteps),
+      IndividualBar(x: 0, y: tueSteps),
+      IndividualBar(x: 0, y: wedSteps),
+      IndividualBar(x: 0, y:thurSteps),
+      IndividualBar(x: 0, y: friSteps),
+      IndividualBar(x: 0, y: satSteps)
+    ];
+  }
+}
+
+class HomePage{
+  final TextEditingController stepGoalController = TextEditingController();
+  late Stream<StepCount> _stepCountStream;
+  String  _steps = '8000';
+  int goal = 10000;
+  double stepsPercent = 0;
+  List<double> weeklySteps = [];
+
+  BarData weeklyBarData = BarData(
+      sunSteps: 8080,
+      monSteps: 9290,
+      tueSteps: 2738,
+      wedSteps: 9283,
+      thurSteps: 9201,
+      friSteps: 2910,
+      satSteps: 2018
+  );
+
+  TextEditingController getStepGoalController() {
+    return stepGoalController;
+  }
+
+  bool isInputValid() {
+    final int? amount = int.tryParse(stepGoalController.text);
+    return amount != null && amount > 0;
+  }
+
+  void updateStepGoal(int newGoal){
+    goal = newGoal;
+    stepGoalController.clear();
+    updateStepsPercent();
+  }
+
+  String getSteps() {
+    if (_steps != "0") {
+      return _steps;
+    }
+    return "0";
+  }
+
+  double getStepsPercent() {
+    return stepsPercent;
+  }
+
+  void updateStepsPercent() {
+    int stepsToInt = int.parse(_steps);
+    if (stepsToInt > goal) {
+      stepsPercent = 1;
+    }
+    else {
+      stepsPercent = double.parse(_steps) / goal;
+    }
+  }
+
+  void onStepCount(StepCount event) {
+      _steps = event.steps.toString();
+  }
+
+  void onStepCountError(error) {
+      _steps = 'Step Count not available';
+  }
+
+  int getStepGoal() {
+    return goal;
+  }
+
+  void initPlatformState() {
+    _stepCountStream = Pedometer.stepCountStream;
+    _stepCountStream.listen(onStepCount).onError(onStepCountError);
   }
 }
 

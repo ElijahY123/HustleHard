@@ -1,5 +1,6 @@
 import 'package:firstapp/Views/MuscleGroupsPage.dart';
 import 'package:flutter/material.dart';
+import 'package:pedometer/pedometer.dart';
 import '../Model/model.dart';
 import '../Views/CalorieCounter.dart';
 import '../Views/Workout.dart';
@@ -15,6 +16,7 @@ class FitnessController extends StatefulWidget {
 class _FitnessControllerState extends State<FitnessController> {
   final FitnessModel model = FitnessModel();
   final WorkoutModel workoutModel = WorkoutModel();
+  final HomePage homeModel = HomePage();
   final TextEditingController caloriesInputController = TextEditingController();
   String errorMessage = '';
   Timer? timer;
@@ -102,6 +104,39 @@ class _FitnessControllerState extends State<FitnessController> {
     });
   }
 
+  //Main Page
+
+  void initMainPageState() {
+    setState(() {
+      homeModel.initPlatformState();
+    });
+  }
+
+  String getSteps() {
+    return homeModel.getSteps();
+  }
+
+  double getStepsPercent() {
+    return homeModel.getStepsPercent();
+  }
+
+  TextEditingController getStepGoalController() {
+    return homeModel.getStepGoalController();
+  }
+
+  void updateStepGoal(int goal){
+    setState(() {
+      homeModel.updateStepGoal(goal);
+    });
+  }
+
+  int getStepGoal() {
+    return homeModel.getStepGoal();
+  }
+  bool isInputValid() {
+    return homeModel.isInputValid();
+  }
+
   SelectedPage pageSelected = SelectedPage();
 
     @override
@@ -109,7 +144,14 @@ class _FitnessControllerState extends State<FitnessController> {
       Widget page;
       switch (pageSelected.getSelectedIndex()) {
         case 0:
-          page = MainPage();
+          page = MainPage(
+            getSteps: getSteps,
+            getStepsPercent: getStepsPercent,
+            stepGoalController: getStepGoalController(),
+            isInputValid: isInputValid,
+            updateStepCount: updateStepGoal,
+            getStepGoal: getStepGoal,
+          );
           break;
         case 1:
           page = Calendar(
