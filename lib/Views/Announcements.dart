@@ -167,10 +167,9 @@ class AdminLogin extends StatelessWidget {
                     else {
                       QuerySnapshot snap = await FirebaseFirestore.instance
                           .collection("Admin")
-                          .where('Username', isEqualTo: userName)
-                          .get();
+                          .where('Username', isEqualTo: userName).get();
                       try {
-                        if (passWord == snap.docs[0]['passWord']) {
+                        if (passWord == snap.docs[0]['Password']) {
                           sharedPreferences = await SharedPreferences.getInstance();
                           sharedPreferences.setString('Username', userName).then((_) {
                             Navigator.pushReplacement(context,
