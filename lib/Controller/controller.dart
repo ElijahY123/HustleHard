@@ -402,7 +402,7 @@ class _FitnessControllerState extends State<FitnessController> {
                         label: Text('Calorie Counter'),
                       ),
                       NavigationDrawerDestination(
-                        icon: Icon(Icons.run_circle_outlined),
+                        icon: Icon(Icons.info_outline),
                         label: Text('Workouts'),
                       ),
                       NavigationDrawerDestination(
@@ -415,7 +415,12 @@ class _FitnessControllerState extends State<FitnessController> {
                       ),
                       NavigationDrawerDestination(
                           icon: Icon(Icons.table_chart),
-                          label: Text('Workout Schedule')),
+                          label: Text('Workout Schedule')
+                      ),
+                      NavigationDrawerDestination(
+                        icon: Icon(Icons.message_outlined),
+                        label: Text("Announcements"),
+                      ),
                     ],
                     selectedIndex: pageSelected.getSelectedIndex(),
                     onDestinationSelected: (value) {
