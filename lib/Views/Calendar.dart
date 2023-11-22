@@ -9,7 +9,7 @@ class Calendar extends StatelessWidget {
   final Function(DateTime, DateTime) onDaySelected;
   final Map<DateTime, List<Event>> events;
   final TextEditingController eventController;
-  late final ValueNotifier<List<Event>> selectedEvents;
+  final ValueNotifier<List<Event>> selectedEvents;
   final List<Event> Function(DateTime day) getEventsForDay;
 
   Calendar ({
