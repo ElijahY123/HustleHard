@@ -34,7 +34,7 @@ class MainPage extends StatelessWidget {
             children: [
               const Center(
                 child: Text(
-                  "Get Fit",
+                  "Pedometer",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 50.0,
@@ -67,49 +67,8 @@ class MainPage extends StatelessWidget {
                 ),
               ),
               /*new Container(
-                padding: EdgeInsets.all(15),
-                child: Row(
-                  children: [
-                    Center(
-                      child: Icon(Icons.fastfood_outlined),
-                    ),
-                    Center(
-                      child: Text(
-                        "  "+"320 Cal",
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black
-                        ),
-                      ),
-                    ),
-                    Center(
-                      widthFactor: 18.0,
-                      child: Text(
-                        " "
-                      ),
-                    ),
-                    Center(
-                      child: Icon(Icons.snowshoeing),
-                    ),
-                    Center(
-                      child: Text(
-                        "  "+"3.2 Mi",
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),*/
-              SizedBox(
-                height: 30,
-              ),
-              new Container(
-                height: 200,
+                height: 170,
+                width: 300,
                 child: BarChart(
                   BarChartData(
                     gridData: FlGridData(show: false),
@@ -127,7 +86,7 @@ class MainPage extends StatelessWidget {
                     ),
                   ),
                 ),
-              ),
+              ),*/
               Center(
                 child: Column(
                   children: [
@@ -162,22 +121,19 @@ class MainPage extends StatelessWidget {
                         ),
                         child: Icon(
                             Icons.add,
-                          size: 40,
+                          size: 25,
                         ),
                     ),
                   ],
                 )
               ),
               SizedBox(
-                height: 30,
+                height: 40,
               )
             ]
           ),
         ),
       ),
     );
-    /*return Center(
-      child: Text('GetFit', textAlign: TextAlign.center),
-    );*/
   }
 }
