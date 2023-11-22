@@ -1,5 +1,9 @@
 import 'package:firstapp/Views/MuscleGroupsPage.dart';
 import 'package:flutter/material.dart';
+import 'package:pedometer/pedometer.dart';
+import '../Model/model.dart';
+import '../Views/CalorieCounter.dart';
+import '../Views/Workout.dart';
 import 'package:firstapp/Model/model.dart';
 import 'package:firstapp/Views/CalorieCounter.dart';
 import 'package:firstapp/Views/Workout.dart';
@@ -17,6 +21,7 @@ class FitnessController extends StatefulWidget {
 class _FitnessControllerState extends State<FitnessController> {
   final FitnessModel model = FitnessModel();
   final WorkoutModel workoutModel = WorkoutModel();
+  final HomePage homeModel = HomePage();
   final TextEditingController caloriesInputController = TextEditingController();
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   String errorMessage = '';
@@ -115,6 +120,7 @@ class _FitnessControllerState extends State<FitnessController> {
     });
   }
 
+
   // Navigation Drawer
 
   void openRail(){
@@ -124,6 +130,46 @@ class _FitnessControllerState extends State<FitnessController> {
   void closeRail(){
     Navigator.of(context).pop();
   }
+  //Main Page
+
+  @override
+  void initState() {
+    super.initState();
+      initMainPageState();
+  }
+
+  void initMainPageState() {
+    setState(() {
+      homeModel.initPlatformState();
+    });
+  }
+
+  String getSteps() {
+    return homeModel.getSteps();
+  }
+
+  double getStepsPercent() {
+    return homeModel.getStepsPercent();
+  }
+
+  TextEditingController getStepGoalController() {
+    return homeModel.getStepGoalController();
+  }
+
+  void updateStepGoal(int goal){
+    setState(() {
+      homeModel.updateStepGoal(goal);
+    });
+  }
+
+  int getStepGoal() {
+    return homeModel.getStepGoal();
+  }
+  bool isInputValid() {
+    return homeModel.isInputValid();
+  }
+
+  // Navigation Rail
 
   SelectedPage pageSelected = SelectedPage();
 
@@ -132,7 +178,14 @@ class _FitnessControllerState extends State<FitnessController> {
     Widget page;
     switch (pageSelected.getSelectedIndex()) {
       case 0:
-        page = MainPage();
+        page = MainPage(
+          getSteps: getSteps,
+          getStepsPercent: getStepsPercent,
+          stepGoalController: getStepGoalController(),
+          isInputValid: isInputValid,
+          updateStepGoal: updateStepGoal,
+          getStepGoal: getStepGoal,
+        );
         break;
       case 1:
         page = Calendar(
