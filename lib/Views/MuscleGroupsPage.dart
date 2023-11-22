@@ -241,7 +241,7 @@ class LowerBodyPage extends StatelessWidget {
                 '1. Squats',
               ),
               Image(
-                image: AssetImage("images/Squats.jpg"),
+                image: AssetImage("assets/images/Squats.jpg"),
                 height: 200,
                 width: 200,
               ),
