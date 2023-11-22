@@ -1,9 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import '../Model/AnnouncementModel.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+class AnnouncementModel {
+  TextEditingController textController = TextEditingController();
+
+  String error = " ";
+}
 
 class SelectUser extends StatelessWidget {
-  AnnouncementModel announcementModel = AnnouncementModel();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,15 +35,8 @@ class SelectUser extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => AdminPage(
-                            userName: announcementModel.userName,
-                            passWord: announcementModel.passWord,
-                            usernameController:
-                                announcementModel.usernameController,
-                            passwordController:
-                                announcementModel.passwordController,
-                          )));
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => AdminLogin()));
                 },
                 child: const Text('Admin'),
                 style: ElevatedButton.styleFrom(
@@ -50,8 +48,8 @@ class SelectUser extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => Announcements()));
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => UserAnnouncements()));
                 },
                 child: const Text('User'),
                 style: ElevatedButton.styleFrom(
@@ -66,19 +64,10 @@ class SelectUser extends StatelessWidget {
   }
 }
 
-class AdminPage extends StatelessWidget {
-  AnnouncementModel announcementModel = AnnouncementModel();
-  final TextEditingController usernameController;
-  final TextEditingController passwordController;
-  final String userName;
-  final String passWord;
-
-  AdminPage({
-    required this.usernameController,
-    required this.passwordController,
-    required this.userName,
-    required this.passWord,
-  });
+class AdminLogin extends StatelessWidget {
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  late SharedPreferences sharedPreferences;
 
   @override
   Widget build(BuildContext context) {
@@ -161,15 +150,54 @@ class AdminPage extends StatelessWidget {
                   height: 25,
                 ),
                 GestureDetector(
-                  onTap: () {
-                    announcementModel.getUsername(context);
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => AdminPage2(
-                                  textController:
-                                      announcementModel.textController,
-                                )));
+                  onTap: () async {
+                    FocusScope.of(context).unfocus();
+                    String userName = usernameController.text.trim();
+                    String passWord = passwordController.text.trim();
+                    if (userName.isEmpty) {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text("No username has been entered"),
+                      ));
+                    }
+                    else if (passWord.isEmpty) {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text("No password has been entered"),
+                      ));
+                    }
+                    else {
+                      QuerySnapshot snap = await FirebaseFirestore.instance
+                          .collection("Admin")
+                          .where('Username', isEqualTo: userName)
+                          .get();
+                      try {
+                        if (passWord == snap.docs[0]['passWord']) {
+                          sharedPreferences = await SharedPreferences.getInstance();
+                          sharedPreferences.setString('Username', userName).then((_) {
+                            Navigator.pushReplacement(context,
+                                MaterialPageRoute(builder: (context) => AdminMessaging()));
+                          });
+                        }
+                        else {
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(const SnackBar(
+                            content: Text("Invalid Password"),
+                          ));
+                        }
+                      }
+                      catch (e) {
+                        String error = " ";
+                        if (e.toString() ==
+                            "RangeError (index): Invalid value: Valid value range is empty: 0") {
+                          error = "Invalid Username";
+                        }
+                        else {
+                          error = "Invalid Password";
+                        }
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text(error),
+                        ));
+                      }
+                    }
                   },
                   child: Container(
                     padding: const EdgeInsets.all(25),
@@ -198,14 +226,9 @@ class AdminPage extends StatelessWidget {
   }
 }
 
-class AdminPage2 extends StatelessWidget {
-  AnnouncementModel announcementModel = AnnouncementModel();
-  final TextEditingController textController;
 
-
-  AdminPage2({
-    required this.textController,
-  });
+class AdminMessaging extends StatelessWidget {
+  TextEditingController textController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -285,8 +308,8 @@ class AdminPage2 extends StatelessWidget {
                     IconButton(
                       onPressed: () {
                         String message = textController.text;
-                        String time = "Print date";
-                        announcementModel.addMessage(message, time);
+                        String time = DateTime.timestamp().toString();
+                        addMessage(message, time);
                       },
                       icon: Icon(Icons.send),
                     ),
@@ -299,9 +322,18 @@ class AdminPage2 extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  void addMessage(String message, String time) {
+    FirebaseFirestore.instance.collection('Announcements').add({
+      'Message': message,
+      'Date': time,
+    });
+  }
 }
 
-class Announcements extends StatelessWidget {
+
+class UserAnnouncements extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -373,7 +405,7 @@ class DisplayAnnouncements extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(message),
-              Text(time),
+              Text("$time"),
             ],
           ),
         ],

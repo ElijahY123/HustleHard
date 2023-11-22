@@ -8,12 +8,14 @@ import 'package:firstapp/Views/MainPage.dart';
 import 'package:firstapp/Views/Calendar.dart';
 import 'dart:async';
 
+
 class FitnessController extends StatefulWidget {
   @override
   State<FitnessController> createState() => _FitnessControllerState();
 }
 
 class _FitnessControllerState extends State<FitnessController> {
+  final AdminLogin adminLogin = AdminLogin();
   final FitnessModel model = FitnessModel();
   final WorkoutModel workoutModel = WorkoutModel();
   final TextEditingController caloriesInputController = TextEditingController();
@@ -103,8 +105,24 @@ class _FitnessControllerState extends State<FitnessController> {
     });
   }
 
-  // Announcements Page
+  /**
+  // Announcements
+  void updateErrorHandler(var e, String error) {
+    setState(() {
+     adminLogin.errorHandler(e, error, context);
+      e = " ";
+      error = " ";
+    });
+  }
 
+  void updateAnnouncementControllers() {
+    setState(() {
+      adminLogin.usernameController.clear();
+      adminLogin.passwordController.clear();
+//      adminMessgaing.textController.clear();
+    });
+  }
+**/
 
 
   SelectedPage pageSelected = SelectedPage();
@@ -182,7 +200,7 @@ class _FitnessControllerState extends State<FitnessController> {
                       label: Text('Calorie Counter'),
                     ),
                     NavigationRailDestination(
-                      icon: Icon(Icons.run_circle_outlined),
+                      icon: Icon(Icons.info_outline),
                       label: Text('Workouts'),
                     ),
                     NavigationRailDestination(
