@@ -1,13 +1,9 @@
 import 'package:firstapp/Views/Announcements.dart';
 import 'package:firstapp/Views/MuscleGroupsPage.dart';
 import 'package:flutter/material.dart';
-import 'package:pedometer/pedometer.dart';
 import '../Model/model.dart';
 import '../Views/CalorieCounter.dart';
 import '../Views/Workout.dart';
-import 'package:firstapp/Model/model.dart';
-import 'package:firstapp/Views/CalorieCounter.dart';
-import 'package:firstapp/Views/Workout.dart';
 import 'package:firstapp/Views/MainPage.dart';
 import 'package:firstapp/Views/Calendar.dart';
 import 'package:firstapp/Views/YoutubeView.dart';
