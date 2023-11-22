@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
 import "package:table_calendar/table_calendar.dart";
@@ -7,6 +8,7 @@ import "Event.dart";
 import 'package:pedometer/pedometer.dart';
 import 'dart:math';
 import 'CalorieData.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SelectedPage {
 
@@ -232,7 +234,7 @@ class BarData {
 class HomePage{
   final TextEditingController stepGoalController = TextEditingController();
   late Stream<StepCount> _stepCountStream;
-  String  _steps = '8000';
+  String  _steps = '0';
   int goal = 10000;
   double stepsPercent = 0;
   List<double> weeklySteps = [];
@@ -246,6 +248,20 @@ class HomePage{
       friSteps: 2910,
       satSteps: 2018
   );
+
+/*  void addStepsToDB(double steps, String date) async {
+    FirebaseFirestore.instance.collection('Steps').add({
+      'Date' : date,
+      'steps' : steps
+    });
+  }
+
+  void getStepsFromDB(String date) async {
+    DatabaseReference ref = FirebaseDatabase.instance.ref("Steps");
+    DatabaseEvent event = await ref.once();
+
+    event.snapshot.value;
+  }*/
 
   TextEditingController getStepGoalController() {
     return stepGoalController;
@@ -263,10 +279,8 @@ class HomePage{
   }
 
   String getSteps() {
-    if (_steps != "0") {
-      return _steps;
-    }
-    return "0";
+
+    return _steps;
   }
 
   double getStepsPercent() {
@@ -274,7 +288,7 @@ class HomePage{
   }
 
   void updateStepsPercent() {
-    int stepsToInt = int.parse(_steps);
+    double stepsToInt = double.parse(_steps);
     if (stepsToInt > goal) {
       stepsPercent = 1;
     }
@@ -297,7 +311,7 @@ class HomePage{
 
   void initPlatformState() {
     _stepCountStream = Pedometer.stepCountStream;
-    _stepCountStream.listen(onStepCount).onError(onStepCountError);
+    _stepCountStream.listen(onStepCount);
   }
 }
 

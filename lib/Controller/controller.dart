@@ -121,6 +121,12 @@ class _FitnessControllerState extends State<FitnessController> {
 
   //Main Page
 
+  @override
+  void initState() {
+    super.initState();
+      initMainPageState();
+  }
+
   void initMainPageState() {
     setState(() {
       homeModel.initPlatformState();
@@ -166,7 +172,7 @@ class _FitnessControllerState extends State<FitnessController> {
           getStepsPercent: getStepsPercent,
           stepGoalController: getStepGoalController(),
           isInputValid: isInputValid,
-          updateStepCount: updateStepGoal,
+          updateStepGoal: updateStepGoal,
           getStepGoal: getStepGoal,
         );
         break;

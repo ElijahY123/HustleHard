@@ -8,7 +8,7 @@ class MainPage extends StatelessWidget {
   final Function() getStepsPercent;
   final TextEditingController stepGoalController;
   final Function() isInputValid;
-  final Function(int) updateStepCount;
+  final Function(int) updateStepGoal;
   final Function() getStepGoal;
 
   MainPage({
@@ -16,7 +16,7 @@ class MainPage extends StatelessWidget {
     required this.getStepsPercent,
     required this.stepGoalController,
     required this.isInputValid,
-    required this.updateStepCount,
+    required this.updateStepGoal,
     required this.getStepGoal
 
 });
@@ -143,7 +143,7 @@ class MainPage extends StatelessWidget {
                     ElevatedButton(
                         onPressed: () {
                           if (isInputValid()) {
-                            updateStepCount(int.parse(stepGoalController.text));
+                            updateStepGoal(int.parse(stepGoalController.text));
                           }
                           else {
                             ScaffoldMessenger.of(context).showSnackBar(
