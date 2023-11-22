@@ -4,6 +4,8 @@ import 'package:latlong2/latlong.dart';
 import "package:table_calendar/table_calendar.dart";
 import "package:flutter/cupertino.dart";
 import "Event.dart";
+import 'dart:math';
+import 'CalorieData.dart';
 
 class SelectedPage {
 
@@ -20,11 +22,18 @@ class SelectedPage {
 }
 
 class FitnessModel {
-  // CalorieCounter Page
   int totalCalories = 0;
 
   void addCalories(int amount) {
     totalCalories += amount;
+  }
+
+  void subtractCalories(int amount) {
+    totalCalories = max(0, totalCalories - amount);
+  }
+
+  int getCalories(String identifier) {
+    return CalorieData.getCalories(identifier);
   }
 
   // Calendar Page
@@ -164,30 +173,6 @@ class WorkoutModel {
     timerStarted = true;
     if (timerStarted) {
       setTime();
-      /*timer = Timer.periodic(const Duration(seconds:1), (timer) {
-        newSeconds = seconds + 1;
-        newMinutes = minutes;
-        newHours = hours;
-//        getCurrentPosition();
-
-        if (newSeconds > 59) {
-          if(newMinutes > 59) {
-            newHours++;
-            newMinutes = 0;
-          }
-          else {
-            newMinutes++;
-            newSeconds = 0;
-          }
-        }
-        setTime();
-        seconds = newSeconds;
-        minutes = newMinutes;
-        hours = newHours;
-        digitSeconds = (seconds >= 10) ? "$seconds":"0$seconds";
-        digitMinutes = (minutes >= 10) ? "$minutes":"0$minutes";
-        digitHours = (hours >= 10) ? "$hours":"0$hours";
-      });*/
     }
   }
 }

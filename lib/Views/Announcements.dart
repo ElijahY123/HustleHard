@@ -20,7 +20,7 @@ class SelectUser extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Image.asset("images/AnnouncementsIcon.png"),
+              Image.asset("assets/images/AnnouncementsIcon.png"),
               SizedBox(
                 height: 50,
               ),
@@ -85,7 +85,7 @@ class AdminLogin extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
-                  "images/AdminIcon.png",
+                  "assets/images/AdminIcon.png",
                   height: 100,
                   width: 100,
                 ),

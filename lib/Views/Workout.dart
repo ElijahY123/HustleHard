@@ -78,13 +78,13 @@ class WorkoutView extends StatelessWidget {
                     getTime(),
                     style: const TextStyle(
                       color: Colors.white,
-                      fontSize: 70.0,
+                      fontSize: 60.0,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
                 Container(
-                  height: 300.0,
+                  height: 250.0,
                   decoration: BoxDecoration(
                     color: const Color(0x62FFFFFF),
                     borderRadius: BorderRadius.circular(8.0),
