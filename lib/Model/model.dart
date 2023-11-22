@@ -59,6 +59,7 @@ class FitnessModel {
     }
   }
 }
+
 class WorkoutModel {
 
   final Distance distance = const Distance();
