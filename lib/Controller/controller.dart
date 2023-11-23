@@ -1,6 +1,7 @@
 import 'package:firstapp/Views/Announcements.dart';
 import 'package:firstapp/Views/MuscleGroupsPage.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../Model/model.dart';
 import '../Views/CalorieCounter.dart';
 import '../Views/Workout.dart';
@@ -167,8 +168,6 @@ class _FitnessControllerState extends State<FitnessController> {
     return homeModel.isInputValid();
   }
 
-  // Navigation Rail
-
   // Announcements
   /**
        void updateErrorHandler(var e, String error) {
@@ -188,6 +187,7 @@ class _FitnessControllerState extends State<FitnessController> {
        }
     **/
 
+  // Navigation Rail
   SelectedPage pageSelected = SelectedPage();
 
   @override
@@ -376,7 +376,16 @@ class _FitnessControllerState extends State<FitnessController> {
           key: scaffoldKey,
           appBar: AppBar(
             leading: IconButton(onPressed: openRail, icon: Icon(Icons.menu)),
-            title: Text("Hustle Hard"),
+            centerTitle: true,
+            title: Text(
+                "Hustle Hard",
+              style: GoogleFonts.bungeeShade(
+                textStyle: TextStyle(
+                  fontSize: 35,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
           ),
           drawer: Drawer(
             child: Row(
