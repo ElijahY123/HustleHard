@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:drop_shadow_image/drop_shadow_image.dart';
 
 class AnnouncementModel {
   TextEditingController textController = TextEditingController();
@@ -13,47 +15,243 @@ class SelectUser extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Select User'),
+        centerTitle: true,
+        title: Text(
+          "Announcements",
+          style: GoogleFonts.sedgwickAve(
+            textStyle: TextStyle(
+              fontSize: 30,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
       ),
+      backgroundColor: Colors.lightBlueAccent[100],
       body: SafeArea(
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Image.asset("assets/images/AnnouncementsIcon.png"),
-              SizedBox(
-                height: 50,
-              ),
-              const Text(
-                "Welcome to GetFit Announcements",
-                style: TextStyle(
-                  fontSize: 20,
-                ),
+              DropShadowImage(
+                image: Image.asset("assets/images/AnnouncementsIcon.png"),
+                borderRadius: 20,
+                blurRadius: 20,
+                offset: Offset(5,5),
+                scale: 1.05,
               ),
               SizedBox(
                 height: 25,
               ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => AdminLogin()));
-                },
-                child: const Text('Admin'),
-                style: ElevatedButton.styleFrom(
-                  elevation: 22,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => AdminLogin()));
+                    },
+                    child: Text(
+                        'Admin',
+                      style: GoogleFonts.loveYaLikeASister(
+                        textStyle: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      elevation: 22,
+                      padding: EdgeInsets.symmetric(vertical: 50,horizontal: 50,)
+                    ),
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => UserAnnouncements()));
+                    },
+                    child:Text(
+                      'User',
+                      style: GoogleFonts.loveYaLikeASister(
+                        textStyle: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      elevation: 22,
+                        padding: EdgeInsets.symmetric(vertical: 50,horizontal: 50,)
+
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class SelectGroup extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold();
+  }
+}
+
+class AdminCreateAccount extends StatelessWidget {
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  late SharedPreferences sharedPreferences;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.lightBlueAccent[200],
+      ),
+      backgroundColor: Colors.lightBlueAccent[100],
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 25.0,
+          ),
+          child: Column(
+            children: [
+              Image.asset(
+                "assets/images/AdminIcon.png",
+                height: 100,
+                width: 100,
+              ),
+              Text(
+                "Create Username and Password to Signup",
+                style: GoogleFonts.sedgwickAve(
+                  textStyle: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
                 ),
+              ),
+              SizedBox(
+                height: 50,
+              ),
+              // username textbox
+              TextField(
+                decoration: InputDecoration(
+                  hintText: 'Enter Username',
+                  hintStyle: const TextStyle(color: Colors.grey),
+                  fillColor: Colors.grey[300],
+                  filled: true,
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.grey.shade300,
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+                controller: usernameController,
+                obscureText: false,
               ),
               SizedBox(
                 height: 10,
               ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => UserAnnouncements()));
+              // password textbox
+              TextField(
+                decoration: InputDecoration(
+                  hintText: 'Enter Password',
+                  hintStyle: const TextStyle(color: Colors.grey,),
+                  fillColor: Colors.grey[300],
+                  filled: true,
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.grey.shade300,
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+                controller: passwordController,
+                obscureText: true,
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              TextField(
+                decoration: InputDecoration(
+                  hintText: 'Confirm Password',
+                  hintStyle: const TextStyle(color: Colors.grey,),
+                  fillColor: Colors.grey[300],
+                  filled: true,
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.grey.shade300,
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+                controller: passwordController,
+                obscureText: true,
+              ),
+              // login button
+              SizedBox(
+                height: 25,
+              ),
+              GestureDetector(
+                onTap: () {
+                  FocusScope.of(context).unfocus();
+                  Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => AdminLogin()));
                 },
-                child: const Text('User'),
-                style: ElevatedButton.styleFrom(
-                  elevation: 22,
+                child: Container(
+                  padding: const EdgeInsets.all(25),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(9),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Signup',
+                      style: TextStyle(
+                        color: Colors.lightBlueAccent[200],
+                        fontWeight: FontWeight.bold,
+                        fontSize: 24,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => AdminLogin()));
+                },
+                child: Text(
+                  "Login",
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
                 ),
               ),
             ],
@@ -73,8 +271,9 @@ class AdminLogin extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Admin Page'),
+        backgroundColor: Colors.lightBlueAccent[200],
       ),
+      backgroundColor: Colors.lightBlueAccent[100],
       body: SafeArea(
         child: Center(
           child: Padding(
@@ -89,30 +288,33 @@ class AdminLogin extends StatelessWidget {
                   height: 100,
                   width: 100,
                 ),
-                const Text(
+                Text(
                   "Enter Username and Password to Login",
-                  style: TextStyle(
-                    fontSize: 20,
+                  style: GoogleFonts.sedgwickAve(
+                    textStyle: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
                   ),
                 ),
                 SizedBox(
-                  height: 25,
+                  height: 50,
                 ),
                 // username textbox
                 TextField(
                   decoration: InputDecoration(
                     hintText: 'Enter Username',
                     hintStyle: const TextStyle(color: Colors.grey),
-                    fillColor: Colors.grey[200],
+                    fillColor: Colors.grey[300],
                     filled: true,
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: Colors.grey.shade200,
+                        color: Colors.grey.shade300,
                       ),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                     ),
                   ),
@@ -126,19 +328,17 @@ class AdminLogin extends StatelessWidget {
                 TextField(
                   decoration: InputDecoration(
                     hintText: 'Enter Password',
-                    hintStyle: const TextStyle(
-                      color: Colors.grey,
-                    ),
-                    fillColor: Colors.grey[200],
+                    hintStyle: const TextStyle(color: Colors.grey,),
+                    fillColor: Colors.grey[300],
                     filled: true,
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: Colors.grey.shade200,
+                        color: Colors.grey.shade300,
                       ),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: Colors.grey.shade200,
+                        color: Colors.black,
                       ),
                     ),
                   ),
@@ -201,21 +401,37 @@ class AdminLogin extends StatelessWidget {
                   child: Container(
                     padding: const EdgeInsets.all(25),
                     decoration: BoxDecoration(
-                      color: Colors.lightBlueAccent.shade100,
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(9),
                     ),
                     child: Center(
-                      child: const Text(
+                      child: Text(
                         'Login',
                         style: TextStyle(
-                          color: Colors.white,
+                          color: Colors.lightBlueAccent[200],
                           fontWeight: FontWeight.bold,
                           fontSize: 24,
                         ),
                       ),
                     ),
                   ),
-                )
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                TextButton(
+                    onPressed: () {
+                      Navigator.pushReplacement(context,
+                          MaterialPageRoute(
+                              builder: (context) => AdminCreateAccount()));
+                    },
+                    child: Text(
+                        "Create Account",
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
+                    ),
+                ),
               ],
             ),
           ),
@@ -224,7 +440,6 @@ class AdminLogin extends StatelessWidget {
     );
   }
 }
-
 
 class AdminMessaging extends StatelessWidget {
   TextEditingController textController = TextEditingController();
@@ -330,7 +545,6 @@ class AdminMessaging extends StatelessWidget {
     });
   }
 }
-
 
 class UserAnnouncements extends StatelessWidget {
   @override
