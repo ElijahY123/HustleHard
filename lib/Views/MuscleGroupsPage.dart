@@ -277,7 +277,7 @@ class UpperBodyPage extends StatelessWidget {
                     context: context,
                     builder: (context) => AlertDialog(
                       title: const Text("More Info"),
-                      content: const Text("Add Info"),
+                      content: const Text("Scarecrow Extensions target the arms in their entirety as well as the shoulders. It is a great workout for focus on all arm muscles and shoulders."),
                       actions: [
                         TextButton(
                           onPressed: () => Navigator.pop(context),
@@ -321,7 +321,7 @@ class UpperBodyPage extends StatelessWidget {
                     context: context,
                     builder: (context) => AlertDialog(
                       title: const Text("More Info"),
-                      content: const Text("Add Info"),
+                      content: const Text("SpeedBag targets the arms and also improves cardio. It is also great at improving fist speed if you are doing boxing training."),
                       actions: [
                         TextButton(
                           onPressed: () => Navigator.pop(context),
@@ -365,7 +365,7 @@ class UpperBodyPage extends StatelessWidget {
                     context: context,
                     builder: (context) => AlertDialog(
                       title: const Text("More Info"),
-                      content: const Text("Add Info"),
+                      content: const Text("Crossover Extensions target the forearm, biceps, shoulder, and pectoral. It is a great upper body workout for arms or chest."),
                       actions: [
                         TextButton(
                           onPressed: () => Navigator.pop(context),
@@ -409,7 +409,7 @@ class UpperBodyPage extends StatelessWidget {
                     context: context,
                     builder: (context) => AlertDialog(
                       title: const Text("More Info"),
-                      content: const Text("Add Info"),
+                      content: const Text("Hammer Curls target the biceps and the forearms. This is a arm workout that focuses mainly on the bicep and forearms."),
                       actions: [
                         TextButton(
                           onPressed: () => Navigator.pop(context),
@@ -453,7 +453,7 @@ class UpperBodyPage extends StatelessWidget {
                     context: context,
                     builder: (context) => AlertDialog(
                       title: const Text("More Info"),
-                      content: const Text("Add Info"),
+                      content: const Text("Overhead Triceps Extensions focus on the triceps and the shoulders. The Triceps are the main focus of this workout."),
                       actions: [
                         TextButton(
                           onPressed: () => Navigator.pop(context),
@@ -497,7 +497,7 @@ class UpperBodyPage extends StatelessWidget {
                     context: context,
                     builder: (context) => AlertDialog(
                       title: const Text("More Info"),
-                      content: const Text("Add Info"),
+                      content: const Text("Side Curls work on the biceps and the shoulders. It improves on the side body muscles as well."),
                       actions: [
                         TextButton(
                           onPressed: () => Navigator.pop(context),
@@ -541,7 +541,7 @@ class UpperBodyPage extends StatelessWidget {
                     context: context,
                     builder: (context) => AlertDialog(
                       title: const Text("More Info"),
-                      content: const Text("Add Info"),
+                      content: const Text("Around the worlds works on the chest and shoulders. It also has an impact on the biceps and forearms. It also improves on your grip strength as well."),
                       actions: [
                         TextButton(
                           onPressed: () => Navigator.pop(context),
@@ -585,7 +585,7 @@ class UpperBodyPage extends StatelessWidget {
                     context: context,
                     builder: (context) => AlertDialog(
                       title: const Text("More Info"),
-                      content: const Text("Add Info"),
+                      content: const Text("Seated Curls focuses on the biceps and triceps. The bicep is the main focus of this workout."),
                       actions: [
                         TextButton(
                           onPressed: () => Navigator.pop(context),
@@ -629,7 +629,7 @@ class UpperBodyPage extends StatelessWidget {
                     context: context,
                     builder: (context) => AlertDialog(
                       title: const Text("More Info"),
-                      content: const Text("Add Info"),
+                      content: const Text("Upright Row is a focused shoulder workout. The shoulders are the main impact of this workout. It also improves on grip strength."),
                       actions: [
                         TextButton(
                           onPressed: () => Navigator.pop(context),
@@ -673,7 +673,7 @@ class UpperBodyPage extends StatelessWidget {
                     context: context,
                     builder: (context) => AlertDialog(
                       title: const Text("More Info"),
-                      content: const Text("Add Info"),
+                      content: const Text("Pushups is a complete upper body workout. The arms, shoulders, chest, and even core are impacted by push-ups. It is this broad coverage of area impact that makes this a great overall body workout."),
                       actions: [
                         TextButton(
                           onPressed: () => Navigator.pop(context),
