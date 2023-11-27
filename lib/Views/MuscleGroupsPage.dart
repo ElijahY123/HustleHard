@@ -883,7 +883,7 @@ class LowerBodyPage extends StatelessWidget {
                     context: context,
                     builder: (context) => AlertDialog(
                       title: const Text("More Info"),
-                      content: const Text("Add Info"),
+                      content: const Text("The Lateral Lunge works on multiple lower body muscles, mostly in the legs. It works on areas like quadriceps, glutes, and hamstrings."),
                       actions: [
                         TextButton(
                           onPressed: () => Navigator.pop(context),
@@ -927,7 +927,7 @@ class LowerBodyPage extends StatelessWidget {
                     context: context,
                     builder: (context) => AlertDialog(
                       title: const Text("More Info"),
-                      content: const Text("Add Info"),
+                      content: const Text("Leg Press is similar in its targeting of leg areas like the quadriceps, glutes, and hamstring. However it is a more intense workout on these areas than the lateral lunge."),
                       actions: [
                         TextButton(
                           onPressed: () => Navigator.pop(context),
@@ -971,7 +971,7 @@ class LowerBodyPage extends StatelessWidget {
                     context: context,
                     builder: (context) => AlertDialog(
                       title: const Text("More Info"),
-                      content: const Text("Add Info"),
+                      content: const Text("The Knee Highs work on your legs primarily your thigh muscles. It is also a duration exercise that builds how long your muscles can be under stress. It also has an impact on core muscles and balance."),
                       actions: [
                         TextButton(
                           onPressed: () => Navigator.pop(context),
@@ -1015,7 +1015,7 @@ class LowerBodyPage extends StatelessWidget {
                     context: context,
                     builder: (context) => AlertDialog(
                       title: const Text("More Info"),
-                      content: const Text("Add Info"),
+                      content: const Text("The Single leg dead lift works on the glutes. It also works on the mobility of your hip and improves stability."),
                       actions: [
                         TextButton(
                           onPressed: () => Navigator.pop(context),
@@ -1059,7 +1059,7 @@ class LowerBodyPage extends StatelessWidget {
                     context: context,
                     builder: (context) => AlertDialog(
                       title: const Text("More Info"),
-                      content: const Text("Add Info"),
+                      content: const Text("Split squats is a targeted version of a squat that focuses mostly on the quads and glutes. So if these areas need improvement this is the exercise. It also improves your ability to target specific muscle areas."),
                       actions: [
                         TextButton(
                           onPressed: () => Navigator.pop(context),
@@ -1103,7 +1103,7 @@ class LowerBodyPage extends StatelessWidget {
                     context: context,
                     builder: (context) => AlertDialog(
                       title: const Text("More Info"),
-                      content: const Text("Add Info"),
+                      content: const Text("Skater Squats like split squat targets specific areas of the legs. This workout focuses on knee stability, glutes, and quads. It also has a slight impact on core and stability."),
                       actions: [
                         TextButton(
                           onPressed: () => Navigator.pop(context),
@@ -1147,7 +1147,7 @@ class LowerBodyPage extends StatelessWidget {
                     context: context,
                     builder: (context) => AlertDialog(
                       title: const Text("More Info"),
-                      content: const Text("Add Info"),
+                      content: const Text("Tuck jumps target the glutes and core. They also improve jumping ability and knee strength."),
                       actions: [
                         TextButton(
                           onPressed: () => Navigator.pop(context),
@@ -1191,7 +1191,7 @@ class LowerBodyPage extends StatelessWidget {
                     context: context,
                     builder: (context) => AlertDialog(
                       title: const Text("More Info"),
-                      content: const Text("Add Info"),
+                      content: const Text("The reverse lunge focus on glutes and hamstrings. It is another version of the standard lunge that puts less stress on joints."),
                       actions: [
                         TextButton(
                           onPressed: () => Navigator.pop(context),
@@ -1235,7 +1235,7 @@ class LowerBodyPage extends StatelessWidget {
                     context: context,
                     builder: (context) => AlertDialog(
                       title: const Text("More Info"),
-                      content: const Text("Add Info"),
+                      content: const Text("Abductor leg raises these target the inner thighs and the adductors in your legs. It also targets muscles in the side of your torso."),
                       actions: [
                         TextButton(
                           onPressed: () => Navigator.pop(context),
@@ -1279,7 +1279,7 @@ class LowerBodyPage extends StatelessWidget {
                     context: context,
                     builder: (context) => AlertDialog(
                       title: const Text("More Info"),
-                      content: const Text("Add Info"),
+                      content: const Text("Hamstring curls improve joint health in the knees and also improve balance and mobility. They also make the leg more stable and reduce the risk of knee injuries."),
                       actions: [
                         TextButton(
                           onPressed: () => Navigator.pop(context),
@@ -1323,7 +1323,7 @@ class LowerBodyPage extends StatelessWidget {
                     context: context,
                     builder: (context) => AlertDialog(
                       title: const Text("More Info"),
-                      content: const Text("Add Info"),
+                      content: const Text("The Romanian deadlift develops the posterior chain muscles, spine, and adductors. A great workout for both legs and core."),
                       actions: [
                         TextButton(
                           onPressed: () => Navigator.pop(context),
@@ -1367,7 +1367,7 @@ class LowerBodyPage extends StatelessWidget {
                     context: context,
                     builder: (context) => AlertDialog(
                       title: const Text("More Info"),
-                      content: const Text("Add Info"),
+                      content: const Text("leg extensions isolate and target the quads and general lower body strength. This workout, unlike other leg workouts, has added weight to it."),
                       actions: [
                         TextButton(
                           onPressed: () => Navigator.pop(context),
@@ -1411,7 +1411,7 @@ class LowerBodyPage extends StatelessWidget {
                     context: context,
                     builder: (context) => AlertDialog(
                       title: const Text("More Info"),
-                      content: const Text("Add Info"),
+                      content: const Text("General steps or step machines are a combination of a leg muscle workout and a cardio workout improving endurance."),
                       actions: [
                         TextButton(
                           onPressed: () => Navigator.pop(context),
@@ -1455,7 +1455,7 @@ class LowerBodyPage extends StatelessWidget {
                     context: context,
                     builder: (context) => AlertDialog(
                       title: const Text("More Info"),
-                      content: const Text("Add Info"),
+                      content: const Text("Squat jumps are a combination of a squat and a tuck jump that improves leg muscles, core muscles, and jumping ability."),
                       actions: [
                         TextButton(
                           onPressed: () => Navigator.pop(context),
@@ -1529,7 +1529,7 @@ class CoreBodyPage extends StatelessWidget {
                   context: context,
                   builder: (context) => AlertDialog(
                     title: const Text("More Info"),
-                    content: const Text("Add Info"),
+                    content: const Text("Cross chops focus on the transverse abdominal and oblique muscles in your core. They also improve back muscles as well."),
                     actions: [
                       TextButton(
                         onPressed: () => Navigator.pop(context),
@@ -1573,7 +1573,7 @@ class CoreBodyPage extends StatelessWidget {
                   context: context,
                   builder: (context) => AlertDialog(
                     title: const Text("More Info"),
-                    content: const Text("Add Info"),
+                    content: const Text("High Knees work both your legs and core it is also great for balance and endurance."),
                     actions: [
                       TextButton(
                         onPressed: () => Navigator.pop(context),
@@ -1617,7 +1617,7 @@ class CoreBodyPage extends StatelessWidget {
                   context: context,
                   builder: (context) => AlertDialog(
                     title: const Text("More Info"),
-                    content: const Text("Add Info"),
+                    content: const Text("The twist jacks work on the obliques and transverse abdominal muscles and help you maintain good posture. It can also improve spine muscles and waistline."),
                     actions: [
                       TextButton(
                         onPressed: () => Navigator.pop(context),
@@ -1661,7 +1661,7 @@ class CoreBodyPage extends StatelessWidget {
                   context: context,
                   builder: (context) => AlertDialog(
                     title: const Text("More Info"),
-                    content: const Text("Add Info"),
+                    content: const Text("Side Bridges are a fantastic multiple region exercise. It works on arms, core, and legs. Improving the muscles in all these regions it also improves balance."),
                     actions: [
                       TextButton(
                         onPressed: () => Navigator.pop(context),
@@ -1705,7 +1705,7 @@ class CoreBodyPage extends StatelessWidget {
                   context: context,
                   builder: (context) => AlertDialog(
                     title: const Text("More Info"),
-                    content: const Text("Add Info"),
+                    content: const Text("The raised leg hold improves the core significantly focusing on the abs. it also improves on balance."),
                     actions: [
                       TextButton(
                         onPressed: () => Navigator.pop(context),
