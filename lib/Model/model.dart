@@ -86,9 +86,16 @@ class WorkoutModel {
   WorkoutModel();
 
   void getCurrentPosition() async {
-    position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high
-    );
+    LocationPermission permission;
+    permission = await Geolocator.requestPermission();
+    if (permission == LocationPermission.denied) {
+      throw Exception("Location Not Available");
+    }
+    else {
+      position = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high
+      );
+    }
     addToTotalDistance();
     totalDistanceCalculator();
   }
