@@ -1749,7 +1749,7 @@ class CoreBodyPage extends StatelessWidget {
                   context: context,
                   builder: (context) => AlertDialog(
                     title: const Text("More Info"),
-                    content: const Text("Add Info"),
+                    content: const Text("Plank Arm Raises impact the abs and core in general. It also works on muscles in the lower back and shoulders/arms."),
                     actions: [
                       TextButton(
                         onPressed: () => Navigator.pop(context),
@@ -1793,7 +1793,7 @@ class CoreBodyPage extends StatelessWidget {
                   context: context,
                   builder: (context) => AlertDialog(
                     title: const Text("More Info"),
-                    content: const Text("Add Info"),
+                    content: const Text("This is the combination of lunges and push ups. This targets the areas that push ups and lunges target but also targets the core through the transition process."),
                     actions: [
                       TextButton(
                         onPressed: () => Navigator.pop(context),
@@ -1837,7 +1837,7 @@ class CoreBodyPage extends StatelessWidget {
                   context: context,
                   builder: (context) => AlertDialog(
                     title: const Text("More Info"),
-                    content: const Text("Add Info"),
+                    content: const Text("Knee to Elbows targets the core with abs and side muscles. It also improves balance."),
                     actions: [
                       TextButton(
                         onPressed: () => Navigator.pop(context),
@@ -1881,7 +1881,7 @@ class CoreBodyPage extends StatelessWidget {
                   context: context,
                   builder: (context) => AlertDialog(
                     title: const Text("More Info"),
-                    content: const Text("Add Info"),
+                    content: const Text("Side to side chops works the obliques and core. It also works on the lower back and shoulders."),
                     actions: [
                       TextButton(
                         onPressed: () => Navigator.pop(context),
@@ -1925,7 +1925,7 @@ class CoreBodyPage extends StatelessWidget {
                   context: context,
                   builder: (context) => AlertDialog(
                     title: const Text("More Info"),
-                    content: const Text("Add Info"),
+                    content: const Text("Side leg raises work on the muscles in both legs and core. Working on the abs and side muscles. It also works the thigh muscles as well."),
                     actions: [
                       TextButton(
                         onPressed: () => Navigator.pop(context),
@@ -1969,7 +1969,7 @@ class CoreBodyPage extends StatelessWidget {
                   context: context,
                   builder: (context) => AlertDialog(
                     title: const Text("More Info"),
-                    content: const Text("Add Info"),
+                    content: const Text("Crunch kicks work the glutes in the hip and the quads in the thighs. It also works the core in the abs and upper chest. It also improves balance."),
                     actions: [
                       TextButton(
                         onPressed: () => Navigator.pop(context),
@@ -2013,7 +2013,7 @@ class CoreBodyPage extends StatelessWidget {
                   context: context,
                   builder: (context) => AlertDialog(
                     title: const Text("More Info"),
-                    content: const Text("Add Info"),
+                    content: const Text("Raised leg circles work on hardening the abs it also works the front hip flexors and the neck muscles."),
                     actions: [
                       TextButton(
                         onPressed: () => Navigator.pop(context),
@@ -2057,7 +2057,7 @@ class CoreBodyPage extends StatelessWidget {
                   context: context,
                   builder: (context) => AlertDialog(
                     title: const Text("More Info"),
-                    content: const Text("Add Info"),
+                    content: const Text("Scissor kicks work the legs and core. this also works muscles in the back. They also build balance."),
                     actions: [
                       TextButton(
                         onPressed: () => Navigator.pop(context),
@@ -2101,7 +2101,7 @@ class CoreBodyPage extends StatelessWidget {
                   context: context,
                   builder: (context) => AlertDialog(
                     title: const Text("More Info"),
-                    content: const Text("Add Info"),
+                    content: const Text("A 20 count hold is a great abs workout for abs. Building the core muscles and is a great duration exercise."),
                     actions: [
                       TextButton(
                         onPressed: () => Navigator.pop(context),
@@ -2145,7 +2145,7 @@ class CoreBodyPage extends StatelessWidget {
                   context: context,
                   builder: (context) => AlertDialog(
                     title: const Text("More Info"),
-                    content: const Text("Add Info"),
+                    content: const Text("Side elbow plank is a plank just on the side that targets the abs and side muscles."),
                     actions: [
                       TextButton(
                         onPressed: () => Navigator.pop(context),
