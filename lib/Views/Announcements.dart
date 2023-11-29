@@ -453,6 +453,15 @@ class AdminView extends StatelessWidget {
                   ),
                 ],
               ),
+              StreamBuilder(
+                  stream: FirebaseFirestore.instance
+                      .collection('Admins').doc('$announcementModel.counter')
+                      .collection('Groups').doc('$announcementModel.counter').snapshots(),
+                  builder: (context, snapshot) {
+                    return ListView(
+                    );
+                  },
+              ),
             ],
           ),
         ),
