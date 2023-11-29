@@ -24,9 +24,9 @@ dependencies:
   flutter:
     sdk: flutter
   english_words: ^4.0.0-0
-  firebase_core: ^2.23.0
-  firebase_auth: ^4.14.1
-  firebase_database: ^10.3.5
+  firebase_core: ^2.24.0
+  firebase_auth: ^4.15.0
+  firebase_database: ^10.3.6
   firebase_core_platform_interface: ^5.0.0
   table_calendar: ^3.0.8
   youtube_player_flutter: ^8.1.2
@@ -41,7 +41,7 @@ dependencies:
   geolocator: ^10.1.0
   stop_watch_timer: ^3.0.2
   shared_preferences: ^2.2.2
-  cloud_firestore: ^4.13.2
+  cloud_firestore: ^4.13.3
   pedometer: ^4.0.1
   percent_indicator: 4.0.1
   fl_chart: ^0.64.0
