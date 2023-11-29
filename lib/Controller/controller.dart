@@ -168,24 +168,6 @@ class _FitnessControllerState extends State<FitnessController> {
     return homeModel.isInputValid();
   }
 
-  // Announcements
-  /**
-       void updateErrorHandler(var e, String error) {
-       setState(() {
-       adminLogin.errorHandler(e, error, context);
-       e = " ";
-       error = " ";
-       });
-       }
-
-       void updateAnnouncementControllers() {
-       setState(() {
-       adminLogin.usernameController.clear();
-       adminLogin.passwordController.clear();
-       //      adminMessgaing.textController.clear();
-       });
-       }
-    **/
 
   // Navigation Rail
   SelectedPage pageSelected = SelectedPage();

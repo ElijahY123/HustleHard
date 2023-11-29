@@ -1,14 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:drop_shadow_image/drop_shadow_image.dart';
-
-class AnnouncementModel {
-  TextEditingController textController = TextEditingController();
-
-  String error = " ";
-}
+import 'package:firstapp/Model/AnnnouncementsModel.dart';
 
 class SelectUser extends StatelessWidget {
   @override
@@ -71,7 +66,7 @@ class SelectUser extends StatelessWidget {
                   ElevatedButton(
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => UserAnnouncements()));
+                          builder: (context) => UserView()));
                     },
                     child:Text(
                       'User',
@@ -86,7 +81,6 @@ class SelectUser extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                       elevation: 22,
                         padding: EdgeInsets.symmetric(vertical: 50,horizontal: 50,)
-
                     ),
                   ),
                 ],
@@ -99,18 +93,9 @@ class SelectUser extends StatelessWidget {
   }
 }
 
-class SelectGroup extends StatelessWidget {
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold();
-  }
-}
-
 class AdminCreateAccount extends StatelessWidget {
-  TextEditingController usernameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  late SharedPreferences sharedPreferences;
+  AnnouncementModel announcementModel = AnnouncementModel();
+  TextEditingController confirmController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -119,153 +104,162 @@ class AdminCreateAccount extends StatelessWidget {
         backgroundColor: Colors.lightBlueAccent[200],
       ),
       backgroundColor: Colors.lightBlueAccent[100],
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 25.0,
-          ),
-          child: Column(
-            children: [
-              Image.asset(
-                "assets/images/AdminIcon.png",
-                height: 100,
-                width: 100,
+      body: ListView(
+        children: [
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 15.0,
               ),
-              Text(
-                "Create Username and Password to Signup",
-                style: GoogleFonts.sedgwickAve(
-                  textStyle: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
+              child: Column(
+                children: [
+                  Image.asset(
+                    "assets/images/AdminIcon.png",
+                    height: 100,
+                    width: 100,
                   ),
-                ),
-              ),
-              SizedBox(
-                height: 50,
-              ),
-              // username textbox
-              TextField(
-                decoration: InputDecoration(
-                  hintText: 'Enter Username',
-                  hintStyle: const TextStyle(color: Colors.grey),
-                  fillColor: Colors.grey[300],
-                  filled: true,
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.grey.shade300,
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-                controller: usernameController,
-                obscureText: false,
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              // password textbox
-              TextField(
-                decoration: InputDecoration(
-                  hintText: 'Enter Password',
-                  hintStyle: const TextStyle(color: Colors.grey,),
-                  fillColor: Colors.grey[300],
-                  filled: true,
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.grey.shade300,
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-                controller: passwordController,
-                obscureText: true,
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              TextField(
-                decoration: InputDecoration(
-                  hintText: 'Confirm Password',
-                  hintStyle: const TextStyle(color: Colors.grey,),
-                  fillColor: Colors.grey[300],
-                  filled: true,
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.grey.shade300,
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-                controller: passwordController,
-                obscureText: true,
-              ),
-              // login button
-              SizedBox(
-                height: 25,
-              ),
-              GestureDetector(
-                onTap: () {
-                  FocusScope.of(context).unfocus();
-                  Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => AdminLogin()));
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(25),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(9),
-                  ),
-                  child: Center(
-                    child: Text(
-                      'Signup',
-                      style: TextStyle(
-                        color: Colors.lightBlueAccent[200],
+                  Text(
+                    "Create Username and Password to Signup",
+                    style: GoogleFonts.sedgwickAve(
+                      textStyle: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 24,
+                        fontSize: 15,
                       ),
                     ),
                   ),
-                ),
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              TextButton(
-                onPressed: () {
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => AdminLogin()));
-                },
-                child: Text(
-                  "Login",
-                  style: TextStyle(
-                    fontSize: 20,
+                  SizedBox(
+                    height: 25,
                   ),
-                ),
+                  // username textbox
+                  TextField(
+                    decoration: InputDecoration(
+                      hintText: 'Enter Username',
+                      hintStyle: const TextStyle(color: Colors.grey),
+                      fillColor: Colors.grey[300],
+                      filled: true,
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.grey.shade300,
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                    controller: announcementModel.usernameController,
+                    obscureText: false,
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  // password textbox
+                  TextField(
+                    decoration: InputDecoration(
+                      hintText: 'Enter Password',
+                      hintStyle: const TextStyle(color: Colors.grey,),
+                      fillColor: Colors.grey[300],
+                      filled: true,
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.grey.shade300,
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                    controller: announcementModel.passwordController,
+                    obscureText: true,
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  TextField(
+                    decoration: InputDecoration(
+                      hintText: 'Confirm Password',
+                      hintStyle: const TextStyle(color: Colors.grey,),
+                      fillColor: Colors.grey[300],
+                      filled: true,
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.grey.shade300,
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                    controller: confirmController,
+                    obscureText: true,
+                  ),
+                  // login button
+                  SizedBox(
+                    height: 10,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      FocusScope.of(context).unfocus();
+                      if (confirmController.text.trim() == announcementModel.passWord) {
+                        announcementModel.addAccount(announcementModel.userName,
+                            announcementModel.passWord);
+                        Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (context) =>
+                                AdminLogin()));
+                      }
+                      else {
+                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          content: Text("Passwords Do Not Match"),
+                        ));
+                      }
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(15),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(9),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Signup',
+                          style: TextStyle(
+                            color: Colors.lightBlueAccent[200],
+                            fontWeight: FontWeight.bold,
+                            fontSize: 24,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushReplacement(context,
+                          MaterialPageRoute(builder: (context) => AdminLogin()));
+                    },
+                    child: Text(
+                      "Login",
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
 }
 
 class AdminLogin extends StatelessWidget {
-  TextEditingController usernameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  late SharedPreferences sharedPreferences;
+  AnnouncementModel announcementModel = AnnouncementModel();
 
   @override
   Widget build(BuildContext context) {
@@ -281,6 +275,7 @@ class AdminLogin extends StatelessWidget {
               horizontal: 25.0,
             ),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
@@ -293,12 +288,12 @@ class AdminLogin extends StatelessWidget {
                   style: GoogleFonts.sedgwickAve(
                     textStyle: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 20,
+                      fontSize: 15,
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: 50,
+                  height: 25,
                 ),
                 // username textbox
                 TextField(
@@ -318,7 +313,7 @@ class AdminLogin extends StatelessWidget {
                       ),
                     ),
                   ),
-                  controller: usernameController,
+                  controller: announcementModel.usernameController,
                   obscureText: false,
                 ),
                 SizedBox(
@@ -342,61 +337,17 @@ class AdminLogin extends StatelessWidget {
                       ),
                     ),
                   ),
-                  controller: passwordController,
+                  controller: announcementModel.passwordController,
                   obscureText: true,
                 ),
                 // login button
                 SizedBox(
-                  height: 25,
+                  height: 10,
                 ),
                 GestureDetector(
                   onTap: () async {
                     FocusScope.of(context).unfocus();
-                    String userName = usernameController.text.trim();
-                    String passWord = passwordController.text.trim();
-                    if (userName.isEmpty) {
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                        content: Text("No username has been entered"),
-                      ));
-                    }
-                    else if (passWord.isEmpty) {
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                        content: Text("No password has been entered"),
-                      ));
-                    }
-                    else {
-                      QuerySnapshot snap = await FirebaseFirestore.instance
-                          .collection("Admin")
-                          .where('Username', isEqualTo: userName).get();
-                      try {
-                        if (passWord == snap.docs[0]['Password']) {
-                          sharedPreferences = await SharedPreferences.getInstance();
-                          sharedPreferences.setString('Username', userName).then((_) {
-                            Navigator.pushReplacement(context,
-                                MaterialPageRoute(builder: (context) => AdminMessaging()));
-                          });
-                        }
-                        else {
-                          ScaffoldMessenger.of(context)
-                              .showSnackBar(const SnackBar(
-                            content: Text("Invalid Password"),
-                          ));
-                        }
-                      }
-                      catch (e) {
-                        String error = " ";
-                        if (e.toString() ==
-                            "RangeError (index): Invalid value: Valid value range is empty: 0") {
-                          error = "Invalid Username";
-                        }
-                        else {
-                          error = "Invalid Password";
-                        }
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: Text(error),
-                        ));
-                      }
-                    }
+                    announcementModel.retrieveLoginInfo(context);
                   },
                   child: Container(
                     padding: const EdgeInsets.all(25),
@@ -417,7 +368,7 @@ class AdminLogin extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 15,
+                  height: 10,
                 ),
                 TextButton(
                     onPressed: () {
@@ -441,8 +392,77 @@ class AdminLogin extends StatelessWidget {
   }
 }
 
+/*
+class AdminCreateGroup {
+  AnnouncementModel announcementModel = AnnouncementModel();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: () {
+                TextField(
+                  decoration: InputDecoration(
+                    hintText: 'Enter Username',
+                    hintStyle: const TextStyle(color: Colors.grey),
+                    fillColor: Colors.grey[300],
+                    filled: true,
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.grey.shade300,
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                  controller: announcementModel.usernameController,
+                  obscureText: false,
+                );
+              },
+              icon: Icon(
+                Icons.add_circle_rounded,
+              ),
+          ),
+        ],
+      ),
+      backgroundColor: Colors.lightBlueAccent[100],
+      body: _buildGroupList(),
+    );
+  }
+
+  Widget _buildGroupList() {
+    return StreamBuilder<QuerySnapshot> (
+      stream: FirebaseFirestore.instance.collection('Admin').snapshots(),
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          return Text("Error");
+        }
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Text("Loading...");
+        }
+        return ListView(
+          children: snapshot.data!.docs
+              .map<Widget>((doc) => _buildGroupListItem(doc))
+              .toList(),
+        );
+      },
+    );
+  }
+
+  Widget _buildGroupListItem(DocumentSnapshot document) {
+    Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
+    return Container();
+  }
+}
+ */
+
 class AdminMessaging extends StatelessWidget {
-  TextEditingController textController = TextEditingController();
+  AnnouncementModel announcementModel = AnnouncementModel();
 
   @override
   Widget build(BuildContext context) {
@@ -516,14 +536,14 @@ class AdminMessaging extends StatelessWidget {
                             ),
                           ),
                         ),
-                        controller: textController,
+                        controller: announcementModel.textController,
                       ),
                     ),
                     IconButton(
                       onPressed: () {
-                        String message = textController.text;
+                        String message = announcementModel.textController.text;
                         String time = DateTime.timestamp().toString();
-                        addMessage(message, time);
+                        announcementModel.addMessage(message, time);
                       },
                       icon: Icon(Icons.send),
                     ),
@@ -536,17 +556,9 @@ class AdminMessaging extends StatelessWidget {
       ),
     );
   }
-
-  @override
-  void addMessage(String message, String time) {
-    FirebaseFirestore.instance.collection('Announcements').add({
-      'Message': message,
-      'Date': time,
-    });
-  }
 }
 
-class UserAnnouncements extends StatelessWidget {
+class UserView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

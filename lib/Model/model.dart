@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
 import "package:table_calendar/table_calendar.dart";
@@ -8,7 +7,6 @@ import "Event.dart";
 import 'package:pedometer/pedometer.dart';
 import 'dart:math';
 import 'CalorieData.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SelectedPage {
 
