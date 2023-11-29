@@ -1,5 +1,6 @@
 import 'package:firstapp/Views/MuscleGroupsPage.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class RoutineView extends StatelessWidget {
 
@@ -28,7 +29,8 @@ class RoutineView extends StatelessWidget {
                     Container(
                       child: Center(
                         child: Text(
-                          'Workout schedule for Arms', textScaleFactor: 1.5,),
+                          'Workout schedule for Arms', textScaleFactor: 1.5, style: GoogleFonts.almendra(textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 20))
+                        ),
                       ),
                     ),
                     TableCell(
@@ -36,14 +38,16 @@ class RoutineView extends StatelessWidget {
                       child: Container(
                         child: Center(
                           child: Text(
-                            'Workout schedule for Legs', textScaleFactor: 1.5,),
+                            'Workout schedule for Legs', textScaleFactor: 1.5, style: GoogleFonts.almendra(textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 20))
+                          ),
                         ),
                       ),
                     ),
                     Container(
                       child: Center(
                           child: Text(
-                            'Workout schedule for Core', textScaleFactor: 1.5,)
+                            'Workout schedule for Core', textScaleFactor: 1.5, style: GoogleFonts.almendra(textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 20))
+                          ),
                       ),
                     ),
                   ],
@@ -291,14 +295,17 @@ class RoutineView extends StatelessWidget {
             ),
             Align(
               alignment: Alignment.bottomCenter
-              , child: ElevatedButton(
-              onPressed: (){
-              Navigator.of(context).push(
-                 MaterialPageRoute(builder: (context) => MuscleGroupsPage())
+              , child: Padding(
+                padding: const EdgeInsets.all(32.0),
+                child: ElevatedButton(
+                onPressed: (){
+                Navigator.of(context).push(
+                   MaterialPageRoute(builder: (context) => MuscleGroupsPage())
             );
             },
-              child: const Text('Information Page'),
+                child: const Text('Information Page', style: TextStyle(fontSize: 30),),
             ),
+              ),
             ),
           ],
         ),
