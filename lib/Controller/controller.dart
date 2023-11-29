@@ -130,12 +130,14 @@ class _FitnessControllerState extends State<FitnessController> {
   void initMainPageState() {
     setState(() {
       homeModel.initPlatformState();
+//      homeModel.updateSteps();
     });
   }
 
   String getSteps() {
     return homeModel.getSteps();
   }
+
 
   double getStepsPercent() {
     return homeModel.getStepsPercent();
@@ -156,6 +158,10 @@ class _FitnessControllerState extends State<FitnessController> {
   }
   bool isInputValid() {
     return homeModel.isInputValid();
+  }
+
+  void initPlatformState() {
+    homeModel.initPlatformState();
   }
 
   // Navigation Rail

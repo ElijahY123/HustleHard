@@ -234,10 +234,12 @@ class BarData {
 class HomePage{
   final TextEditingController stepGoalController = TextEditingController();
   late Stream<StepCount> _stepCountStream;
-  String  _steps = '0';
+  int stepCount = 0;
+  String  _steps = '?';
   int goal = 10000;
   double stepsPercent = 0;
-  List<double> weeklySteps = [];
+
+
 
   BarData weeklyBarData = BarData(
       sunSteps: 8080,
@@ -279,7 +281,6 @@ class HomePage{
   }
 
   String getSteps() {
-
     return _steps;
   }
 
@@ -298,11 +299,16 @@ class HomePage{
   }
 
   void onStepCount(StepCount event) {
-      _steps = event.steps.toString();
+    stepCount = event.steps;
+  }
+
+  void updateSteps() {
+    _steps = _steps;
   }
 
   void onStepCountError(error) {
-      _steps = 'Step Count not available';
+    //setState
+    _steps = 'Step Count not available';
   }
 
   int getStepGoal() {
@@ -311,7 +317,7 @@ class HomePage{
 
   void initPlatformState() {
     _stepCountStream = Pedometer.stepCountStream;
-    _stepCountStream.listen(onStepCount);
+    _stepCountStream.listen(onStepCount).onError(onStepCountError);
   }
 }
 
