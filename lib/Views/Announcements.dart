@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -392,74 +391,75 @@ class AdminLogin extends StatelessWidget {
   }
 }
 
-/*
-class AdminCreateGroup {
+class AdminView extends StatelessWidget {
   AnnouncementModel announcementModel = AnnouncementModel();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: [
-          IconButton(
-              onPressed: () {
-                TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Enter Username',
-                    hintStyle: const TextStyle(color: Colors.grey),
-                    fillColor: Colors.grey[300],
-                    filled: true,
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.grey.shade300,
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  controller: announcementModel.usernameController,
-                  obscureText: false,
-                );
-              },
-              icon: Icon(
-                Icons.add_circle_rounded,
-              ),
-          ),
-        ],
+        title: Text("Admin View"),
       ),
       backgroundColor: Colors.lightBlueAccent[100],
-      body: _buildGroupList(),
+      body: SafeArea(
+        child: Container(
+          child: Column(
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  ElevatedButton(
+                    style: ButtonStyle(
+                      elevation: MaterialStateProperty.all(20),
+                    ),
+                    onPressed: () {
+                      showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                            content:                   TextField(
+                              decoration: InputDecoration(
+                                hintText: 'Enter Group Name',
+                                hintStyle: const TextStyle(color: Colors.grey),
+                                fillColor: Colors.grey[300],
+                                filled: true,
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.grey.shade300,
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
+                              controller: announcementModel.usernameController,
+                              obscureText: false,
+                            ),
+                            actions: [
+                              TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                    announcementModel.addGroup(announcementModel.groupName);
+                                  },
+                                child: Text("Create"),
+                              ),
+                            ],
+                          ),
+                      );
+                    },
+                    child: Text("Create Group"),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
     );
-  }
-
-  Widget _buildGroupList() {
-    return StreamBuilder<QuerySnapshot> (
-      stream: FirebaseFirestore.instance.collection('Admin').snapshots(),
-      builder: (context, snapshot) {
-        if (snapshot.hasError) {
-          return Text("Error");
-        }
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return Text("Loading...");
-        }
-        return ListView(
-          children: snapshot.data!.docs
-              .map<Widget>((doc) => _buildGroupListItem(doc))
-              .toList(),
-        );
-      },
-    );
-  }
-
-  Widget _buildGroupListItem(DocumentSnapshot document) {
-    Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
-    return Container();
   }
 }
- */
 
 class AdminMessaging extends StatelessWidget {
   AnnouncementModel announcementModel = AnnouncementModel();

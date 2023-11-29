@@ -1,3 +1,4 @@
+import 'package:firstapp/Views/Announcements.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -17,7 +18,7 @@ class AnnouncementModel {
   late SharedPreferences sharedPreferences;
 
   String error = " ";
-  int counter = 1;
+  int counter = 0;
 
   void addMessage(String message, String time) {
     FirebaseFirestore.instance.collection('Announcements').add({
@@ -47,7 +48,9 @@ class AnnouncementModel {
           sharedPreferences = await SharedPreferences.getInstance();
           sharedPreferences.setString('Username', userName).then((_) {
           });
-          print("works");
+          Navigator.pushReplacement(context, MaterialPageRoute(
+            builder: (context) => AdminView()
+          ));
         }
         else {
           ScaffoldMessenger.of(context)
