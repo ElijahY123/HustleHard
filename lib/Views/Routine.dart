@@ -151,7 +151,7 @@ class RoutineView extends StatelessWidget {
                       child: Center(
                           child: Text.rich(
                           TextSpan(
-                            text: 'Wednesday\n', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                            text: 'Wednesday\n', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                             children: <TextSpan>[
                               TextSpan(text: 'Overhead Triceps Extension\n', style: TextStyle(fontStyle: FontStyle.normal, fontWeight: FontWeight.normal, fontSize: 15)),
                               TextSpan(text: 'Side Curls\n', style: TextStyle(fontStyle: FontStyle.normal, fontWeight: FontWeight.normal, fontSize: 15)),
@@ -165,7 +165,7 @@ class RoutineView extends StatelessWidget {
                       child: Center(
                           child: Text.rich(
                           TextSpan(
-                            text: 'Wednesday\n', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                            text: 'Wednesday\n', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                             children: <TextSpan>[
                               TextSpan(text: 'Skater Squat\n', style: TextStyle(fontStyle: FontStyle.normal, fontWeight: FontWeight.normal, fontSize: 15)),
                               TextSpan(text: 'Tuck Jump\n', style: TextStyle(fontStyle: FontStyle.normal, fontWeight: FontWeight.normal, fontSize: 15)),
@@ -180,7 +180,7 @@ class RoutineView extends StatelessWidget {
                       child: Center(
                           child: Text.rich(
                           TextSpan(
-                            text: 'Wednesday\n', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                            text: 'Wednesday\n', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                             children: <TextSpan>[
                               TextSpan(text: 'Cross Chops\n', style: TextStyle(fontStyle: FontStyle.normal, fontWeight: FontWeight.normal, fontSize: 15)),
                               TextSpan(text: 'High Knees\n', style: TextStyle(fontStyle: FontStyle.normal, fontWeight: FontWeight.normal, fontSize: 15)),
