@@ -26,7 +26,9 @@ class MainPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xFF40C4FF),
       body: SafeArea(
-        child: Padding(
+        child: ListView(
+          children: [
+        Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -174,7 +176,9 @@ class MainPage extends StatelessWidget {
             ]
           ),
         ),
-      ),
+      ]
+    )
+    )
     );
     /*return Center(
       child: Text('GetFit', textAlign: TextAlign.center),
