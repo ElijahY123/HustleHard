@@ -8,7 +8,7 @@ class RoutineView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Workout Routines'),
+        title: Text('Workout Routines', style: GoogleFonts.abrilFatface(textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 35))),
       ),
 
       body: Center(
