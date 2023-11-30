@@ -235,7 +235,7 @@ class HomePage{
   final TextEditingController stepGoalController = TextEditingController();
   late Stream<StepCount> _stepCountStream;
   int stepCount = 0;
-  String  _steps = '?';
+  String  _steps = '0';
   int goal = 10000;
   double stepsPercent = 0;
 
