@@ -114,7 +114,7 @@ class UpperBodyPage extends StatelessWidget {
           ),
         ),
       ),
-      backgroundColor: Colors.lightBlueAccent[100],
+      backgroundColor: Colors.deepOrangeAccent[100],
       body: Scrollbar(
         controller: ScrollController(),
         thickness: 10,
@@ -720,7 +720,7 @@ class LowerBodyPage extends StatelessWidget {
           ),
         ),
       ),
-      backgroundColor: Colors.lightBlueAccent[100],
+      backgroundColor: Colors.green[200],
       body: Scrollbar(
         controller: ScrollController(),
         thickness: 10,
@@ -1502,7 +1502,7 @@ class CoreBodyPage extends StatelessWidget {
           ),
         ),
       ),
-      backgroundColor: Colors.lightBlueAccent[100],
+      backgroundColor: Colors.deepPurpleAccent[100],
       body: Scrollbar(
         controller: ScrollController(),
         thickness: 10,
