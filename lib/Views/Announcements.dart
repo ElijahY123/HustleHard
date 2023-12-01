@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -30,7 +31,7 @@ class SelectUser extends StatelessWidget {
                 image: Image.asset("assets/images/AnnouncementsIcon.png"),
                 borderRadius: 20,
                 blurRadius: 20,
-                offset: Offset(5,5),
+                offset: Offset(5, 5),
                 scale: 1.05,
               ),
               SizedBox(
@@ -41,11 +42,11 @@ class SelectUser extends StatelessWidget {
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => AdminLogin()));
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => AdminLogin()));
                     },
                     child: Text(
-                        'Admin',
+                      'Admin',
                       style: GoogleFonts.loveYaLikeASister(
                         textStyle: TextStyle(
                           fontWeight: FontWeight.bold,
@@ -55,9 +56,11 @@ class SelectUser extends StatelessWidget {
                       ),
                     ),
                     style: ElevatedButton.styleFrom(
-                      elevation: 22,
-                      padding: EdgeInsets.symmetric(vertical: 50,horizontal: 50,)
-                    ),
+                        elevation: 22,
+                        padding: EdgeInsets.symmetric(
+                          vertical: 50,
+                          horizontal: 50,
+                        )),
                   ),
                   SizedBox(
                     width: 20,
@@ -65,9 +68,9 @@ class SelectUser extends StatelessWidget {
                   ElevatedButton(
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => UserView()));
+                          builder: (context) => null as Widget));
                     },
-                    child:Text(
+                    child: Text(
                       'User',
                       style: GoogleFonts.loveYaLikeASister(
                         textStyle: TextStyle(
@@ -78,9 +81,11 @@ class SelectUser extends StatelessWidget {
                       ),
                     ),
                     style: ElevatedButton.styleFrom(
-                      elevation: 22,
-                        padding: EdgeInsets.symmetric(vertical: 50,horizontal: 50,)
-                    ),
+                        elevation: 22,
+                        padding: EdgeInsets.symmetric(
+                          vertical: 50,
+                          horizontal: 50,
+                        )),
                   ),
                 ],
               ),
@@ -157,7 +162,9 @@ class AdminCreateAccount extends StatelessWidget {
                   TextField(
                     decoration: InputDecoration(
                       hintText: 'Enter Password',
-                      hintStyle: const TextStyle(color: Colors.grey,),
+                      hintStyle: const TextStyle(
+                        color: Colors.grey,
+                      ),
                       fillColor: Colors.grey[300],
                       filled: true,
                       enabledBorder: OutlineInputBorder(
@@ -180,7 +187,9 @@ class AdminCreateAccount extends StatelessWidget {
                   TextField(
                     decoration: InputDecoration(
                       hintText: 'Confirm Password',
-                      hintStyle: const TextStyle(color: Colors.grey,),
+                      hintStyle: const TextStyle(
+                        color: Colors.grey,
+                      ),
                       fillColor: Colors.grey[300],
                       filled: true,
                       enabledBorder: OutlineInputBorder(
@@ -204,15 +213,17 @@ class AdminCreateAccount extends StatelessWidget {
                   GestureDetector(
                     onTap: () {
                       FocusScope.of(context).unfocus();
-                      if (confirmController.text.trim() == announcementModel.passWord) {
+                      if (confirmController.text.trim() ==
+                          announcementModel.passWord) {
                         announcementModel.addAccount(announcementModel.userName,
                             announcementModel.passWord);
-                        Navigator.pushReplacement(context,
-                            MaterialPageRoute(builder: (context) =>
-                                AdminLogin()));
-                      }
-                      else {
-                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AdminLogin()));
+                      } else {
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(const SnackBar(
                           content: Text("Passwords Do Not Match"),
                         ));
                       }
@@ -237,8 +248,10 @@ class AdminCreateAccount extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {
-                      Navigator.pushReplacement(context,
-                          MaterialPageRoute(builder: (context) => AdminLogin()));
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => AdminLogin()));
                     },
                     child: Text(
                       "Login",
@@ -322,7 +335,9 @@ class AdminLogin extends StatelessWidget {
                 TextField(
                   decoration: InputDecoration(
                     hintText: 'Enter Password',
-                    hintStyle: const TextStyle(color: Colors.grey,),
+                    hintStyle: const TextStyle(
+                      color: Colors.grey,
+                    ),
                     fillColor: Colors.grey[300],
                     filled: true,
                     enabledBorder: OutlineInputBorder(
@@ -370,17 +385,18 @@ class AdminLogin extends StatelessWidget {
                   height: 10,
                 ),
                 TextButton(
-                    onPressed: () {
-                      Navigator.pushReplacement(context,
-                          MaterialPageRoute(
-                              builder: (context) => AdminCreateAccount()));
-                    },
-                    child: Text(
-                        "Create Account",
-                      style: TextStyle(
-                        fontSize: 20,
-                      ),
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => AdminCreateAccount()));
+                  },
+                  child: Text(
+                    "Create Account",
+                    style: TextStyle(
+                      fontSize: 20,
                     ),
+                  ),
                 ),
               ],
             ),
@@ -398,7 +414,15 @@ class AdminView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Admin View"),
+        centerTitle: true,
+        title: Text(
+          "Groups",
+          style: GoogleFonts.sedgwickAve(
+              textStyle: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 30,
+          )),
+        ),
       ),
       backgroundColor: Colors.lightBlueAccent[100],
       body: SafeArea(
@@ -415,52 +439,91 @@ class AdminView extends StatelessWidget {
                     ),
                     onPressed: () {
                       showDialog(
-                          context: context,
-                          builder: (context) => AlertDialog(
-                            content:                   TextField(
-                              decoration: InputDecoration(
-                                hintText: 'Enter Group Name',
-                                hintStyle: const TextStyle(color: Colors.grey),
-                                fillColor: Colors.grey[300],
-                                filled: true,
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Colors.grey.shade300,
-                                  ),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Colors.black,
-                                  ),
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          content: TextField(
+                            decoration: InputDecoration(
+                              hintText: 'Enter Group Name',
+                              hintStyle: const TextStyle(color: Colors.grey),
+                              fillColor: Colors.grey[300],
+                              filled: true,
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.grey.shade300,
                                 ),
                               ),
-                              controller: announcementModel.usernameController,
-                              obscureText: false,
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.black,
+                                ),
+                              ),
                             ),
-                            actions: [
-                              TextButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                    announcementModel.addGroup(announcementModel.groupName);
-                                  },
-                                child: Text("Create"),
-                              ),
-                            ],
+                            controller: announcementModel.groupNameController,
+                            obscureText: false,
                           ),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                                announcementModel.addGroup(
+                                  announcementModel.groupName,
+                                );
+                              },
+                              child: Text("Create"),
+                            ),
+                          ],
+                        ),
                       );
                     },
                     child: Text("Create Group"),
                   ),
+                  SizedBox(
+                    height: 30,
+                  ),
                 ],
               ),
               StreamBuilder(
-                  stream: FirebaseFirestore.instance
-                      .collection('Admins').doc('$announcementModel.counter')
-                      .collection('Groups').doc('$announcementModel.counter').snapshots(),
-                  builder: (context, snapshot) {
-                    return ListView(
+                stream: FirebaseFirestore.instance
+                    .collection('Admins')
+                    .doc('0')
+                    .collection('Groups')
+                    .snapshots(),
+                builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: CircularProgressIndicator(),
                     );
-                  },
+                  }
+                  return Container(
+                    height: 200,
+                    child: ListView(
+                      children: snapshot.data!.docs.map((snap) {
+                        return Card(
+                          elevation: 30,
+                          child: ListTile(
+                            title: Text(
+                              snap['GroupName'].toString(),
+                              style: GoogleFonts.loveYaLikeASister(
+                                textStyle: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          GroupMessages()));
+                            },
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                  );
+                },
               ),
             ],
           ),
@@ -470,7 +533,68 @@ class AdminView extends StatelessWidget {
   }
 }
 
-class AdminMessaging extends StatelessWidget {
+class AdminView2 extends StatelessWidget {
+  AnnouncementModel announcementModel = AnnouncementModel();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text("Groups"),
+      ),
+      backgroundColor: Colors.lightBlueAccent[100],
+      body: StreamBuilder(
+        stream: FirebaseFirestore.instance
+            .collection('Admins')
+            .doc('0')
+            .collection('Groups')
+            .snapshots(),
+        builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (!snapshot.hasData) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          return Center(
+            child: Padding(
+              padding: const EdgeInsets.all(8),
+              child: Container(
+                child: ListView(
+                  children: snapshot.data!.docs.map((snap) {
+                    return Card(
+                      elevation: 30,
+                      child: ListTile(
+                        title: Text(
+                          snap['GroupName'].toString(),
+                          style: GoogleFonts.loveYaLikeASister(
+                            textStyle: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => GroupMessages()));
+                        },
+                      ),
+                    );
+                  }).toList(),
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class GroupMessages extends StatelessWidget {
   AnnouncementModel announcementModel = AnnouncementModel();
 
   @override
@@ -494,7 +618,11 @@ class AdminMessaging extends StatelessWidget {
               Expanded(
                 child: StreamBuilder(
                   stream: FirebaseFirestore.instance
-                      .collection('Announcements')
+                      .collection('Admins')
+                      .doc('$announcementModel.counter')
+                      .collection('Groups')
+                      .doc()
+                      .collection('Messages')
                       .orderBy(
                         'Date',
                         descending: false,
@@ -502,15 +630,17 @@ class AdminMessaging extends StatelessWidget {
                       .snapshots(),
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
-                      return ListView.builder(
-                        itemCount: snapshot.data!.docs.length,
-                        itemBuilder: (context, index) {
-                          final post = snapshot.data!.docs[index];
-                          return DisplayAnnouncements(
-                            message: post['Message'],
-                            time: post['Date'],
-                          );
-                        },
+                      return Center(
+                        child: ListView.builder(
+                          itemCount: snapshot.data!.docs.length,
+                          itemBuilder: (context, index) {
+                            final post = snapshot.data!.docs[index];
+                            return MessageBox(
+                              message: post['Message'],
+                              time: post['Date'],
+                            );
+                          },
+                        ),
                       );
                     }
                     return const Center(
@@ -567,59 +697,12 @@ class AdminMessaging extends StatelessWidget {
   }
 }
 
-class UserView extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Announcements'),
-      ),
-      body: SafeArea(
-        child: Center(
-          child: Column(
-            children: [
-              Expanded(
-                child: StreamBuilder(
-                  stream: FirebaseFirestore.instance
-                      .collection('Announcements')
-                      .orderBy(
-                        'Date',
-                        descending: false,
-                      )
-                      .snapshots(),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      return ListView.builder(
-                        itemCount: snapshot.data!.docs.length,
-                        itemBuilder: (context, index) {
-                          final post = snapshot.data!.docs[index];
-                          return DisplayAnnouncements(
-                            message: post['Message'],
-                            time: post['Date'],
-                          );
-                        },
-                      );
-                    }
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  },
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class DisplayAnnouncements extends StatelessWidget {
+class MessageBox extends StatelessWidget {
   AnnouncementModel announcementModel = AnnouncementModel();
   final String message;
   final String time;
 
-  DisplayAnnouncements({
+  MessageBox({
     required this.message,
     required this.time,
   });

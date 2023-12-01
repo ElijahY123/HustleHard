@@ -19,13 +19,8 @@ class AnnouncementModel {
 
   String error = " ";
   int counter = 0;
+  int docID = 0;
 
-  void addMessage(String message, String time) {
-    FirebaseFirestore.instance.collection('Announcements').add({
-      'Message': message,
-      'Date': time,
-    });
-  }
 
   void retrieveLoginInfo(BuildContext context) async {
     if (userName.isEmpty) {
@@ -39,12 +34,12 @@ class AnnouncementModel {
       ));
     }
     else {
-      DocumentSnapshot<Map<String, dynamic>> snap = await FirebaseFirestore.instance
+      QuerySnapshot snap = await FirebaseFirestore.instance
           .collection('Admins').doc('$counter')
-          .collection('AccountInfo').doc('$counter').get();
+          .collection('AccountInfo').get();
 
       try {
-        if (passWord == snap['Password']){
+        if (passWord == snap.docs[counter]['Password']){
           sharedPreferences = await SharedPreferences.getInstance();
           sharedPreferences.setString('Username', userName).then((_) {
           });
@@ -76,23 +71,33 @@ class AnnouncementModel {
   }
 
   void addAccount(String userName, String passWord) {
-    final Account = <String, String>{
-      "Username" : userName,
-      "Password" : passWord,
-    };
     FirebaseFirestore.instance
         .collection('Admins').doc('$counter')
-        .collection('AccountInfo').doc('$counter').set(Account);
+        .collection('AccountInfo').add({
+      'Username' : userName,
+      'Password' : passWord,
+    });
+    counter += 1;
   }
 
   void addGroup(String groupName) {
-    final Groups = <String, String>{
-      "GroupName" : groupName,
-    };
     FirebaseFirestore.instance
         .collection('Admins').doc('$counter')
-        .collection('Groups').doc('$counter').set(Groups);
+        .collection('Groups').doc('$docID')
+        .set({
+      'GroupName': groupName,
+    });
+    docID += 1;
   }
 
+  void addMessage(String message, String time,) {
+    FirebaseFirestore.instance
+        .collection('Admins').doc('$counter')
+        .collection('Groups').doc('$docID')
+        .collection('Messages'). add({
+      'Message' : message,
+      'Time' : time,
+    });
+  }
 
 }
