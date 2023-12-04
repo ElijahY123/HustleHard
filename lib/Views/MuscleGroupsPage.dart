@@ -98,6 +98,8 @@ class MuscleGroupsPage extends StatelessWidget {
   }
 }
 
+/// The UpperBody page starts here showcasing upper body workouts with pictures and descriptions.
+
 class UpperBodyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -703,6 +705,8 @@ class UpperBodyPage extends StatelessWidget {
     );
   }
 }
+
+/// Lower body page starts here and showcases leg workouts with pictures and descriptions.
 
 class LowerBodyPage extends StatelessWidget {
   @override
@@ -1485,6 +1489,8 @@ class LowerBodyPage extends StatelessWidget {
     );
   }
 }
+
+/// Core body page starts here and shows core workouts with pictures and descriptions.
 
 class CoreBodyPage extends StatelessWidget {
   @override
