@@ -65,8 +65,6 @@ class WorkoutModel {
   Position? position;
   List totalDistance = [];
   double distanceRan = 0.0;
-
-
   int seconds = 0,
       minutes = 0,
       hours = 0,
@@ -155,7 +153,6 @@ class WorkoutModel {
 
   void resetTimer(Timer? timer) {
     timer!.cancel();
-//    setState(() {
     seconds = 0;
     minutes = 0;
     hours = 0;
@@ -164,7 +161,6 @@ class WorkoutModel {
     digitHours = "00";
     timerStarted = false;
     resetLaps();
-//    });
   }
 
   void resetLaps() {
@@ -193,7 +189,6 @@ class HomePage{
   final TextEditingController stepGoalController = TextEditingController();
   late Stream<StepCount> _stepCountStream;
   int stepCount = 0;
-  String  _steps = '0';
   int goal = 10000;
   double stepsPercent = 0;
 
@@ -234,18 +229,13 @@ class HomePage{
     stepCount = event.steps;
   }
 
-  void onStepCountError(error) {
-    //setState
-    _steps = 'Step Count not available';
-  }
-
   int getStepGoal() {
     return goal;
   }
 
   void initPlatformState() {
     _stepCountStream = Pedometer.stepCountStream;
-    _stepCountStream.listen(onStepCount).onError(onStepCountError);
+    _stepCountStream.listen(onStepCount);
   }
 }
 
