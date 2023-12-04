@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../Model/CalorieData.dart'; // Import CalorieData
 
 class CalorieCounterView extends StatefulWidget {
@@ -23,10 +24,15 @@ class _CalorieCounterViewState extends State<CalorieCounterView> {
 
   @override
   Widget build(BuildContext context) {
+    double calorieProgress = widget.totalCalories / 2000;
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Calorie Counter'),
-        backgroundColor: Colors.green,
+        title: Text(
+          'Calorie Counter',
+          style: GoogleFonts.poppins(fontWeight: FontWeight.bold),
+        ),
+        backgroundColor: Colors.greenAccent,
       ),
       body: Center(
         child: SingleChildScrollView(
@@ -38,13 +44,44 @@ class _CalorieCounterViewState extends State<CalorieCounterView> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Total Daily Calories: ${widget.totalCalories}',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  'Total Daily Calories:',
+                  style: TextStyle(
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.greenAccent,
+                  ),
+                ),
+                SizedBox(height: 10),
+                Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    SizedBox(
+                      height: 150,
+                      width: 150,
+                      child: CircularProgressIndicator(
+                        value: calorieProgress,
+                        backgroundColor: Colors.grey[300],
+                        color: Colors.greenAccent,
+                        strokeWidth: 12,
+                      ),
+                    ),
+                    Text(
+                      '${widget.totalCalories} / 2000',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 ),
                 SizedBox(height: 10),
                 Text(
                   'Estimated /serving size & /hr of exercise',
-                  style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic, color: Colors.grey),
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontStyle: FontStyle.italic,
+                    color: Colors.grey,
+                  ),
                 ),
                 SizedBox(height: 20),
                 _buildTypeAheadFormField(),
@@ -66,11 +103,7 @@ class _CalorieCounterViewState extends State<CalorieCounterView> {
     return TypeAheadFormField(
       textFieldConfiguration: TextFieldConfiguration(
         controller: typeAheadController,
-        decoration: InputDecoration(
-          labelText: 'Search Food/Exercise',
-          border: OutlineInputBorder(),
-          suffixIcon: Icon(Icons.search),
-        ),
+        decoration: _inputDecoration('Search Food/Exercise'),
       ),
       suggestionsCallback: (pattern) {
         return CalorieData.searchItems(pattern);
@@ -90,10 +123,7 @@ class _CalorieCounterViewState extends State<CalorieCounterView> {
     return TextField(
       controller: manualEntryController,
       keyboardType: TextInputType.number,
-      decoration: InputDecoration(
-        labelText: 'Enter Calories Manually (+/-)',
-        border: OutlineInputBorder(),
-      ),
+      decoration: _inputDecoration('Enter Calories Manually (+/-)'),
     );
   }
 
@@ -110,7 +140,9 @@ class _CalorieCounterViewState extends State<CalorieCounterView> {
       },
       child: Text('Submit'),
       style: ElevatedButton.styleFrom(
-        foregroundColor: Colors.white, backgroundColor: Colors.green,
+        primary: Colors.greenAccent, // New button color
+        onPrimary: Colors.white, // Text color
+        textStyle: GoogleFonts.poppins(), // Custom font for button
       ),
     );
   }
@@ -122,5 +154,16 @@ class _CalorieCounterViewState extends State<CalorieCounterView> {
       style: TextStyle(color: Colors.red),
     )
         : Container();
+  }
+
+  InputDecoration _inputDecoration(String label) {
+    return InputDecoration(
+      labelText: label,
+      border: OutlineInputBorder(),
+      suffixIcon: label.contains('Search') ? Icon(Icons.search) : null,
+      labelStyle: GoogleFonts.lato(), // Custom font
+      fillColor: Colors.white,
+      filled: true,
+    );
   }
 }
