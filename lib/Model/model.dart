@@ -206,6 +206,7 @@ class HomePage{
   double stepsPercent = 0;
   double caloriesBurned = 0;
   double milesWalked = 0;
+  int previousStepCount = 0;
 
   TextEditingController getStepGoalController() {
     return stepGoalController;
@@ -241,7 +242,12 @@ class HomePage{
   }
 
   void onStepCount(StepCount event) {
-    stepCount = event.steps;
+    if (previousStepCount == 0) {
+      previousStepCount = event.steps;
+    }
+    else {
+      stepCount = event.steps - previousStepCount;
+    }
   }
 
   int getStepGoal() {
