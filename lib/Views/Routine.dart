@@ -64,6 +64,8 @@ class RoutineView extends StatelessWidget {
                     ),
                   ],
                 ),
+
+                /// Monday Workouts start here
                 TableRow(
                   decoration: const BoxDecoration(
                   ),
@@ -124,6 +126,8 @@ class RoutineView extends StatelessWidget {
                     ),
                   ],
                 ),
+
+                /// Tuesday Workouts Start here
                 TableRow(
                   decoration: const BoxDecoration(
                   ),
@@ -183,6 +187,8 @@ class RoutineView extends StatelessWidget {
                     ),
                   ],
                 ),
+
+                /// Wednesday Workouts start here
                 TableRow(
                   decoration: const BoxDecoration(
                   ),
@@ -244,6 +250,8 @@ class RoutineView extends StatelessWidget {
                     ),
                   ],
                 ),
+
+                /// Thursday Workouts start here
                 TableRow(
                   decoration: const BoxDecoration(
                   ),
@@ -304,6 +312,8 @@ class RoutineView extends StatelessWidget {
                     ),
                   ],
                 ),
+
+                /// Friday Workouts start here
                 TableRow(
                   decoration: const BoxDecoration(
                   ),
@@ -365,6 +375,8 @@ class RoutineView extends StatelessWidget {
                 ),
               ],
             ),
+
+            /// Button to go to the information/workouts page
             Align(
               alignment: Alignment.bottomCenter
               , child: Padding(
