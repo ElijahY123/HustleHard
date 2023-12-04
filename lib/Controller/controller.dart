@@ -1,6 +1,5 @@
 import 'package:firstapp/Views/MuscleGroupsPage.dart';
 import 'package:flutter/material.dart';
-import 'package:pedometer/pedometer.dart';
 import '../Model/model.dart';
 import '../Views/CalorieCounter.dart';
 import '../Views/Workout.dart';
@@ -165,6 +164,10 @@ class _FitnessControllerState extends State<FitnessController> {
   }
 
   Future<void> refresh() {
+    setState(() {
+      homeModel.calculateCaloriesBurned();
+      homeModel.calculateMilesWalked();
+    });
     return Future.delayed(Duration(seconds: 1));
   }
 
@@ -186,6 +189,8 @@ class _FitnessControllerState extends State<FitnessController> {
           getStepGoal: getStepGoal,
           refresh: refresh,
           steps: homeModel.stepCount.toString(),
+          caloriesBurned: homeModel.caloriesBurned,
+          milesWalked: homeModel.milesWalked,
         );
         break;
       case 1:

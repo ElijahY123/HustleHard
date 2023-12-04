@@ -191,6 +191,8 @@ class HomePage{
   int stepCount = 0;
   int goal = 10000;
   double stepsPercent = 0;
+  double caloriesBurned = 0;
+  double milesWalked = 0;
 
   TextEditingController getStepGoalController() {
     return stepGoalController;
@@ -236,6 +238,14 @@ class HomePage{
   void initPlatformState() {
     _stepCountStream = Pedometer.stepCountStream;
     _stepCountStream.listen(onStepCount);
+  }
+
+  void calculateCaloriesBurned() {
+    caloriesBurned = stepCount / 25;
+  }
+
+  void calculateMilesWalked() {
+    milesWalked = stepCount / 2000;
   }
 }
 

@@ -16,6 +16,8 @@ class MainPage extends StatelessWidget {
   final Function() getStepGoal;
   final Future<void> Function() refresh;
   String steps;
+  double caloriesBurned;
+  double milesWalked;
 
   MainPage({
     required this.getSteps,
@@ -25,7 +27,9 @@ class MainPage extends StatelessWidget {
     required this.updateStepGoal,
     required this.getStepGoal,
     required this.refresh,
-    required this.steps
+    required this.steps,
+    required this.caloriesBurned,
+    required this.milesWalked,
 });
 
   @override
@@ -53,16 +57,6 @@ class MainPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                /*Center(
-                  child: Text(
-                    "Goal: " + getStepGoal().toString(),
-                    style: TextStyle(
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),*/
                 SizedBox(
                   height: 30,
                 ),
@@ -103,7 +97,50 @@ class MainPage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 35,
+                  height: 20,
+                ),
+                Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Center(
+                        child: Icon(
+                          Icons.fastfood,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Center(
+                        child: Text(
+                            " Cal: " + caloriesBurned.toString(),
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.white
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Center(
+                        child: Icon(
+                          Icons.sports_football,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Center(
+                        child: Text(
+                          " Mi: " + milesWalked.toString(),
+                          style: TextStyle(
+                              fontSize: 15,
+                              color: Colors.white
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
                 ),
                 Center(
                   child: Column(
@@ -170,13 +207,10 @@ class MainPage extends StatelessWidget {
               ],
             ),
           ),
-      ]
-    ),
-        )
-    )
+            ]
+          ),
+        ),
+      ),
     );
-    /*return Center(
-      child: Text('GetFit', textAlign: TextAlign.center),
-    );*/
   }
 }
