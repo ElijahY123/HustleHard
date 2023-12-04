@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
 import "package:table_calendar/table_calendar.dart";
@@ -8,7 +7,8 @@ import "Event.dart";
 import 'package:pedometer/pedometer.dart';
 import 'dart:math';
 import 'CalorieData.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+
+// Selected Page Data
 
 class SelectedPage {
 
@@ -23,6 +23,8 @@ class SelectedPage {
 }
 
 }
+
+// Fitness model data
 
 class FitnessModel {
   int totalCalories = 0;
@@ -59,6 +61,9 @@ class FitnessModel {
     }
   }
 }
+
+// Workout Model for Workout View
+
 class WorkoutModel {
 
   final Distance distance = const Distance();
@@ -83,9 +88,16 @@ class WorkoutModel {
   WorkoutModel();
 
   void getCurrentPosition() async {
-    position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high
-    );
+    LocationPermission permission;
+    permission = await Geolocator.requestPermission();
+    if (permission == LocationPermission.denied) {
+      throw Exception("Location Not Available");
+    }
+    else {
+      position = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high
+      );
+    }
     addToTotalDistance();
     totalDistanceCalculator();
   }
@@ -184,6 +196,7 @@ class WorkoutModel {
   }
 }
 
+// Home page data for the home page view
 
 class HomePage{
   final TextEditingController stepGoalController = TextEditingController();

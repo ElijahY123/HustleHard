@@ -47,16 +47,6 @@ class MainPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Center(
-                  child: Text(
-                    "Hustle Hard",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 50.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
                 SizedBox(
                   height: 30,
                 ),
@@ -72,7 +62,7 @@ class MainPage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 Container(
                   height: 70,
@@ -85,6 +75,9 @@ class MainPage extends StatelessWidget {
                         ),
                       ),
                   ),
+                SizedBox(
+                  height: 10,
+                ),
                 SizedBox(
                   height: 20,
                   child: Text(
@@ -163,7 +156,7 @@ class MainPage extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        height: 10,
+                        height: 20,
                       ),
                       ElevatedButton(
                           onPressed: () {
@@ -207,6 +200,83 @@ class MainPage extends StatelessWidget {
               ],
             ),
           ),
+              const Center(
+                child: Text(
+                  "Pedometer",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 50.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              Center(
+                child: Text(
+                  "Goal: " + getStepGoal().toString(),
+                  style: TextStyle(
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              CircularPercentIndicator (
+                radius: 140,
+                lineWidth: 15.0,
+                percent: getStepsPercent(),
+                progressColor: Colors.indigoAccent,
+                center: Text(
+                  getSteps(),
+                  style: TextStyle(
+                    fontSize: 45,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              Center(
+                child: Column(
+                  children: [
+                    TextFormField(
+                      controller: stepGoalController,
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                        labelText: 'Enter Step Goal!',
+                        hintText: 'e.g., 10000',
+                        enabledBorder: InputBorder.none
+                      ),
+                    ),
+                    ElevatedButton(
+                        onPressed: () {
+                          if (isInputValid()) {
+                            updateStepGoal(int.parse(stepGoalController.text));
+                          }
+                          else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text("Input Invalid"),
+                                backgroundColor: Colors.red,
+                              ),
+                            );
+                          }
+                        },
+                        style: ButtonStyle(
+                          minimumSize: MaterialStateProperty.all(Size(50, 50)),
+                          shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(25),
+                          )),
+                        ),
+                        child: Icon(
+                            Icons.add,
+                          size: 25,
+                        ),
+                    ),
+                  ],
+                )
+              ),
+              SizedBox(
+                height: 40,
+              )
             ]
           ),
         ),
