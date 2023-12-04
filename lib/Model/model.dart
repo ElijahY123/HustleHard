@@ -188,48 +188,6 @@ class WorkoutModel {
   }
 }
 
-class IndividualBar {
-  final int x;
-  final double y;
-
-  IndividualBar({
-    required this.x,
-    required this.y
-  });
-}
-
-class BarData {
-  final double sunSteps;
-  final double monSteps;
-  final double tueSteps;
-  final double wedSteps;
-  final double thurSteps;
-  final double friSteps;
-  final double satSteps;
-
-  BarData({
-    required this.sunSteps,
-    required this.monSteps,
-    required this.tueSteps,
-    required this.wedSteps,
-    required this.thurSteps,
-    required this.friSteps,
-    required this.satSteps
-  });
-  List<IndividualBar> barData = [];
-
-  void initializeBarData() {
-    barData = [
-      IndividualBar(x: 0, y: sunSteps),
-      IndividualBar(x: 0, y: monSteps),
-      IndividualBar(x: 0, y: tueSteps),
-      IndividualBar(x: 0, y: wedSteps),
-      IndividualBar(x: 0, y:thurSteps),
-      IndividualBar(x: 0, y: friSteps),
-      IndividualBar(x: 0, y: satSteps)
-    ];
-  }
-}
 
 class HomePage{
   final TextEditingController stepGoalController = TextEditingController();
@@ -238,32 +196,6 @@ class HomePage{
   String  _steps = '0';
   int goal = 10000;
   double stepsPercent = 0;
-
-
-
-  BarData weeklyBarData = BarData(
-      sunSteps: 8080,
-      monSteps: 9290,
-      tueSteps: 2738,
-      wedSteps: 9283,
-      thurSteps: 9201,
-      friSteps: 2910,
-      satSteps: 2018
-  );
-
-/*  void addStepsToDB(double steps, String date) async {
-    FirebaseFirestore.instance.collection('Steps').add({
-      'Date' : date,
-      'steps' : steps
-    });
-  }
-
-  void getStepsFromDB(String date) async {
-    DatabaseReference ref = FirebaseDatabase.instance.ref("Steps");
-    DatabaseEvent event = await ref.once();
-
-    event.snapshot.value;
-  }*/
 
   TextEditingController getStepGoalController() {
     return stepGoalController;
@@ -281,7 +213,7 @@ class HomePage{
   }
 
   String getSteps() {
-    return _steps;
+    return stepCount.toString();
   }
 
   double getStepsPercent() {
@@ -289,21 +221,17 @@ class HomePage{
   }
 
   void updateStepsPercent() {
-    double stepsToInt = double.parse(_steps);
+    double stepsToInt = double.parse(stepCount.toString());
     if (stepsToInt > goal) {
       stepsPercent = 1;
     }
     else {
-      stepsPercent = double.parse(_steps) / goal;
+      stepsPercent = double.parse(stepCount.toString()) / goal;
     }
   }
 
   void onStepCount(StepCount event) {
     stepCount = event.steps;
-  }
-
-  void updateSteps() {
-    _steps = _steps;
   }
 
   void onStepCountError(error) {

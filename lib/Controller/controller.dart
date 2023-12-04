@@ -164,6 +164,10 @@ class _FitnessControllerState extends State<FitnessController> {
     homeModel.initPlatformState();
   }
 
+  Future<void> refresh() {
+    return Future.delayed(Duration(seconds: 1));
+  }
+
   // Navigation Rail
 
   SelectedPage pageSelected = SelectedPage();
@@ -180,6 +184,8 @@ class _FitnessControllerState extends State<FitnessController> {
           isInputValid: isInputValid,
           updateStepGoal: updateStepGoal,
           getStepGoal: getStepGoal,
+          refresh: refresh,
+          steps: homeModel.stepCount.toString(),
         );
         break;
       case 1:

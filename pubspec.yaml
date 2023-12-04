@@ -45,6 +45,7 @@ dependencies:
   fl_chart: ^0.64.0
   cloud_firestore: ^4.13.1
   readmore: ^2.2.0
+  font_awesome_flutter: ^10.6.0
 
 flutter_icons:
   android: "launcher_icon"

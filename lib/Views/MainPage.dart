@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+
+//ignore: must_be_immutable
 class MainPage extends StatelessWidget {
 
   final Function() getSteps;
@@ -10,6 +14,8 @@ class MainPage extends StatelessWidget {
   final Function() isInputValid;
   final Function(int) updateStepGoal;
   final Function() getStepGoal;
+  final Future<void> Function() refresh;
+  String steps;
 
   MainPage({
     required this.getSteps,
@@ -17,167 +23,156 @@ class MainPage extends StatelessWidget {
     required this.stepGoalController,
     required this.isInputValid,
     required this.updateStepGoal,
-    required this.getStepGoal
-
+    required this.getStepGoal,
+    required this.refresh,
+    required this.steps
 });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF40C4FF),
+      backgroundColor: Colors.black38, //Color(0xFF40C4FF),
       body: SafeArea(
-        child: ListView(
-          children: [
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
+        child: RefreshIndicator(
+          onRefresh: refresh,
+          child: ListView(
             children: [
-              const Center(
-                child: Text(
-                  "Get Fit",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 50.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              Center(
-                child: Text(
-                  "Goal: " + getStepGoal().toString(),
-                  style: TextStyle(
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              CircularPercentIndicator (
-                radius: 140,
-                lineWidth: 15.0,
-                percent: getStepsPercent(),
-                progressColor: Colors.indigoAccent,
-                center: Text(
-                  getSteps(),
-                  style: TextStyle(
-                    fontSize: 45,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              /*new Container(
-                padding: EdgeInsets.all(15),
-                child: Row(
-                  children: [
-                    Center(
-                      child: Icon(Icons.fastfood_outlined),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const Center(
+                  child: Text(
+                    "Hustle Hard",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 50.0,
+                      fontWeight: FontWeight.bold,
                     ),
-                    Center(
-                      child: Text(
-                        "  "+"320 Cal",
+                  ),
+                ),
+                /*Center(
+                  child: Text(
+                    "Goal: " + getStepGoal().toString(),
+                    style: TextStyle(
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),*/
+                SizedBox(
+                  height: 30,
+                ),
+                CircularPercentIndicator(
+                  radius: 140,
+                  lineWidth: 15.0,
+                  percent: getStepsPercent(),
+                  progressColor: Colors.lightBlueAccent,
+                  center: FaIcon(
+                    FontAwesomeIcons.personRunning,
+                    color: Colors.white,
+                    size: 140,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  height: 70,
+                  child: Text(
+                        steps,
                         style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black
+                          fontSize: 60,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
                         ),
                       ),
-                    ),
-                    Center(
-                      widthFactor: 18.0,
-                      child: Text(
-                        " "
-                      ),
-                    ),
-                    Center(
-                      child: Icon(Icons.snowshoeing),
-                    ),
-                    Center(
-                      child: Text(
-                        "  "+"3.2 Mi",
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),*/
-              SizedBox(
-                height: 30,
-              ),
-              new Container(
-                height: 200,
-                child: BarChart(
-                  BarChartData(
-                    gridData: FlGridData(show: false),
-                    maxY: 10000,
-                    minY: 0,
-                    backgroundColor: Colors.grey,
-                    borderData: FlBorderData(show: false),
-                    titlesData: FlTitlesData(
-                      show: true,
-                      topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                      rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                      leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-
-                      //bottomTitles: getBottomTitles
+                  ),
+                SizedBox(
+                  height: 20,
+                  child: Text(
+                    "/ " + getStepGoal().toString() + " Steps",
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
                     ),
                   ),
                 ),
-              ),
-              Center(
-                child: Column(
-                  children: [
-                    TextFormField(
-                      controller: stepGoalController,
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                        labelText: 'Enter Step Goal!',
-                        hintText: 'e.g., 10000',
-                        enabledBorder: InputBorder.none
+                SizedBox(
+                  height: 35,
+                ),
+                Center(
+                  child: Column(
+                    children: [
+                      TextFormField(
+                        controller: stepGoalController,
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                          labelText: 'Enter Step Goal!',
+                          hintText: 'e.g., 10000',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.white,
+                              width: 4.0
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
-                    ElevatedButton(
-                        onPressed: () {
-                          if (isInputValid()) {
-                            updateStepGoal(int.parse(stepGoalController.text));
-                          }
-                          else {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text("Input Invalid"),
-                                backgroundColor: Colors.red,
-                              ),
-                            );
-                          }
-                        },
-                        style: ButtonStyle(
-                          minimumSize: MaterialStateProperty.all(Size(50, 50)),
-                          shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(25),
-                          )),
-                        ),
-                        child: Icon(
-                            Icons.add,
-                          size: 40,
-                        ),
-                    ),
-                  ],
-                )
-              ),
-              SizedBox(
-                height: 30,
-              )
-            ]
+                      SizedBox(
+                        height: 10,
+                      ),
+                      ElevatedButton(
+                          onPressed: () {
+                            if (isInputValid()) {
+                              updateStepGoal(int.parse(stepGoalController.text));
+                            }
+                            else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text("Input Invalid"),
+                                  backgroundColor: Colors.red,
+                                ),
+                              );
+                            }
+                          },
+                          style: ButtonStyle(
+                            minimumSize: MaterialStateProperty.all(Size(50, 50)),
+                            shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25),
+                            )),
+                          ),
+                          child: Icon(
+                              Icons.add,
+                            size: 40,
+                          ),
+                      ),
+                    ],
+                  )
+                ),
+                SizedBox(
+                  height: 100,
+                ),
+                Text(
+                  "** Pull Down To Refresh **",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
       ]
-    )
+    ),
+        )
     )
     );
     /*return Center(
