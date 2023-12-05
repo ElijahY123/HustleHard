@@ -176,29 +176,7 @@ class _FitnessControllerState extends State<FitnessController> {
     });
     return Future.delayed(Duration(seconds: 1));
   }
-
-  // Navigation Rail
-
-  // Announcements
-  /**
-       void updateErrorHandler(var e, String error) {
-       setState(() {
-       adminLogin.errorHandler(e, error, context);
-       e = " ";
-       error = " ";
-       });
-       }
->>>>>>> main
-
-       void updateAnnouncementControllers() {
-       setState(() {
-       adminLogin.usernameController.clear();
-       adminLogin.passwordController.clear();
-       //      adminMessgaing.textController.clear();
-       });
-       }
-    **/
-
+  
   // Navigation Rail
   SelectedPage pageSelected = SelectedPage();
 
