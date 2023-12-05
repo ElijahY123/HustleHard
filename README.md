@@ -19,8 +19,10 @@ into multiple different pages with each page having its own features that a user
 
 ## Home Page
 
-The home page is a built in step counter that allows the user to input a step goal. The total steps are
-kept track of as well as the number of miles traveled and the amount of calories burned.
+The home page is a built in Pedometer that allows the user to input a step goal. The total steps are
+kept track of as well as the number of miles traveled and the amount of calories burned. To update
+the step count to the user, you can pull down on the screen to refresh to step count, miles walked,
+and calories burned
 
 ## Calendar Page
 
@@ -42,9 +44,9 @@ that are separated between arm, leg, and core exercises.
 
 ## Start Workout
 
-The start workout page is a distance/timer page it tracks the amount of distance traveled and it also is
-a timer that can be lapped as well so the user can time themselves running a certain distance and how 
-long it took them to complete a lap.
+The start workout page is a distance/timer page that tracks the amount of distance traveled in miles 
+during a workout and the amount of time taken to complete the workout. You can lap, pause, resume and 
+reset the timer as needed. 
 
 ## Video Guides
 
