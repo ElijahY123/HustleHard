@@ -87,6 +87,13 @@ class WorkoutModel {
 
   WorkoutModel();
 
+  /**
+   * Gets the current lattitude and longitude of the user, adds it to the total distance and calculates the total distance.
+   * @author: Ethan Schroers
+   * @param: none
+   * @return: none
+   */
+
   void getCurrentPosition() async {
     LocationPermission permission;
     permission = await Geolocator.requestPermission();
@@ -102,21 +109,42 @@ class WorkoutModel {
     totalDistanceCalculator();
   }
 
+  /**
+   * Adds the position to the array 'totalDistance'.
+   * @author: Ethan Schroers
+   * @param: none
+   * @return: none
+   */
+
   void addToTotalDistance() {
     totalDistance.add(position);
   }
+
+  /**
+   * Calculates the total distance travelled during a workout.
+   * @author: Ethan Schroers
+   * @param: none
+   * @return: none
+   */
 
   void totalDistanceCalculator() {
     if (totalDistance.length > 1) {
       for (int i = totalDistance.length - 1; i < totalDistance.length; i++) {
         Position p1 = totalDistance[i - 1];
         Position p2 = totalDistance[i];
-        distanceRan = distance.as(
+        distanceRan += distance.as(
             LengthUnit.Mile, LatLng(p1.latitude, p1.longitude),
             LatLng(p2.latitude, p2.longitude));
       }
     }
   }
+
+  /**
+   * Adds 1 second to the time and calculates the total time on the timer.
+   * @author: Ethan Schroers
+   * @param: none
+   * @return: none
+   */
 
   void setTime() {
     newSeconds = seconds + 1;
@@ -140,28 +168,69 @@ class WorkoutModel {
     digitHours = (hours >= 10) ? "$hours" : "0$hours";
   }
 
+  /**
+   * Returns the total distance as a string.
+   * @author: Ethan Schroers
+   * @param: none
+   * @return: "$distanceRan"
+   */
+
   String getDistanceRan() {
     return "$distanceRan";
   }
+
+  /**
+   * Returns if the workout is started or not.
+   * @author: Ethan Schroers
+   * @param: none
+   * @return: isWorkoutStarted
+   */
 
   bool getIsWorkoutStarted() {
     return isWorkoutStarted;
   }
 
+  /**
+   * Returns the total number of laps the user has during a workout.
+   * @author: Ethan Schroers
+   * @param: none
+   * @return: none
+   */
+
   List getLaps() {
     return laps;
   }
+
+  /**
+   * Sets 'time' to the current calculated time and returns it.
+   * @author: Ethan Schroers
+   * @param: none
+   * @return: String time
+   */
 
   String getTime() {
     time = "$digitHours:$digitMinutes:$digitSeconds";
     return time;
   }
 
+  /**
+   * Stops the timer and sets timerStarted to false.
+   * @author: Ethan Schroers
+   * @param: none
+   * @return: none
+   */
 
   void stopTimer(Timer? timer) {
     timer!.cancel();
     timerStarted = false;
   }
+
+  /**
+   * Resets the timer to 00:00:00 and resets all laps created by user.
+   * @author: Ethan Schroers
+   * @param: none
+   * @return: none
+   */
 
   void resetTimer(Timer? timer) {
     timer!.cancel();
@@ -175,18 +244,46 @@ class WorkoutModel {
     resetLaps();
   }
 
+  /**
+   * Resets all laps created by the user
+   * @author: Ethan Schroers
+   * @param: none
+   * @return: none
+   */
+
   void resetLaps() {
     laps = [];
   }
+
+  /**
+   * Adds a lap to the 'laps' array with the current time.
+   * @author: Ethan Schroers
+   * @param: none
+   * @return: none
+   */
 
   void addLaps() {
     String lap = "$digitHours:$digitMinutes:$digitSeconds";
     laps.add(lap);
   }
 
+  /**
+   * Returns if the timer is started or not.
+   * @author: Ethan Schroers
+   * @param: none
+   * @return: !timerStarted
+   */
+
   bool isTimerStarted() {
     return !timerStarted;
   }
+
+  /**
+   * Starts the timer at the start of the workout
+   * @author: Ethan Schroers
+   * @param: none
+   * @return: none
+   */
 
   void startTimer() {
     timerStarted = true;
@@ -206,16 +303,37 @@ class HomePage{
   double stepsPercent = 0;
   double caloriesBurned = 0;
   double milesWalked = 0;
-  int previousStepCount = 0;
+  int stepCountOffset = 0;
+
+  /**
+   * Returns the TextEditingController.
+   * @author: Ethan Schroers
+   * @param: none
+   * @return: stepGoalController
+   */
 
   TextEditingController getStepGoalController() {
     return stepGoalController;
   }
 
+  /**
+   * Validates the input for a new step goal.
+   * @author: Ethan Schroers
+   * @param: none
+   * @return: amount != null && amount > 0
+   */
+
   bool isInputValid() {
     final int? amount = int.tryParse(stepGoalController.text);
     return amount != null && amount > 0;
   }
+
+  /**
+   * Updates the user's step goal and calls updateStepsPercent().
+   * @author: Ethan Schroers
+   * @param: newGoal
+   * @return: none
+   */
 
   void updateStepGoal(int newGoal){
     goal = newGoal;
@@ -223,13 +341,23 @@ class HomePage{
     updateStepsPercent();
   }
 
-  String getSteps() {
-    return stepCount.toString();
-  }
+  /**
+   * Returns the percent completion of the step goal.
+   * @author: Ethan Schroers
+   * @param: none
+   * @return: stepsPercent
+   */
 
   double getStepsPercent() {
     return stepsPercent;
   }
+
+  /**
+   * Updates the percent completion of the step goal.
+   * @author: Ethan Schroers
+   * @param: none
+   * @return: none
+   */
 
   void updateStepsPercent() {
     double stepsToInt = double.parse(stepCount.toString());
@@ -241,27 +369,62 @@ class HomePage{
     }
   }
 
+  /**
+   * Updates the daily step count on the pedometer.
+   * @author: Ethan Schroers
+   * @param: StepCount event
+   * @return: none
+   */
+
   void onStepCount(StepCount event) {
-    if (previousStepCount == 0) {
-      previousStepCount = event.steps;
+    if (stepCountOffset == 0) {
+      stepCountOffset = event.steps;
     }
     else {
-      stepCount = event.steps - previousStepCount;
+      stepCount = event.steps - stepCountOffset;
     }
   }
+
+  /**
+   * Returns the current step goal.
+   * @author: Ethan Schroers
+   * @param: none
+   * @return: none
+   */
 
   int getStepGoal() {
     return goal;
   }
+
+  /**
+   * Gets the number of steps since the last reboot.
+   * @author: Ethan Schroers
+   * @param: none
+   * @return: none
+   */
 
   void initPlatformState() {
     _stepCountStream = Pedometer.stepCountStream;
     _stepCountStream.listen(onStepCount);
   }
 
+  /**
+   * Calculated the number of calories burned with the Pedometer.
+   * @author: Ethan Schroers
+   * @param: none
+   * @return: none
+   */
+
   void calculateCaloriesBurned() {
     caloriesBurned = stepCount / 25;
   }
+
+  /**
+   * Calculated the number of miles walked with the Pedometer.
+   * @author: Ethan Schroers
+   * @param: none
+   * @return: none
+   */
 
   void calculateMilesWalked() {
     milesWalked = stepCount / 2000;

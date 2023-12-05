@@ -8,7 +8,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 //ignore: must_be_immutable
 class MainPage extends StatelessWidget {
 
-  final Function() getSteps;
   final Function() getStepsPercent;
   final TextEditingController stepGoalController;
   final Function() isInputValid;
@@ -20,7 +19,6 @@ class MainPage extends StatelessWidget {
   double milesWalked;
 
   MainPage({
-    required this.getSteps,
     required this.getStepsPercent,
     required this.stepGoalController,
     required this.isInputValid,

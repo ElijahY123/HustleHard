@@ -141,14 +141,8 @@ class _FitnessControllerState extends State<FitnessController> {
   void initMainPageState() {
     setState(() {
       homeModel.initPlatformState();
-//      homeModel.updateSteps();
     });
   }
-
-  String getSteps() {
-    return homeModel.getSteps();
-  }
-
 
   double getStepsPercent() {
     return homeModel.getStepsPercent();
@@ -214,7 +208,6 @@ class _FitnessControllerState extends State<FitnessController> {
     switch (pageSelected.getSelectedIndex()) {
       case 0:
         page = MainPage(
-          getSteps: getSteps,
           getStepsPercent: getStepsPercent,
           stepGoalController: getStepGoalController(),
           isInputValid: isInputValid,
