@@ -22,7 +22,7 @@ into multiple different pages with each page having its own features that a user
 The home page is a built in Pedometer that allows the user to input a step goal. The total steps are
 kept track of as well as the number of miles traveled and the amount of calories burned. To update
 the step count to the user, you can pull down on the screen to refresh to step count, miles walked,
-and calories burned
+and calories burned.
 
 ## Calendar Page
 
