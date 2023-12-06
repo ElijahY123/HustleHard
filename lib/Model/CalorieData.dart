@@ -21,17 +21,22 @@ static Map<String, int> _data = {
   'Onion': 44,
   'Bell Pepper': 24,
   'Cauliflower': 25,
+  'Green Beans': 31,
 
   // Proteins
   'Chicken Breast': 165,
   'Salmon': 206,
   'Tuna': 99,
-  'Egg': 78,
   'Beef Steak': 679,
   'Pork Chop': 231,
   'Tofu': 144,
   'Chicken Nuggets': 285,
   'Bacon (per slice)': 43,
+  'Fried Egg': 90,
+  'Bacon': 50,
+  'Turkey': 200,
+  'Baked Beans': 140,
+
 
   // Dairy
   'Milk': 103,
@@ -60,13 +65,15 @@ static Map<String, int> _data = {
   'Cookie': 78,
   'Brownie': 132,
   'Cake': 140,
+  'Donut': 290,
+  'Danish': 106,
 
   // Beverages
   'Orange Juice': 117,
   'Apple Juice': 113,
   'Cranberry Juice': 117,
   'Beer': 154,
-  'Soda': 150,
+  'Soda/Pop': 160,
   'Chocolate Milk': 209,
 
   // Meal items
@@ -74,15 +81,37 @@ static Map<String, int> _data = {
   'Hamburger': 354,
   'French Fries': 365,
   'Spaghetti': 221,
-  'Hot Dog': 151,
+  'Hot Dog': 220,
   'Chicken Noodle Soup (can)': 246,
+  'Sandwich': 350,
+  'Submarine Sandwich (6")': 425,
+  'Submarine Sandwich (12")': 850,
+  'Breakfast Biscuit/Croissant': 450,
+  'Waffle': 310,
+  'Breakfast Muffin': 400,
+  'Pancake': 160,
+  'French Toast': 150,
+  'Bagel': 250,
+  'Hashbrown': 120,
+  'Cereal': 200,
+  'Stuffing': 380,
+  'Mashed Potatoes': 214,
+  'Baked Potato': 161,
+  'Cob of Corn': 155,
+  'Sweet Corn': 177,
+  'Taco': 156,
+  'Macaroni and Cheese': 310,
+  'Box of Macaroni and Cheese': 950,
+
+
+
 
   // Exercises/Sports
   'Golf': -350,
   'Basketball': -450,
   'Aerobics': -530,
-  'Light Lifting (light workout)': -490,
-  'Heavy Lifting (heavy workout)': -245,
+  'Light Lifting (light workout)': -245,
+  'Heavy Lifting (heavy workout)': -490,
   'Badminton': -348,
   'Tennis': -500,
   'Ping Pong': -327,

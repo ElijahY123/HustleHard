@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class VideoInfo {
   final String topic;
@@ -26,11 +27,17 @@ class YoutubeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Video Guides'),
-        backgroundColor: Colors.blue, // Customize the app bar color
+        title: Text(
+          'Video Guides',
+          style: GoogleFonts.poppins(
+            fontWeight: FontWeight.bold,
+            fontSize: 26,
+          ),
+        ),
+        backgroundColor: Colors.red, // Customize the app bar color
       ),
       body: Container(
-        color: Colors.grey[200], // Customize the background color
+        color: Colors.black12, // Customize the background color
         child: ListView.builder(
           itemCount: videoInfos.length,
           itemBuilder: (context, index) {
