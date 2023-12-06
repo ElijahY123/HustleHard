@@ -1,4 +1,4 @@
-import 'YoutubeView.dart';
+import '../Views/YoutubeView.dart';
 
 class VideoRepository {
   static final List<VideoInfo> _videoInfos = [

@@ -21,10 +21,12 @@ class CalorieCounterView extends StatefulWidget {
 class _CalorieCounterViewState extends State<CalorieCounterView> {
   final TextEditingController typeAheadController = TextEditingController();
   final TextEditingController manualEntryController = TextEditingController();
+  final TextEditingController calorieGoalController = TextEditingController(text: '2000'); // Default goal
+  int calorieGoal = 2000; // Default goal
 
   @override
   Widget build(BuildContext context) {
-    double calorieProgress = widget.totalCalories / 2000;
+    double calorieProgress = widget.totalCalories / calorieGoal; // Use dynamic calorie goal
 
     return Scaffold(
       appBar: AppBar(
@@ -33,6 +35,12 @@ class _CalorieCounterViewState extends State<CalorieCounterView> {
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.greenAccent,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.settings),
+            onPressed: _showCalorieGoalDialog,
+          ),
+        ],
       ),
       body: Center(
         child: SingleChildScrollView(
@@ -66,7 +74,7 @@ class _CalorieCounterViewState extends State<CalorieCounterView> {
                       ),
                     ),
                     Text(
-                      '${widget.totalCalories} / 2000',
+                      '${widget.totalCalories} / $calorieGoal',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -164,6 +172,34 @@ class _CalorieCounterViewState extends State<CalorieCounterView> {
       labelStyle: GoogleFonts.lato(), // Custom font
       fillColor: Colors.white,
       filled: true,
+    );
+  }
+
+  // Method to show dialog for setting calorie goal
+  void _showCalorieGoalDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Set Calorie Goal'),
+          content: TextField(
+            controller: calorieGoalController,
+            keyboardType: TextInputType.number,
+            decoration: InputDecoration(hintText: "Enter your calorie goal"),
+          ),
+          actions: <Widget>[
+            ElevatedButton(
+              child: Text('Set Goal'),
+              onPressed: () {
+                setState(() {
+                  calorieGoal = int.tryParse(calorieGoalController.text) ?? 2000;
+                });
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }

@@ -10,7 +10,7 @@ import 'package:firstapp/Views/Calendar.dart';
 import 'package:firstapp/Views/YoutubeView.dart';
 import 'dart:async';
 import 'package:firstapp/Views/Routine.dart';
-import '../Views/VideoRepository.dart';
+import '../Model/VideoRepository.dart';
 
 class FitnessController extends StatefulWidget {
   @override
