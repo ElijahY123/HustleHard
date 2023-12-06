@@ -20,6 +20,12 @@ class AnnouncementModel {
 
   String error = " ";
 
+  /**
+   * Checks the Firestore Database for a Username and Password created.
+   * @author: Elijah Yeboah
+   * @param: Context - Helps navigate to AdminView if successful.
+   * @return: none
+   */
   void retrieveLoginInfo(BuildContext context) async {
     if (userName.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
@@ -66,6 +72,13 @@ class AnnouncementModel {
     }
   }
 
+  /**
+   * Adds username and password to collection Admins on Firebase.
+   * @author: Elijah Yeboah
+   * @param: Username - Takes in a string username.
+   * @param: Password - Takes in a string password.
+   * @return: none
+   */
   void addAccount(String userName, String passWord) {
     FirebaseFirestore.instance.collection('Admins').add({
       'Username': userName,
@@ -73,6 +86,13 @@ class AnnouncementModel {
     });
   }
 
+  /**
+   * Adds group name to subcollection Workout Groups on Firebase.
+   * @author: Elijah Yeboah
+   * @param: GroupName - Takes in a string group name.
+   * @param: Context - Builds a widget of the group name.
+   * @return: none
+   */
   void addGroup(String groupName, BuildContext context) {
     adminsRef.get().then((QuerySnapshot snapshot) {
       snapshot.docs.forEach((DocumentSnapshot doc) {
@@ -92,12 +112,27 @@ class AnnouncementModel {
     getGroups(groupName);
   }
 
+  /**
+   * Retrieves group name from collection Admins and stores in a new collection
+   * Workout Groups later for the User View.
+   * @author: Elijah Yeboah
+   * @param: GroupName - Takes in a string group name.
+   * @return: none
+   */
   void getGroups(String groupName) {
     FirebaseFirestore.instance
         .collection('Workout Groups')
         .add({'GroupName': groupName,});
   }
 
+  /**
+   * Adds message and time to collection Admins, subcollection Workout Groups
+   * , subcollection Messages on Firebase.
+   * @author: Elijah Yeboah
+   * @param: Message - Takes in a string string.
+   * @param: Time - Takes in a string time.
+   * @return: none
+   */
   void addMessage(String message, String time) {
     adminsRef.get().then((QuerySnapshot snapshot) {
       snapshot.docs.forEach((DocumentSnapshot doc) {
@@ -122,22 +157,19 @@ class AnnouncementModel {
             });
           });
           getMessage(message, time);
-          getMessages(groupName, message, time);
         });
       });
     });
   }
 
-  void getMessages(String groupName, String message, String time) {
-    FirebaseFirestore.instance
-        .collection('Messages')
-        .add({
-      'GroupName': groupName,
-      'Message': message,
-      'Date': time,
-    });
-  }
-
+  /**
+   * Adds message and time to collection Workout Groups
+   * , subcollection Messages on Firebase later for User View use.
+   * @author: Elijah Yeboah
+   * @param: Message - Takes in a string string.
+   * @param: Time - Takes in a string time.
+   * @return: none
+   */
   void getMessage(String message, String time) {
     groupsRef2.get().then((QuerySnapshot snapshot) {
       snapshot.docs.forEach((DocumentSnapshot doc) {

@@ -64,6 +64,7 @@ on the specific workouts in question.
 
 ## Announcements
 
-The Announcements page allows users to receive notifications from admins. Admins would be the leader
-of workout groups or personal trainers who can send notifications to any member of there group. With
-group members being remembered through a firebase database of users and admins.
+The Announcements page allows personal trainers who are interested in starting a workout page.
+Create an account, group and post on its message board within the Announcements page. Allowing users
+then to able to view the message board for whatever group then later attend those sessions. And all 
+these features are implemented using Firebase.

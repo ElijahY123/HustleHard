@@ -21,74 +21,76 @@ class SelectUser extends StatelessWidget {
         ),
       ),
       backgroundColor: Colors.lightBlueAccent[100],
-      body: SafeArea(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              DropShadowImage(
-                image: Image.asset("assets/images/AnnouncementsIcon.png"),
-                borderRadius: 20,
-                blurRadius: 20,
-                offset: Offset(5, 5),
-                scale: 1.05,
-              ),
-              SizedBox(
-                height: 25,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => AdminLogin()));
-                    },
-                    child: Text(
-                      'Admin',
-                      style: GoogleFonts.loveYaLikeASister(
-                        textStyle: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 30,
-                          color: Colors.black,
+      body: Scrollbar(
+        child: SafeArea(
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                DropShadowImage(
+                  image: Image.asset("assets/images/AnnouncementsIcon.png"),
+                  borderRadius: 20,
+                  blurRadius: 20,
+                  offset: Offset(5, 5),
+                  scale: 1.05,
+                ),
+                SizedBox(
+                  height: 25,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => AdminLogin()));
+                      },
+                      child: Text(
+                        'Admin',
+                        style: GoogleFonts.loveYaLikeASister(
+                          textStyle: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 30,
+                            color: Colors.black,
+                          ),
                         ),
                       ),
+                      style: ElevatedButton.styleFrom(
+                          elevation: 22,
+                          padding: EdgeInsets.symmetric(
+                            vertical: 50,
+                            horizontal: 50,
+                          )),
                     ),
-                    style: ElevatedButton.styleFrom(
-                        elevation: 22,
-                        padding: EdgeInsets.symmetric(
-                          vertical: 50,
-                          horizontal: 50,
-                        )),
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => UserView()));
-                    },
-                    child: Text(
-                      'User',
-                      style: GoogleFonts.loveYaLikeASister(
-                        textStyle: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 30,
-                          color: Colors.black,
+                    SizedBox(
+                      width: 20,
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) => UserView()));
+                      },
+                      child: Text(
+                        'User',
+                        style: GoogleFonts.loveYaLikeASister(
+                          textStyle: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 30,
+                            color: Colors.black,
+                          ),
                         ),
                       ),
+                      style: ElevatedButton.styleFrom(
+                          elevation: 22,
+                          padding: EdgeInsets.symmetric(
+                            vertical: 50,
+                            horizontal: 50,
+                          )),
                     ),
-                    style: ElevatedButton.styleFrom(
-                        elevation: 22,
-                        padding: EdgeInsets.symmetric(
-                          vertical: 50,
-                          horizontal: 50,
-                        )),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -107,14 +109,189 @@ class AdminCreateAccount extends StatelessWidget {
         backgroundColor: Colors.lightBlueAccent[200],
       ),
       backgroundColor: Colors.lightBlueAccent[100],
-      body: ListView(
-        children: [
-          SafeArea(
+      body: Scrollbar(
+        child: ListView(
+          children: [
+            SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 15.0,
+                ),
+                child: Column(
+                  children: [
+                    Image.asset(
+                      "assets/images/AdminIcon.png",
+                      height: 100,
+                      width: 100,
+                    ),
+                    Text(
+                      "Create Username and Password to Signup",
+                      style: GoogleFonts.sedgwickAve(
+                        textStyle: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 25,
+                    ),
+                    // username textbox
+                    TextField(
+                      decoration: InputDecoration(
+                        hintText: 'Enter Username',
+                        hintStyle: const TextStyle(color: Colors.grey),
+                        fillColor: Colors.grey[300],
+                        filled: true,
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.grey.shade300,
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                      controller: announcementModel.usernameController,
+                      obscureText: false,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    // password textbox
+                    TextField(
+                      decoration: InputDecoration(
+                        hintText: 'Enter Password',
+                        hintStyle: const TextStyle(
+                          color: Colors.grey,
+                        ),
+                        fillColor: Colors.grey[300],
+                        filled: true,
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.grey.shade300,
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                      controller: announcementModel.passwordController,
+                      obscureText: true,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    TextField(
+                      decoration: InputDecoration(
+                        hintText: 'Confirm Password',
+                        hintStyle: const TextStyle(
+                          color: Colors.grey,
+                        ),
+                        fillColor: Colors.grey[300],
+                        filled: true,
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.grey.shade300,
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                      controller: confirmController,
+                      obscureText: true,
+                    ),
+                    // login button
+                    SizedBox(
+                      height: 10,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        FocusScope.of(context).unfocus();
+                        if (confirmController.text.trim() ==
+                            announcementModel.passWord) {
+                          announcementModel.addAccount(announcementModel.userName,
+                              announcementModel.passWord);
+                          Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (context) => AdminLogin()));
+                        } else {
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(const SnackBar(
+                            content: Text("Passwords Do Not Match"),
+                          ));
+                        }
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(15),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(9),
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Signup',
+                            style: TextStyle(
+                              color: Colors.lightBlueAccent[200],
+                              fontWeight: FontWeight.bold,
+                              fontSize: 24,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AdminLogin()));
+                      },
+                      child: Text(
+                        "Login",
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class AdminLogin extends StatelessWidget {
+  AnnouncementModel announcementModel = AnnouncementModel();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.lightBlueAccent[200],
+      ),
+      backgroundColor: Colors.lightBlueAccent[100],
+      body: Scrollbar(
+        child: SafeArea(
+          child: Center(
             child: Padding(
               padding: const EdgeInsets.symmetric(
-                horizontal: 15.0,
+                horizontal: 25.0,
               ),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
                     "assets/images/AdminIcon.png",
@@ -122,7 +299,7 @@ class AdminCreateAccount extends StatelessWidget {
                     width: 100,
                   ),
                   Text(
-                    "Create Username and Password to Signup",
+                    "Enter Username and Password to Login",
                     style: GoogleFonts.sedgwickAve(
                       textStyle: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -180,62 +357,24 @@ class AdminCreateAccount extends StatelessWidget {
                     controller: announcementModel.passwordController,
                     obscureText: true,
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Confirm Password',
-                      hintStyle: const TextStyle(
-                        color: Colors.grey,
-                      ),
-                      fillColor: Colors.grey[300],
-                      filled: true,
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.grey.shade300,
-                        ),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
-                    controller: confirmController,
-                    obscureText: true,
-                  ),
                   // login button
                   SizedBox(
                     height: 10,
                   ),
                   GestureDetector(
-                    onTap: () {
+                    onTap: () async {
                       FocusScope.of(context).unfocus();
-                      if (confirmController.text.trim() ==
-                          announcementModel.passWord) {
-                        announcementModel.addAccount(announcementModel.userName,
-                            announcementModel.passWord);
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => AdminLogin()));
-                      } else {
-                        ScaffoldMessenger.of(context)
-                            .showSnackBar(const SnackBar(
-                          content: Text("Passwords Do Not Match"),
-                        ));
-                      }
+                      announcementModel.retrieveLoginInfo(context);
                     },
                     child: Container(
-                      padding: const EdgeInsets.all(15),
+                      padding: const EdgeInsets.all(25),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(9),
                       ),
                       child: Center(
                         child: Text(
-                          'Signup',
+                          'Login',
                           style: TextStyle(
                             color: Colors.lightBlueAccent[200],
                             fontWeight: FontWeight.bold,
@@ -245,15 +384,18 @@ class AdminCreateAccount extends StatelessWidget {
                       ),
                     ),
                   ),
+                  SizedBox(
+                    height: 10,
+                  ),
                   TextButton(
                     onPressed: () {
                       Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => AdminLogin()));
+                              builder: (context) => AdminCreateAccount()));
                     },
                     child: Text(
-                      "Login",
+                      "Create Account",
                       style: TextStyle(
                         fontSize: 20,
                       ),
@@ -261,143 +403,6 @@ class AdminCreateAccount extends StatelessWidget {
                   ),
                 ],
               ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class AdminLogin extends StatelessWidget {
-  AnnouncementModel announcementModel = AnnouncementModel();
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.lightBlueAccent[200],
-      ),
-      backgroundColor: Colors.lightBlueAccent[100],
-      body: SafeArea(
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 25.0,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  "assets/images/AdminIcon.png",
-                  height: 100,
-                  width: 100,
-                ),
-                Text(
-                  "Enter Username and Password to Login",
-                  style: GoogleFonts.sedgwickAve(
-                    textStyle: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15,
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 25,
-                ),
-                // username textbox
-                TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Enter Username',
-                    hintStyle: const TextStyle(color: Colors.grey),
-                    fillColor: Colors.grey[300],
-                    filled: true,
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.grey.shade300,
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  controller: announcementModel.usernameController,
-                  obscureText: false,
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                // password textbox
-                TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Enter Password',
-                    hintStyle: const TextStyle(
-                      color: Colors.grey,
-                    ),
-                    fillColor: Colors.grey[300],
-                    filled: true,
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.grey.shade300,
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  controller: announcementModel.passwordController,
-                  obscureText: true,
-                ),
-                // login button
-                SizedBox(
-                  height: 10,
-                ),
-                GestureDetector(
-                  onTap: () async {
-                    FocusScope.of(context).unfocus();
-                    announcementModel.retrieveLoginInfo(context);
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.all(25),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(9),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Login',
-                        style: TextStyle(
-                          color: Colors.lightBlueAccent[200],
-                          fontWeight: FontWeight.bold,
-                          fontSize: 24,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => AdminCreateAccount()));
-                  },
-                  child: Text(
-                    "Create Account",
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-              ],
             ),
           ),
         ),
@@ -418,9 +423,9 @@ class AdminView extends StatelessWidget {
           "Groups",
           style: GoogleFonts.sedgwickAve(
               textStyle: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 30,
-          )),
+                fontWeight: FontWeight.bold,
+                fontSize: 30,
+              )),
         ),
         actions: [
           IconButton(
@@ -466,7 +471,7 @@ class AdminView extends StatelessWidget {
   Widget _buildGroupsList(BuildContext context) {
     return StreamBuilder(
       stream:
-          FirebaseFirestore.instance.collection('Workout Groups').snapshots(),
+      FirebaseFirestore.instance.collection('Workout Groups').snapshots(),
       builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (!snapshot.hasData) {
           return Center(
@@ -561,7 +566,6 @@ class AdminView extends StatelessWidget {
 }
 
 class UserView extends StatelessWidget {
-  var docId;
   final groupsRef2 = FirebaseFirestore.instance.collection('Workout Groups');
 
   @override
@@ -578,7 +582,7 @@ class UserView extends StatelessWidget {
         ),
       )),
       backgroundColor: Colors.lightBlueAccent[100],
-      body: _buildGroupsList(context),
+      body: Scrollbar(child: _buildGroupsList(context)),
     );
   }
 
@@ -627,9 +631,7 @@ class UserView extends StatelessWidget {
                   snapshot.docs.forEach((DocumentSnapshot doc2) {
                     groupsRef.doc(doc2.id).get().then((DocumentSnapshot doc2) {
                       if (snap['GroupName'].toString() == doc['GroupName']) {
-                        print(doc2.data());
-                        Navigator.pushReplacement(
-                            context,
+                        Navigator.of(context).push(
                             MaterialPageRoute(
                                 builder: (context) => UserMessages(
                                       data: doc2.data(),
@@ -699,6 +701,7 @@ class AdminMessages extends StatelessWidget {
               controller: announcementModel.groupNameController,
             ),
           ),
+          _buildMessage(context),
           Row(
             children: [
               Expanded(
@@ -745,9 +748,9 @@ class AdminMessages extends StatelessWidget {
         stream: FirebaseFirestore.instance
             .collection('Messages')
             .orderBy(
-              'Date',
-              descending: false,
-            )
+          'Date',
+          descending: false,
+        )
             .snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
@@ -780,6 +783,7 @@ class UserMessages extends StatelessWidget {
   UserMessages({
     required this.data,
   });
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -796,18 +800,24 @@ class UserMessages extends StatelessWidget {
           ),
         ),
       ),
-      body: _buildMessage(context),
+      body:Scrollbar(child: _buildMessage(context)),
     );
   }
 
   Widget _buildMessage(BuildContext context) {
-    return Scrollbar(
-      child: MessageBox(
-        message: data['Message'],
-        time: data['Date'],
-      ),
-    );
+      return Center(
+        child: ListView.builder(
+          itemCount: data.length,
+          itemBuilder: (context, index) {
+            return MessageBox(
+              message: data['Message'],
+              time: data['Date'],
+            );
+          },
+        ),
+      );
   }
+  
 }
 
 class MessageBox extends StatelessWidget {
