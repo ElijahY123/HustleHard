@@ -1,6 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+/**
+ *  @Author Elijah Y and Ethan Ness
+ *
+ *  @Description: Workouts information page split between 3 areas
+ *
+ *  @Sources: Links for sources of information:
+ *  https://medlineplus.gov/exerciseandphysicalfitness.html
+ *  https://www.health.harvard.edu/exercise-and-fitness/the-4-most-important-types-of-exercise
+ *  https://www.nia.nih.gov/health/exercise-and-physical-activity/four-types-exercise-can-improve-your-health-and-physical
+ *  https://www.healthline.com/health/fitness-exercise/10-best-exercises-everyday
+ *  https://www.healthline.com/nutrition/how-to-start-exercising
+ *
+ */
+
 class MuscleGroupsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -91,6 +105,23 @@ class MuscleGroupsPage extends StatelessWidget {
                 elevation: 20,
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                  'Sources used for the Workouts information \n'
+                  'https://medlineplus.gov/exerciseandphysicalfitness.html\n'
+                  'https://www.health.harvard.edu/exercise-and-fitness/the-4-most-important-types-of-exercise\n'
+                  'https://www.nia.nih.gov/health/exercise-and-physical-activity/four-types-exercise-can-improve-your-health-and-physical\n'
+                  'https://www.healthline.com/health/fitness-exercise/10-best-exercises-everyday\n'
+                  'https://www.healthline.com/nutrition/how-to-start-exercising\n',
+                style: GoogleFonts.sedgwickAve(
+              textStyle: TextStyle(
+              fontSize: 15,
+                color: Colors.black,
+              ),
+              ),
+              ),
+            )
           ],
         ),
       ),
