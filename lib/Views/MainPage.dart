@@ -8,7 +8,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 //ignore: must_be_immutable
 class MainPage extends StatelessWidget {
 
-  final Function() getStepsPercent;
   final TextEditingController stepGoalController;
   final Function() isInputValid;
   final Function(int) updateStepGoal;
@@ -17,9 +16,9 @@ class MainPage extends StatelessWidget {
   String steps;
   double caloriesBurned;
   double milesWalked;
+  double stepsPercent;
 
   MainPage({
-    required this.getStepsPercent,
     required this.stepGoalController,
     required this.isInputValid,
     required this.updateStepGoal,
@@ -28,7 +27,8 @@ class MainPage extends StatelessWidget {
     required this.steps,
     required this.caloriesBurned,
     required this.milesWalked,
-  });
+    required this.stepsPercent
+});
 
   @override
   Widget build(BuildContext context) {
@@ -39,32 +39,32 @@ class MainPage extends StatelessWidget {
           onRefresh: refresh,
           child: ListView(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      height: 30,
-                    ),
-                    CircularPercentIndicator(
-                      radius: 140,
-                      lineWidth: 15.0,
-                      percent: getStepsPercent(),
-                      progressColor: Colors.lightBlueAccent,
-                      center: FaIcon(
-                        FontAwesomeIcons.personRunning,
-                        color: Colors.white,
-                        size: 140,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      height: 70,
-                      child: Text(
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 30,
+                ),
+                CircularPercentIndicator(
+                  radius: 140,
+                  lineWidth: 15.0,
+                  percent: stepsPercent,
+                  progressColor: Colors.lightBlueAccent,
+                  center: FaIcon(
+                    FontAwesomeIcons.personRunning,
+                    color: Colors.white,
+                    size: 140,
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 70,
+                  child: Text(
                         steps,
                         style: TextStyle(
                           fontSize: 60,

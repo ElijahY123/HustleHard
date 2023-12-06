@@ -341,24 +341,6 @@ class HomePage{
     updateStepsPercent();
   }
 
-  /**
-   * Returns the percent completion of the step goal.
-   * @author: Ethan Schroers
-   * @param: none
-   * @return: stepsPercent
-   */
-
-  double getStepsPercent() {
-    return stepsPercent;
-  }
-
-  /**
-   * Updates the percent completion of the step goal.
-   * @author: Ethan Schroers
-   * @param: none
-   * @return: none
-   */
-
   void updateStepsPercent() {
     double stepsToInt = double.parse(stepCount.toString());
     if (stepsToInt > goal) {

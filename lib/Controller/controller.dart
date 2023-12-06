@@ -144,10 +144,6 @@ class _FitnessControllerState extends State<FitnessController> {
     });
   }
 
-  double getStepsPercent() {
-    return homeModel.getStepsPercent();
-  }
-
   TextEditingController getStepGoalController() {
     return homeModel.getStepGoalController();
   }
@@ -173,6 +169,7 @@ class _FitnessControllerState extends State<FitnessController> {
     setState(() {
       homeModel.calculateCaloriesBurned();
       homeModel.calculateMilesWalked();
+      homeModel.updateStepsPercent();
     });
     return Future.delayed(Duration(seconds: 1));
   }
@@ -186,7 +183,6 @@ class _FitnessControllerState extends State<FitnessController> {
     switch (pageSelected.getSelectedIndex()) {
       case 0:
         page = MainPage(
-          getStepsPercent: getStepsPercent,
           stepGoalController: getStepGoalController(),
           isInputValid: isInputValid,
           updateStepGoal: updateStepGoal,
@@ -195,6 +191,7 @@ class _FitnessControllerState extends State<FitnessController> {
           steps: homeModel.stepCount.toString(),
           caloriesBurned: homeModel.caloriesBurned,
           milesWalked: homeModel.milesWalked,
+          stepsPercent: homeModel.stepsPercent,
         );
         break;
       case 1:
