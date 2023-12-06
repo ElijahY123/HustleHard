@@ -98,6 +98,8 @@ class MuscleGroupsPage extends StatelessWidget {
   }
 }
 
+/// The UpperBody page starts here showcasing upper body workouts with pictures and descriptions.
+
 class UpperBodyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -114,7 +116,7 @@ class UpperBodyPage extends StatelessWidget {
           ),
         ),
       ),
-      backgroundColor: Colors.lightBlueAccent[100],
+      backgroundColor: Colors.deepOrangeAccent[100],
       body: Scrollbar(
         controller: ScrollController(),
         thickness: 10,
@@ -704,6 +706,8 @@ class UpperBodyPage extends StatelessWidget {
   }
 }
 
+/// Lower body page starts here and showcases leg workouts with pictures and descriptions.
+
 class LowerBodyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -720,7 +724,7 @@ class LowerBodyPage extends StatelessWidget {
           ),
         ),
       ),
-      backgroundColor: Colors.lightBlueAccent[100],
+      backgroundColor: Colors.green[200],
       body: Scrollbar(
         controller: ScrollController(),
         thickness: 10,
@@ -873,7 +877,7 @@ class LowerBodyPage extends StatelessWidget {
                 ),
               ),
               Image(
-                image: AssetImage("assets/images/Lunges.jpg"),
+                image: AssetImage("assets/images/lateralLunge.jpg"),
                 height: 300,
                 width: 300,
               ),
@@ -917,7 +921,7 @@ class LowerBodyPage extends StatelessWidget {
                 ),
               ),
               Image(
-                image: AssetImage("assets/images/Lunges.jpg"),
+                image: AssetImage("assets/images/legPress.jpg"),
                 height: 300,
                 width: 300,
               ),
@@ -961,7 +965,7 @@ class LowerBodyPage extends StatelessWidget {
                 ),
               ),
               Image(
-                image: AssetImage("assets/images/Lunges.jpg"),
+                image: AssetImage("assets/images/kneeHighs.jpg"),
                 height: 300,
                 width: 300,
               ),
@@ -1005,7 +1009,7 @@ class LowerBodyPage extends StatelessWidget {
                 ),
               ),
               Image(
-                image: AssetImage("assets/images/Lunges.jpg"),
+                image: AssetImage("assets/images/singleLegDeadLift.jpg"),
                 height: 300,
                 width: 300,
               ),
@@ -1049,7 +1053,7 @@ class LowerBodyPage extends StatelessWidget {
                 ),
               ),
               Image(
-                image: AssetImage("assets/images/Lunges.jpg"),
+                image: AssetImage("assets/images/splitSquat.jpg"),
                 height: 300,
                 width: 300,
               ),
@@ -1093,7 +1097,7 @@ class LowerBodyPage extends StatelessWidget {
                 ),
               ),
               Image(
-                image: AssetImage("assets/images/Lunges.jpg"),
+                image: AssetImage("assets/images/skaterSquat.jpg"),
                 height: 300,
                 width: 300,
               ),
@@ -1137,7 +1141,7 @@ class LowerBodyPage extends StatelessWidget {
                 ),
               ),
               Image(
-                image: AssetImage("assets/images/Lunges.jpg"),
+                image: AssetImage("assets/images/tuckJump.jpg"),
                 height: 300,
                 width: 300,
               ),
@@ -1181,7 +1185,7 @@ class LowerBodyPage extends StatelessWidget {
                 ),
               ),
               Image(
-                image: AssetImage("assets/images/Lunges.jpg"),
+                image: AssetImage("assets/images/reverseLunge.jpg"),
                 height: 300,
                 width: 300,
               ),
@@ -1225,7 +1229,7 @@ class LowerBodyPage extends StatelessWidget {
                 ),
               ),
               Image(
-                image: AssetImage("assets/images/Lunges.jpg"),
+                image: AssetImage("assets/images/abductorLegRaises.jpg"),
                 height: 300,
                 width: 300,
               ),
@@ -1269,7 +1273,7 @@ class LowerBodyPage extends StatelessWidget {
                 ),
               ),
               Image(
-                image: AssetImage("assets/images/Lunges.jpg"),
+                image: AssetImage("assets/images/hamstringCurls.jpg"),
                 height: 300,
                 width: 300,
               ),
@@ -1313,7 +1317,7 @@ class LowerBodyPage extends StatelessWidget {
                 ),
               ),
               Image(
-                image: AssetImage("assets/images/Lunges.jpg"),
+                image: AssetImage("assets/images/romanianDeadlifts.jpg"),
                 height: 300,
                 width: 300,
               ),
@@ -1357,7 +1361,7 @@ class LowerBodyPage extends StatelessWidget {
                 ),
               ),
               Image(
-                image: AssetImage("assets/images/Lunges.jpg"),
+                image: AssetImage("assets/images/legExtensions.jpg"),
                 height: 300,
                 width: 300,
               ),
@@ -1401,7 +1405,7 @@ class LowerBodyPage extends StatelessWidget {
                 ),
               ),
               Image(
-                image: AssetImage("assets/images/Lunges.jpg"),
+                image: AssetImage("assets/images/steps.jpg"),
                 height: 300,
                 width: 300,
               ),
@@ -1445,7 +1449,7 @@ class LowerBodyPage extends StatelessWidget {
                 ),
               ),
               Image(
-                image: AssetImage("assets/images/Lunges.jpg"),
+                image: AssetImage("assets/images/squatJump.jpg"),
                 height: 300,
                 width: 300,
               ),
@@ -1486,6 +1490,8 @@ class LowerBodyPage extends StatelessWidget {
   }
 }
 
+/// Core body page starts here and shows core workouts with pictures and descriptions.
+
 class CoreBodyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -1502,7 +1508,7 @@ class CoreBodyPage extends StatelessWidget {
           ),
         ),
       ),
-      backgroundColor: Colors.lightBlueAccent[100],
+      backgroundColor: Colors.deepPurpleAccent[100],
       body: Scrollbar(
         controller: ScrollController(),
         thickness: 10,
@@ -1519,7 +1525,7 @@ class CoreBodyPage extends StatelessWidget {
               ),
             ),
             Image(
-              image: AssetImage("assets/images/Lunges.jpg"),
+              image: AssetImage("assets/images/crossChops.jpg"),
               height: 300,
               width: 300,
             ),
@@ -1563,7 +1569,7 @@ class CoreBodyPage extends StatelessWidget {
               ),
             ),
             Image(
-              image: AssetImage("assets/images/Lunges.jpg"),
+              image: AssetImage("assets/images/kneeHighs.jpg"),
               height: 300,
               width: 300,
             ),
@@ -1607,7 +1613,7 @@ class CoreBodyPage extends StatelessWidget {
               ),
             ),
             Image(
-              image: AssetImage("assets/images/Lunges.jpg"),
+              image: AssetImage("assets/images/twistJacks.jpg"),
               height: 300,
               width: 300,
             ),
@@ -1651,7 +1657,7 @@ class CoreBodyPage extends StatelessWidget {
               ),
             ),
             Image(
-              image: AssetImage("assets/images/Lunges.jpg"),
+              image: AssetImage("assets/images/sideBridge.jpg"),
               height: 300,
               width: 300,
             ),
@@ -1695,7 +1701,7 @@ class CoreBodyPage extends StatelessWidget {
               ),
             ),
             Image(
-              image: AssetImage("assets/images/Lunges.jpg"),
+              image: AssetImage("assets/images/raisedLegHold.jpg"),
               height: 300,
               width: 300,
             ),
@@ -1739,7 +1745,7 @@ class CoreBodyPage extends StatelessWidget {
               ),
             ),
             Image(
-              image: AssetImage("assets/images/Lunges.jpg"),
+              image: AssetImage("assets/images/plankArmRaises.jpg"),
               height: 300,
               width: 300,
             ),
@@ -1783,7 +1789,7 @@ class CoreBodyPage extends StatelessWidget {
               ),
             ),
             Image(
-              image: AssetImage("assets/images/Lunges.jpg"),
+              image: AssetImage("assets/images/pushUpIntoLunge.jpg"),
               height: 300,
               width: 300,
             ),
@@ -1827,7 +1833,7 @@ class CoreBodyPage extends StatelessWidget {
               ),
             ),
             Image(
-              image: AssetImage("assets/images/Lunges.jpg"),
+              image: AssetImage("assets/images/kneeToElbow.jpg"),
               height: 300,
               width: 300,
             ),
@@ -1871,7 +1877,7 @@ class CoreBodyPage extends StatelessWidget {
               ),
             ),
             Image(
-              image: AssetImage("assets/images/Lunges.jpg"),
+              image: AssetImage("assets/images/sideToSideChop.jpg"),
               height: 300,
               width: 300,
             ),
@@ -1915,7 +1921,7 @@ class CoreBodyPage extends StatelessWidget {
               ),
             ),
             Image(
-              image: AssetImage("assets/images/Lunges.jpg"),
+              image: AssetImage("assets/images/sideLegRaises.jpg"),
               height: 300,
               width: 300,
             ),
@@ -1959,7 +1965,7 @@ class CoreBodyPage extends StatelessWidget {
               ),
             ),
             Image(
-              image: AssetImage("assets/images/Lunges.jpg"),
+              image: AssetImage("assets/images/crunchKicks.jpg"),
               height: 300,
               width: 300,
             ),
@@ -2003,7 +2009,7 @@ class CoreBodyPage extends StatelessWidget {
               ),
             ),
             Image(
-              image: AssetImage("assets/images/Lunges.jpg"),
+              image: AssetImage("assets/images/raisedLegCircles.jpg"),
               height: 300,
               width: 300,
             ),
@@ -2047,7 +2053,7 @@ class CoreBodyPage extends StatelessWidget {
               ),
             ),
             Image(
-              image: AssetImage("assets/images/Lunges.jpg"),
+              image: AssetImage("assets/images/scissors.jpg"),
               height: 300,
               width: 300,
             ),
@@ -2091,7 +2097,7 @@ class CoreBodyPage extends StatelessWidget {
               ),
             ),
             Image(
-              image: AssetImage("assets/images/Lunges.jpg"),
+              image: AssetImage("assets/images/20CountHold.jpg"),
               height: 300,
               width: 300,
             ),
@@ -2135,7 +2141,7 @@ class CoreBodyPage extends StatelessWidget {
               ),
             ),
             Image(
-              image: AssetImage("assets/images/Lunges.jpg"),
+              image: AssetImage("assets/images/sideElbowPlank.jpg"),
               height: 300,
               width: 300,
             ),

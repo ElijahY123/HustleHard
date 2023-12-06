@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../Model/CalorieData.dart'; // Import CalorieData
 
 class CalorieCounterView extends StatefulWidget {
@@ -20,13 +21,26 @@ class CalorieCounterView extends StatefulWidget {
 class _CalorieCounterViewState extends State<CalorieCounterView> {
   final TextEditingController typeAheadController = TextEditingController();
   final TextEditingController manualEntryController = TextEditingController();
+  final TextEditingController calorieGoalController = TextEditingController(text: '2000'); // Default goal
+  int calorieGoal = 2000; // Default goal
 
   @override
   Widget build(BuildContext context) {
+    double calorieProgress = widget.totalCalories / calorieGoal; // Use dynamic calorie goal
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Calorie Counter'),
-        backgroundColor: Colors.green,
+        title: Text(
+          'Calorie Counter',
+          style: GoogleFonts.poppins(fontWeight: FontWeight.bold),
+        ),
+        backgroundColor: Colors.greenAccent,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.settings),
+            onPressed: _showCalorieGoalDialog,
+          ),
+        ],
       ),
       body: Center(
         child: SingleChildScrollView(
@@ -38,13 +52,44 @@ class _CalorieCounterViewState extends State<CalorieCounterView> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Total Daily Calories: ${widget.totalCalories}',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  'Total Daily Calories:',
+                  style: TextStyle(
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.greenAccent,
+                  ),
+                ),
+                SizedBox(height: 10),
+                Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    SizedBox(
+                      height: 150,
+                      width: 150,
+                      child: CircularProgressIndicator(
+                        value: calorieProgress,
+                        backgroundColor: Colors.grey[300],
+                        color: Colors.greenAccent,
+                        strokeWidth: 12,
+                      ),
+                    ),
+                    Text(
+                      '${widget.totalCalories} / $calorieGoal',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 ),
                 SizedBox(height: 10),
                 Text(
                   'Estimated /serving size & /hr of exercise',
-                  style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic, color: Colors.grey),
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontStyle: FontStyle.italic,
+                    color: Colors.grey,
+                  ),
                 ),
                 SizedBox(height: 20),
                 _buildTypeAheadFormField(),
@@ -66,11 +111,7 @@ class _CalorieCounterViewState extends State<CalorieCounterView> {
     return TypeAheadFormField(
       textFieldConfiguration: TextFieldConfiguration(
         controller: typeAheadController,
-        decoration: InputDecoration(
-          labelText: 'Search Food/Exercise',
-          border: OutlineInputBorder(),
-          suffixIcon: Icon(Icons.search),
-        ),
+        decoration: _inputDecoration('Search Food/Exercise'),
       ),
       suggestionsCallback: (pattern) {
         return CalorieData.searchItems(pattern);
@@ -90,10 +131,7 @@ class _CalorieCounterViewState extends State<CalorieCounterView> {
     return TextField(
       controller: manualEntryController,
       keyboardType: TextInputType.number,
-      decoration: InputDecoration(
-        labelText: 'Enter Calories Manually (+/-)',
-        border: OutlineInputBorder(),
-      ),
+      decoration: _inputDecoration('Enter Calories Manually (+/-)'),
     );
   }
 
@@ -110,7 +148,9 @@ class _CalorieCounterViewState extends State<CalorieCounterView> {
       },
       child: Text('Submit'),
       style: ElevatedButton.styleFrom(
-        foregroundColor: Colors.white, backgroundColor: Colors.green,
+        primary: Colors.greenAccent, // New button color
+        onPrimary: Colors.white, // Text color
+        textStyle: GoogleFonts.poppins(), // Custom font for button
       ),
     );
   }
@@ -122,5 +162,44 @@ class _CalorieCounterViewState extends State<CalorieCounterView> {
       style: TextStyle(color: Colors.red),
     )
         : Container();
+  }
+
+  InputDecoration _inputDecoration(String label) {
+    return InputDecoration(
+      labelText: label,
+      border: OutlineInputBorder(),
+      suffixIcon: label.contains('Search') ? Icon(Icons.search) : null,
+      labelStyle: GoogleFonts.lato(), // Custom font
+      fillColor: Colors.white,
+      filled: true,
+    );
+  }
+
+  // Method to show dialog for setting calorie goal
+  void _showCalorieGoalDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Set Calorie Goal'),
+          content: TextField(
+            controller: calorieGoalController,
+            keyboardType: TextInputType.number,
+            decoration: InputDecoration(hintText: "Enter your calorie goal"),
+          ),
+          actions: <Widget>[
+            ElevatedButton(
+              child: Text('Set Goal'),
+              onPressed: () {
+                setState(() {
+                  calorieGoal = int.tryParse(calorieGoalController.text) ?? 2000;
+                });
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 }
