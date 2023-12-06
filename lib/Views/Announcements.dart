@@ -1,4 +1,3 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -67,8 +66,8 @@ class SelectUser extends StatelessWidget {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => null as Widget));
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => UserView()));
                     },
                     child: Text(
                       'User',
@@ -423,185 +422,249 @@ class AdminView extends StatelessWidget {
             fontSize: 30,
           )),
         ),
+        actions: [
+          IconButton(
+            alignment: Alignment.centerRight,
+            iconSize: 50,
+            color: Colors.lightBlueAccent[100],
+            icon: Icon(Icons.add_circle_rounded),
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: Text(
+                    "Create Workout Group",
+                    style: GoogleFonts.sedgwickAve(
+                      textStyle: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  content: _buildTwoTextFields(context),
+                  actions: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                        announcementModel.addGroup(
+                            announcementModel.groupName, context);
+                      },
+                      child: Text("Create"),
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
+        ],
       ),
       backgroundColor: Colors.lightBlueAccent[100],
-      body: SafeArea(
-        child: Container(
-          child: Column(
-            children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  ElevatedButton(
-                    style: ButtonStyle(
-                      elevation: MaterialStateProperty.all(20),
-                    ),
-                    onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (context) => AlertDialog(
-                          content: TextField(
-                            decoration: InputDecoration(
-                              hintText: 'Enter Group Name',
-                              hintStyle: const TextStyle(color: Colors.grey),
-                              fillColor: Colors.grey[300],
-                              filled: true,
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.grey.shade300,
-                                ),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
-                            controller: announcementModel.groupNameController,
-                            obscureText: false,
-                          ),
-                          actions: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                                announcementModel.addGroup(
-                                  announcementModel.groupName,
-                                );
-                              },
-                              child: Text("Create"),
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                    child: Text("Create Group"),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                ],
-              ),
-              StreamBuilder(
-                stream: FirebaseFirestore.instance
-                    .collection('Admins')
-                    .doc('0')
-                    .collection('Groups')
-                    .snapshots(),
-                builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-                  if (!snapshot.hasData) {
-                    return Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  }
-                  return Container(
-                    height: 200,
-                    child: ListView(
-                      children: snapshot.data!.docs.map((snap) {
-                        return Card(
-                          elevation: 30,
-                          child: ListTile(
-                            title: Text(
-                              snap['GroupName'].toString(),
-                              style: GoogleFonts.loveYaLikeASister(
-                                textStyle: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          GroupMessages()));
-                            },
-                          ),
-                        );
-                      }).toList(),
-                    ),
-                  );
-                },
-              ),
-            ],
+      body: _buildGroupsList(context),
+    );
+  }
+
+  Widget _buildGroupsList(BuildContext context) {
+    return StreamBuilder(
+      stream:
+          FirebaseFirestore.instance.collection('Workout Groups').snapshots(),
+      builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        if (!snapshot.hasData) {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+        return ListView(
+          children: snapshot.data!.docs
+              .map((snap) => _buildGroupListItem(snap, context))
+              .toList(),
+        );
+      },
+    );
+  }
+
+  Widget _buildGroupListItem(DocumentSnapshot snap, BuildContext context) {
+    return Card(
+      elevation: 30,
+      child: ListTile(
+        title: Text(
+          snap['GroupName'].toString(),
+          style: GoogleFonts.loveYaLikeASister(
+            textStyle: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
           ),
+        ),
+        onTap: () {
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) => AdminMessages()));
+        },
+      ),
+    );
+  }
+
+  Widget _buildTwoTextFields(BuildContext context) {
+    return Center(
+      child: Container(
+        height: 200,
+        child: Column(
+          children: [
+            TextField(
+              decoration: InputDecoration(
+                hintText: 'Enter Username',
+                hintStyle: const TextStyle(color: Colors.grey),
+                fillColor: Colors.grey[300],
+                filled: true,
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.grey.shade300,
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+              controller: announcementModel.usernameController,
+              obscureText: false,
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            TextField(
+              decoration: InputDecoration(
+                hintText: 'Enter Group Name',
+                hintStyle: const TextStyle(color: Colors.grey),
+                fillColor: Colors.grey[300],
+                filled: true,
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.grey.shade300,
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+              controller: announcementModel.groupNameController,
+              obscureText: false,
+            ),
+          ],
         ),
       ),
     );
   }
 }
 
-class AdminView2 extends StatelessWidget {
-  AnnouncementModel announcementModel = AnnouncementModel();
+class UserView extends StatelessWidget {
+  var docId;
+  final groupsRef2 = FirebaseFirestore.instance.collection('Workout Groups');
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
-        title: Text("Groups"),
-      ),
+          title: Text(
+        "Choose A Group That Best Fits You",
+        style: GoogleFonts.sedgwickAve(
+          textStyle: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      )),
       backgroundColor: Colors.lightBlueAccent[100],
-      body: StreamBuilder(
-        stream: FirebaseFirestore.instance
-            .collection('Admins')
-            .doc('0')
-            .collection('Groups')
-            .snapshots(),
-        builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          if (!snapshot.hasData) {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          }
+      body: _buildGroupsList(context),
+    );
+  }
+
+  Widget _buildGroupsList(BuildContext context) {
+    return StreamBuilder(
+      stream:
+          FirebaseFirestore.instance.collection('Workout Groups').snapshots(),
+      builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        if (!snapshot.hasData) {
           return Center(
-            child: Padding(
-              padding: const EdgeInsets.all(8),
-              child: Container(
-                child: ListView(
-                  children: snapshot.data!.docs.map((snap) {
-                    return Card(
-                      elevation: 30,
-                      child: ListTile(
-                        title: Text(
-                          snap['GroupName'].toString(),
-                          style: GoogleFonts.loveYaLikeASister(
-                            textStyle: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => GroupMessages()));
-                        },
-                      ),
-                    );
-                  }).toList(),
-                ),
-              ),
-            ),
+            child: CircularProgressIndicator(),
           );
+        }
+        return ListView(
+          children: snapshot.data!.docs
+              .map((snap) => _buildGroupListItem(snap, context))
+              .toList(),
+        );
+      },
+    );
+  }
+
+  Widget _buildGroupListItem(DocumentSnapshot snap, BuildContext context) {
+    return Card(
+      elevation: 30,
+      child: ListTile(
+        title: Text(
+          snap['GroupName'].toString(),
+          style: GoogleFonts.loveYaLikeASister(
+            textStyle: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+          ),
+        ),
+        onTap: () {
+          groupsRef2.get().then((QuerySnapshot snapshot) {
+            snapshot.docs.forEach((DocumentSnapshot doc) {
+              groupsRef2.doc(doc.id).get().then((DocumentSnapshot doc) {
+                final groupsRef = FirebaseFirestore.instance
+                    .collection('Workout Groups')
+                    .doc(doc.id)
+                    .collection('Messages');
+                groupsRef.get().then((QuerySnapshot snapshot) {
+                  snapshot.docs.forEach((DocumentSnapshot doc2) {
+                    groupsRef.doc(doc2.id).get().then((DocumentSnapshot doc2) {
+                      if (snap['GroupName'].toString() == doc['GroupName']) {
+                        print(doc2.data());
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => UserMessages(
+                                      data: doc2.data(),
+                                    )));
+                      }
+                    });
+                  });
+                });
+              });
+            });
+          });
         },
       ),
     );
   }
 }
 
-class GroupMessages extends StatelessWidget {
+class AdminMessages extends StatelessWidget {
   AnnouncementModel announcementModel = AnnouncementModel();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.lightBlueAccent[100],
       appBar: AppBar(
-        title: const Text('Admin Page'),
+        centerTitle: true,
+        title: Text(
+          "Messenger",
+          style: GoogleFonts.sedgwickAve(
+            textStyle: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
         actions: [
           IconButton(
             onPressed: () {
@@ -611,87 +674,137 @@ class GroupMessages extends StatelessWidget {
           ),
         ],
       ),
-      body: SafeArea(
-        child: Center(
-          child: Column(
-            children: [
-              Expanded(
-                child: StreamBuilder(
-                  stream: FirebaseFirestore.instance
-                      .collection('Admins')
-                      .doc('$announcementModel.counter')
-                      .collection('Groups')
-                      .doc()
-                      .collection('Messages')
-                      .orderBy(
-                        'Date',
-                        descending: false,
-                      )
-                      .snapshots(),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      return Center(
-                        child: ListView.builder(
-                          itemCount: snapshot.data!.docs.length,
-                          itemBuilder: (context, index) {
-                            final post = snapshot.data!.docs[index];
-                            return MessageBox(
-                              message: post['Message'],
-                              time: post['Date'],
-                            );
-                          },
-                        ),
-                      );
-                    }
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  },
+      body: Column(
+        children: [
+          Expanded(
+            child: TextField(
+              decoration: InputDecoration(
+                hintText: 'Send To',
+                hintStyle: const TextStyle(
+                  color: Colors.grey,
+                ),
+                fillColor: Colors.grey[200],
+                filled: true,
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.grey.shade200,
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.grey.shade200,
+                  ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 10,
-                ),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintText: 'Enter Message',
-                          hintStyle: const TextStyle(
-                            color: Colors.grey,
-                          ),
-                          fillColor: Colors.grey[200],
-                          filled: true,
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.grey.shade200,
-                            ),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.grey.shade200,
-                            ),
-                          ),
-                        ),
-                        controller: announcementModel.textController,
+              controller: announcementModel.groupNameController,
+            ),
+          ),
+          Row(
+            children: [
+              Expanded(
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: 'Enter Message',
+                    hintStyle: const TextStyle(
+                      color: Colors.grey,
+                    ),
+                    fillColor: Colors.grey[200],
+                    filled: true,
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.grey.shade200,
                       ),
                     ),
-                    IconButton(
-                      onPressed: () {
-                        String message = announcementModel.textController.text;
-                        String time = DateTime.timestamp().toString();
-                        announcementModel.addMessage(message, time);
-                      },
-                      icon: Icon(Icons.send),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.grey.shade200,
+                      ),
                     ),
-                  ],
+                  ),
+                  controller: announcementModel.textController,
                 ),
+              ),
+              IconButton(
+                onPressed: () {
+                  String message = announcementModel.textController.text;
+                  String time = DateTime.now().toString();
+                  announcementModel.addMessage(message, time);
+                },
+                icon: Icon(Icons.send),
               ),
             ],
           ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildMessage(BuildContext context) {
+    return Expanded(
+      child: StreamBuilder(
+        stream: FirebaseFirestore.instance
+            .collection('Messages')
+            .orderBy(
+              'Date',
+              descending: false,
+            )
+            .snapshots(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          return Center(
+            child: ListView.builder(
+              itemCount: snapshot.data!.docs.length,
+              itemBuilder: (context, index) {
+                final post = snapshot.data!.docs[index];
+                return MessageBox(
+                  message: post['Message'],
+                  time: post['Date'],
+                );
+              },
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class UserMessages extends StatelessWidget {
+  AnnouncementModel announcementModel = AnnouncementModel();
+  var data;
+
+  UserMessages({
+    required this.data,
+  });
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.lightBlueAccent[100],
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(
+          "Message Board",
+          style: GoogleFonts.sedgwickAve(
+            textStyle: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ),
+      ),
+      body: _buildMessage(context),
+    );
+  }
+
+  Widget _buildMessage(BuildContext context) {
+    return Scrollbar(
+      child: MessageBox(
+        message: data['Message'],
+        time: data['Date'],
       ),
     );
   }
@@ -711,7 +824,7 @@ class MessageBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.lightBlueAccent[100],
+        color: Colors.white,
         borderRadius: BorderRadius.circular(9),
       ),
       margin: EdgeInsets.all(25),
@@ -721,8 +834,18 @@ class MessageBox extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(message),
-              Text("$time"),
+              Text(
+                message,
+                style: TextStyle(
+                  color: Colors.black,
+                ),
+              ),
+              Text(
+                "$time",
+                style: TextStyle(
+                  color: Colors.black,
+                ),
+              ),
             ],
           ),
         ],

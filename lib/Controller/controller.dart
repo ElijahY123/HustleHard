@@ -348,9 +348,6 @@ class _FitnessControllerState extends State<FitnessController> {
       case 7:
         page = SelectUser();
         break;
-      case 8:
-        page = AdminView2();
-        break;
       default:
         throw UnimplementedError('No page for selected page');
     }
@@ -410,10 +407,6 @@ class _FitnessControllerState extends State<FitnessController> {
                       NavigationDrawerDestination(
                         icon: Icon(Icons.message_outlined),
                         label: Text("Announcements"),
-                      ),
-                      NavigationDrawerDestination(
-                        icon: Icon(Icons.message_outlined),
-                        label: Text("Adminview2"),
                       ),
                     ],
                     selectedIndex: pageSelected.getSelectedIndex(),
