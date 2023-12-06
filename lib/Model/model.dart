@@ -227,10 +227,6 @@ class HomePage{
     return stepCount.toString();
   }
 
-  double getStepsPercent() {
-    return stepsPercent;
-  }
-
   void updateStepsPercent() {
     double stepsToInt = double.parse(stepCount.toString());
     if (stepsToInt > goal) {

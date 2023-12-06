@@ -18,6 +18,7 @@ class MainPage extends StatelessWidget {
   String steps;
   double caloriesBurned;
   double milesWalked;
+  double stepsPercent;
 
   MainPage({
     required this.getSteps,
@@ -30,6 +31,7 @@ class MainPage extends StatelessWidget {
     required this.steps,
     required this.caloriesBurned,
     required this.milesWalked,
+    required this.stepsPercent
 });
 
   @override
@@ -53,7 +55,7 @@ class MainPage extends StatelessWidget {
                 CircularPercentIndicator(
                   radius: 140,
                   lineWidth: 15.0,
-                  percent: getStepsPercent(),
+                  percent: stepsPercent,
                   progressColor: Colors.lightBlueAccent,
                   center: FaIcon(
                     FontAwesomeIcons.personRunning,
