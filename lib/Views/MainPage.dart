@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:latlong2/latlong.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-import 'package:fl_chart/fl_chart.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 
@@ -171,8 +169,8 @@ class MainPage extends StatelessWidget {
                                 }
                               },
                               style: ButtonStyle(
-                                minimumSize: MaterialStateProperty.all(Size(50, 50)),
-                                shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                                minimumSize: WidgetStateProperty.all(Size(50, 50)),
+                                shape: WidgetStateProperty.all(RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(25),
                                 )),
                               ),

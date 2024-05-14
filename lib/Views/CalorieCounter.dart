@@ -148,8 +148,7 @@ class _CalorieCounterViewState extends State<CalorieCounterView> {
       },
       child: Text('Submit'),
       style: ElevatedButton.styleFrom(
-        primary: Colors.greenAccent, // New button color
-        onPrimary: Colors.white, // Text color
+        foregroundColor: Colors.white, backgroundColor: Colors.greenAccent, // Text color
         textStyle: GoogleFonts.poppins(), // Custom font for button
       ),
     );
