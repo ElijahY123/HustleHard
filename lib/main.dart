@@ -1,5 +1,5 @@
 import 'package:firstapp/Controller/controller.dart';
-import 'package:firstapp/Main/firebase_options.dart';
+import 'package:firstapp/firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
